@@ -99,11 +99,11 @@ export default function FaqPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f5f0] text-[#262422] dark:bg-[#161617] dark:text-[#f5f5f7] font-sans antialiased overflow-x-hidden selection:bg-blue-500/20 transition-colors duration-300">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0B0F14] dark:text-[#F2F4F7] font-sans antialiased overflow-x-hidden selection:bg-[#D97706]/20 dark:selection:bg-[#F7D154]/20 transition-colors duration-300">
       
       {/* Subtle macOS Ambient Aura Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[90vw] h-[550px] bg-gradient-to-b from-blue-400/10 via-sky-300/6 to-transparent dark:from-blue-500/15 dark:via-cyan-500/10 blur-[140px] rounded-full" />
+        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[90vw] h-[550px] bg-gradient-to-b from-amber-400/10 via-amber-200/5 to-transparent dark:from-[#F7D154]/10 dark:via-[#F7D154]/5 blur-[140px] rounded-full" />
         <div className="absolute inset-0 bg-[radial-gradient(#ded7cc_1px,transparent_1px)] dark:bg-[radial-gradient(#2d2d30_1px,transparent_1px)] [background-size:24px_24px] opacity-60 dark:opacity-40" />
       </div>
 
@@ -117,7 +117,7 @@ export default function FaqPage() {
         <div className="w-full flex flex-col items-center">
           <div className={`pointer-events-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled
-              ? "mt-2.5 sm:mt-3 w-full max-w-5xl h-14 sm:h-16 px-3.5 sm:px-7 rounded-2xl sm:rounded-full bg-[#fcfaf5]/75 dark:bg-[#1d1d1f]/75 backdrop-blur-2xl shadow-[0_12px_36px_rgba(40,30,20,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-stone-300/50 dark:border-white/[0.08]"
+              ? "mt-2.5 sm:mt-3 w-full max-w-5xl h-14 sm:h-16 px-3.5 sm:px-7 rounded-2xl sm:rounded-full bg-white/90 dark:bg-[#10171F]/90 backdrop-blur-2xl shadow-[0_12px_36px_rgba(15,23,42,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-[#E2E8F0] dark:border-[#1F2630]"
               : "mt-0 w-full max-w-7xl h-16 sm:h-20 px-3 sm:px-8 bg-transparent border-transparent shadow-none"
           }`}>
             
@@ -131,7 +131,7 @@ export default function FaqPage() {
                     navigate("/#footer");
                   }
                 }}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] dark:hover:text-white bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] transition-all cursor-pointer select-none"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold text-[#515154] dark:text-[#a1a1a6] hover:text-[#D97706] dark:hover:text-[#F7D154] bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] transition-all cursor-pointer select-none"
                 title="Back to previous section"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
@@ -144,7 +144,7 @@ export default function FaqPage() {
                   alt="AI Data Analysis Logo" 
                   className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-transform duration-300 group-hover:scale-105 shrink-0"
                 />
-                <span className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-[#38bdf8] dark:via-[#0ea5e9] dark:to-[#06b6d4] bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
+                <span className="font-bold text-base sm:text-lg tracking-tight text-[#0F172A] dark:text-[#F2F4F7] group-hover:opacity-90 transition-opacity">
                   <span className="hidden sm:inline">AI Data Analysis</span>
                   <span className="sm:hidden">AI Analysis</span>
                 </span>
@@ -153,10 +153,10 @@ export default function FaqPage() {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-7 text-sm font-medium text-[#515154] dark:text-[#a1a1a6]">
-              <Link to="/#features" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Features</Link>
-              <Link to="/#demo" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Interactive Demo</Link>
-              <Link to="/docs" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Documentation</Link>
-              <Link to="/faq" className="text-[#0071e3] dark:text-white font-semibold transition-colors duration-200">FAQs</Link>
+              <Link to="/#features" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Features</Link>
+              <Link to="/#demo" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Interactive Demo</Link>
+              <Link to="/docs" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Documentation</Link>
+              <Link to="/faq" className="text-[#D97706] dark:text-[#F7D154] font-bold transition-colors duration-200">FAQs</Link>
             </div>
 
             {/* Action Buttons */}
@@ -167,7 +167,7 @@ export default function FaqPage() {
                 <div className="flex items-center gap-1.5 sm:gap-3">
                   <UserNavProfile />
                   <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                    <Link to="/app" className="relative group inline-flex items-center justify-center p-2 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#0071e3] hover:bg-[#0077ed] shadow-[0_4px_14px_rgba(0,113,227,0.35)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] transition-all duration-300" title="Launch Analytics Studio">
+                    <Link to="/app" className="relative group inline-flex items-center justify-center p-2 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-extrabold shadow-md transition-all duration-300" title="Launch Analytics Studio">
                       <span className="relative flex items-center gap-1.5">
                         <LayoutDashboard className="w-4 h-4 sm:hidden" />
                         <span className="hidden sm:inline">Launch App</span>
@@ -178,11 +178,11 @@ export default function FaqPage() {
                 </div>
               ) : (
                 <>
-                  <Link to="/login" className="hidden sm:inline-block text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] dark:hover:text-white font-medium text-sm transition-colors px-3 py-1.5 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06]">
+                  <Link to="/login" className="hidden sm:inline-block text-[#515154] dark:text-[#a1a1a6] hover:text-[#D97706] dark:hover:text-[#F7D154] font-medium text-sm transition-colors px-3 py-1.5 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06]">
                     Sign In
                   </Link>
                   <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                    <Link to="/register" className="relative group inline-flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#0071e3] hover:bg-[#0077ed] shadow-[0_4px_14px_rgba(0,113,227,0.35)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] transition-all duration-300">
+                    <Link to="/register" className="relative group inline-flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-extrabold shadow-md transition-all duration-300">
                       <span className="relative flex items-center gap-1.5">
                         Get Started
                       </span>
@@ -194,7 +194,7 @@ export default function FaqPage() {
               {/* Mobile menu toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-                className="md:hidden p-1.5 sm:p-2 rounded-full text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] dark:hover:text-white bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08]"
+                className="md:hidden p-1.5 sm:p-2 rounded-full text-[#515154] dark:text-[#a1a1a6] hover:text-[#D97706] dark:hover:text-[#F7D154] bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08]"
                 aria-label="Toggle navigation menu"
               >
                 {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -228,17 +228,17 @@ export default function FaqPage() {
       {/* Centered Hero Section (Full unclipped cursive script) */}
       <section className="pt-36 sm:pt-40 pb-12 relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/40 text-[#0071e3] dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/40 text-[#D97706] dark:text-[#F7D154] dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
             <HelpCircle className="w-3.5 h-3.5" /> Help Center & Knowledge Base
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-normal mb-4 text-[#1d1d1f] dark:text-[#f5f5f7] leading-relaxed">
-            <span className="font-kaushan inline-block py-2 px-3 text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300 overflow-visible">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-normal mb-4 text-[#0F172A] dark:text-[#f5f5f7] leading-relaxed">
+            <span className="font-black text-[#0F172A] dark:text-[#F2F4F7]">
               Frequently Asked Questions
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-[#6e6e73] dark:text-[#a1a1a6] max-w-2xl mx-auto font-normal">
+          <p className="text-base sm:text-lg text-[#64748B] dark:text-[#a1a1a6] max-w-2xl mx-auto font-normal">
             Everything you need to know about how AI Data Analysis processes and protects your datasets.
           </p>
         </div>
@@ -263,12 +263,12 @@ export default function FaqPage() {
                     className="w-full text-left p-5 sm:p-6 flex justify-between items-center focus:outline-none group cursor-pointer"
                   >
                     <div className="flex items-center gap-3.5 pr-4">
-                      <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#0071e3] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                      <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#D97706] dark:text-[#F7D154] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
                         <Icon className="w-4 h-4" />
                       </div>
-                      <span className="text-base sm:text-lg font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] group-hover:text-[#0071e3] transition-colors">{faq.question}</span>
+                      <span className="text-base sm:text-lg font-semibold text-[#0F172A] dark:text-[#f5f5f7] group-hover:text-[#D97706] dark:text-[#F7D154] transition-colors">{faq.question}</span>
                     </div>
-                    <div className={`p-2 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-[#515154] dark:text-[#a1a1a6] transform transition-transform duration-300 shrink-0 ${openFaq === idx ? "rotate-180 bg-blue-50 text-[#0071e3]" : ""}`}>
+                    <div className={`p-2 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-[#515154] dark:text-[#a1a1a6] transform transition-transform duration-300 shrink-0 ${openFaq === idx ? "rotate-180 bg-blue-50 text-[#D97706] dark:text-[#F7D154]" : ""}`}>
                       <ChevronDown className="w-4 h-4" />
                     </div>
                   </button>
@@ -279,7 +279,7 @@ export default function FaqPage() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="px-6 pb-6 pt-2 text-[#6e6e73] dark:text-[#a1a1a6] text-sm sm:text-base leading-relaxed border-t border-stone-200/60 dark:border-white/[0.06]"
+                      className="px-6 pb-6 pt-2 text-[#64748B] dark:text-[#a1a1a6] text-sm sm:text-base leading-relaxed border-t border-stone-200/60 dark:border-white/[0.06]"
                     >
                       {faq.answer}
                     </motion.div>
@@ -291,13 +291,13 @@ export default function FaqPage() {
 
           {/* Contact Support Card */}
           <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100/80 dark:border-blue-900/30 text-center flex flex-col items-center">
-            <h3 className="text-lg font-bold text-[#1d1d1f] dark:text-[#f5f5f7] mb-2">Still have questions?</h3>
-            <p className="text-sm text-[#6e6e73] dark:text-[#a1a1a6] mb-6 max-w-md">
+            <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#f5f5f7] mb-2">Still have questions?</h3>
+            <p className="text-sm text-[#64748B] dark:text-[#a1a1a6] mb-6 max-w-md">
               Can't find the answer you're looking for? Our documentation provides in-depth technical guides on our query architecture.
             </p>
             <Link 
               to="/docs" 
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] shadow-md transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] shadow-md transition-all cursor-pointer"
             >
               Explore Documentation <ArrowRight className="w-4 h-4" />
             </Link>
@@ -306,14 +306,14 @@ export default function FaqPage() {
       </section>
 
       {/* Static Footer */}
-      <footer className="bg-[#fcfaf5] dark:bg-[#050505] border-t border-stone-200/80 dark:border-gray-800/50 py-12 text-stone-500 dark:text-gray-400 select-none">
+      <footer className="bg-white dark:bg-[#0B0F14] border-t border-[#E2E8F0] dark:border-[#1B232C] py-12 text-[#64748B] dark:text-[#7B8794] select-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <span className="font-medium">&copy; {new Date().getFullYear()} <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] to-[#06b6d4]">AI Data Analysis</span></span>
           <div className="flex space-x-6 text-sm">
-            <Link to="/docs" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-500 dark:text-gray-400">Documentation</Link>
-            <Link to="/faq" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-500 dark:text-gray-400">FAQs</Link>
-            <Link to="/privacy" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-500 dark:text-gray-400">Privacy</Link>
-            <Link to="/terms" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-500 dark:text-gray-400">Terms</Link>
+            <Link to="/docs" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-[#64748B] dark:text-[#7B8794]">Documentation</Link>
+            <Link to="/faq" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-[#64748B] dark:text-[#7B8794]">FAQs</Link>
+            <Link to="/privacy" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-[#64748B] dark:text-[#7B8794]">Privacy</Link>
+            <Link to="/terms" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-[#64748B] dark:text-[#7B8794]">Terms</Link>
           </div>
         </div>
       </footer>

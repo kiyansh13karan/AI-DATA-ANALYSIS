@@ -213,10 +213,10 @@ function FloatingChip({ icon: Icon, label, delay, cls }) {
       aria-hidden="true"
       className={`absolute hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full
         bg-white/60 dark:bg-white/[0.06] border border-stone-200/70 dark:border-white/[0.08]
-        backdrop-blur-md shadow-sm text-xs font-medium text-stone-500 dark:text-zinc-400
+        backdrop-blur-md shadow-sm text-xs font-medium text-[#64748B] dark:text-zinc-400
         select-none pointer-events-none animate-float ${cls}`}
     >
-      <Icon className="w-3.5 h-3.5 text-[#0071e3] dark:text-sky-400" />
+      <Icon className="w-3.5 h-3.5 text-[#D97706] dark:text-[#F7D154] dark:text-sky-400" />
       {label}
     </motion.div>
   );
@@ -246,7 +246,7 @@ export default function NotFound() {
   }, [navigate]);
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#f7f5f0] text-[#262422] dark:bg-[#161617] dark:text-[#f5f5f7] font-sans antialiased overflow-x-hidden selection:bg-blue-500/20 transition-colors duration-300">
+    <div className="relative min-h-screen flex flex-col bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0B0F14] dark:text-[#F2F4F7] font-sans antialiased overflow-x-hidden selection:bg-[#D97706]/20 dark:selection:bg-[#F7D154]/20 transition-colors duration-300">
       <AmbientBackground />
 
       {/* Floating decorative chips */}
@@ -271,7 +271,7 @@ export default function NotFound() {
             alt="AI Data Analysis logo"
             className="w-7 h-7 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_2px_10px_rgba(0,113,227,0.3)]"
           />
-          <span className="text-sm sm:text-base font-bold tracking-tight font-outfit bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-[#38bdf8] dark:via-[#0ea5e9] dark:to-[#06b6d4] bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
+          <span className="text-sm sm:text-base font-bold tracking-tight font-outfit text-[#0F172A] dark:text-[#F2F4F7] group-hover:opacity-90 transition-opacity">
             AI Data Analysis
           </span>
         </Link>
@@ -316,7 +316,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[300px] sm:max-w-[340px] mb-8 text-[#262422] dark:text-[#f5f5f7]"
+          className="w-full max-w-[300px] sm:max-w-[340px] mb-8 text-[#0F172A] dark:text-[#f5f5f7]"
           aria-hidden="true"
         >
           <BrokenDataIllustration />
@@ -331,11 +331,11 @@ export default function NotFound() {
         >
           <h1
             id="not-found-heading"
-            className="font-outfit font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#1d1d1f] dark:text-[#f5f5f7] mb-3"
+            className="font-outfit font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#0F172A] dark:text-[#f5f5f7] mb-3"
           >
             Oops! Data Not Found.
           </h1>
-          <p className="text-sm sm:text-base text-stone-500 dark:text-zinc-400 leading-relaxed max-w-md mx-auto">
+          <p className="text-sm sm:text-base text-[#64748B] dark:text-zinc-400 leading-relaxed max-w-md mx-auto">
             Looks like this page got lost in the data. The resource you&apos;re
             looking for doesn&apos;t exist or may have moved.
           </p>
@@ -371,7 +371,7 @@ export default function NotFound() {
               bg-black/[0.05] hover:bg-black/[0.09]
               dark:bg-white/[0.07] dark:hover:bg-white/[0.12]
               border border-black/[0.08] dark:border-white/[0.1]
-              text-[#1d1d1f] dark:text-[#f5f5f7] font-semibold text-sm
+              text-[#0F172A] dark:text-[#f5f5f7] font-semibold text-sm
               active:scale-[0.97] transition-all duration-200
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
           >
@@ -386,7 +386,7 @@ export default function NotFound() {
               bg-black/[0.03] hover:bg-black/[0.07]
               dark:bg-white/[0.04] dark:hover:bg-white/[0.08]
               border border-black/[0.06] dark:border-white/[0.08]
-              text-stone-500 dark:text-zinc-400 hover:text-[#0071e3] dark:hover:text-sky-400
+              text-[#64748B] dark:text-zinc-400 hover:text-[#D97706] dark:text-[#F7D154] dark:hover:text-sky-400
               font-medium text-sm active:scale-[0.97] transition-all duration-200
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
           >

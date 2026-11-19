@@ -35,11 +35,11 @@ export default function PrivacyPolicy() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f7f5f0] text-[#262422] dark:bg-[#161617] dark:text-[#f5f5f7] font-sans antialiased overflow-x-hidden selection:bg-blue-500/20 transition-colors duration-300">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0B0F14] dark:text-[#F2F4F7] font-sans antialiased overflow-x-hidden selection:bg-[#D97706]/20 dark:selection:bg-[#F7D154]/20 transition-colors duration-300">
       
       {/* Subtle macOS Ambient Aura Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[90vw] h-[550px] bg-gradient-to-b from-blue-400/10 via-sky-300/6 to-transparent dark:from-blue-500/15 dark:via-cyan-500/10 blur-[140px] rounded-full" />
+        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[90vw] h-[550px] bg-gradient-to-b from-amber-400/10 via-amber-200/5 to-transparent dark:from-[#F7D154]/10 dark:via-[#F7D154]/5 blur-[140px] rounded-full" />
         <div className="absolute inset-0 bg-[radial-gradient(#ded7cc_1px,transparent_1px)] dark:bg-[radial-gradient(#2d2d30_1px,transparent_1px)] [background-size:24px_24px] opacity-60 dark:opacity-40" />
       </div>
 
@@ -53,7 +53,7 @@ export default function PrivacyPolicy() {
         <div className="w-full flex flex-col items-center">
           <div className={`pointer-events-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled
-              ? "mt-2.5 sm:mt-3 w-full max-w-5xl h-14 sm:h-16 px-3.5 sm:px-7 rounded-2xl sm:rounded-full bg-[#fcfaf5]/75 dark:bg-[#1d1d1f]/75 backdrop-blur-2xl shadow-[0_12px_36px_rgba(40,30,20,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-stone-300/50 dark:border-white/[0.08]"
+              ? "mt-2.5 sm:mt-3 w-full max-w-5xl h-14 sm:h-16 px-3.5 sm:px-7 rounded-2xl sm:rounded-full bg-white/90 dark:bg-[#10171F]/90 backdrop-blur-2xl shadow-[0_12px_36px_rgba(15,23,42,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-[#E2E8F0] dark:border-[#1F2630]"
               : "mt-0 w-full max-w-7xl h-16 sm:h-20 px-3 sm:px-8 bg-transparent border-transparent shadow-none"
           }`}>
             
@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
                     navigate("/");
                   }
                 }}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] dark:hover:text-white bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] transition-all cursor-pointer select-none"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold text-[#515154] dark:text-[#a1a1a6] hover:text-[#D97706] dark:hover:text-[#F7D154] bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] transition-all cursor-pointer select-none"
                 title="Back to previous page"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
@@ -80,7 +80,7 @@ export default function PrivacyPolicy() {
                   alt="AI Data Analysis Logo" 
                   className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-transform duration-300 group-hover:scale-105 shrink-0"
                 />
-                <span className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-[#38bdf8] dark:via-[#0ea5e9] dark:to-[#06b6d4] bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
+                <span className="font-bold text-base sm:text-lg tracking-tight text-[#0F172A] dark:text-[#F2F4F7] group-hover:opacity-90 transition-opacity">
                   <span className="hidden sm:inline">AI Data Analysis</span>
                   <span className="sm:hidden">AI Analysis</span>
                 </span>
@@ -89,10 +89,10 @@ export default function PrivacyPolicy() {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-7 text-sm font-medium text-[#515154] dark:text-[#a1a1a6]">
-              <Link to="/#features" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Features</Link>
-              <Link to="/#demo" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Interactive Demo</Link>
-              <Link to="/docs" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Documentation</Link>
-              <Link to="/faq" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">FAQs</Link>
+              <Link to="/#features" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Features</Link>
+              <Link to="/#demo" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Interactive Demo</Link>
+              <Link to="/docs" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Documentation</Link>
+              <Link to="/faq" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">FAQs</Link>
             </div>
 
             {/* Action Buttons */}
@@ -103,7 +103,7 @@ export default function PrivacyPolicy() {
                 <div className="flex items-center gap-1.5 sm:gap-3">
                   <UserNavProfile />
                   <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                    <Link to="/app" className="relative group inline-flex items-center justify-center p-2 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#0071e3] hover:bg-[#0077ed] shadow-[0_4px_14px_rgba(0,113,227,0.35)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] transition-all duration-300">
+                    <Link to="/app" className="relative group inline-flex items-center justify-center p-2 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-extrabold shadow-md transition-all duration-300">
                       <span className="relative flex items-center gap-1.5">
                         <LayoutDashboard className="w-4 h-4 sm:hidden" />
                         <span className="hidden sm:inline">Launch App</span>
@@ -114,11 +114,11 @@ export default function PrivacyPolicy() {
                 </div>
               ) : (
                 <>
-                  <Link to="/login" className="hidden sm:inline-block text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] dark:hover:text-white font-medium text-sm transition-colors px-3 py-1.5 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06]">
+                  <Link to="/login" className="hidden sm:inline-block text-[#515154] dark:text-[#a1a1a6] hover:text-[#D97706] dark:hover:text-[#F7D154] font-medium text-sm transition-colors px-3 py-1.5 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06]">
                     Sign In
                   </Link>
                   <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                    <Link to="/register" className="relative group inline-flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#0071e3] hover:bg-[#0077ed] shadow-[0_4px_14px_rgba(0,113,227,0.35)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] transition-all duration-300">
+                    <Link to="/register" className="relative group inline-flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-extrabold shadow-md transition-all duration-300">
                       <span className="relative flex items-center gap-1.5">
                         Get Started
                       </span>
@@ -130,7 +130,7 @@ export default function PrivacyPolicy() {
               {/* Mobile menu toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-                className="md:hidden p-1.5 sm:p-2 rounded-full text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] dark:hover:text-white bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08]"
+                className="md:hidden p-1.5 sm:p-2 rounded-full text-[#515154] dark:text-[#a1a1a6] hover:text-[#D97706] dark:hover:text-[#F7D154] bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08]"
                 aria-label="Toggle navigation menu"
               >
                 {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -168,13 +168,13 @@ export default function PrivacyPolicy() {
             <ShieldCheck className="w-4 h-4" /> Compliance & Data Protection
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-normal mb-4 text-[#1d1d1f] dark:text-[#f5f5f7] leading-relaxed">
-            <span className="font-kaushan inline-block py-2 px-3 text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-[#0071e3] to-[#06b6d4] dark:from-emerald-400 dark:via-blue-300 dark:to-cyan-300 overflow-visible">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-normal mb-4 text-[#0F172A] dark:text-[#f5f5f7] leading-relaxed">
+            <span className="font-black text-[#0F172A] dark:text-[#F2F4F7]">
               Privacy Policy
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-[#6e6e73] dark:text-[#a1a1a6] max-w-2xl mx-auto font-normal">
+          <p className="text-base sm:text-lg text-[#64748B] dark:text-[#a1a1a6] max-w-2xl mx-auto font-normal">
             Your privacy is our primary concern. Learn how we handle, process, and protect your data. Last updated: {new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
           </p>
         </div>
@@ -192,54 +192,54 @@ export default function PrivacyPolicy() {
               
               <div className="macos-card p-6">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-10 h-10 bg-blue-50 text-[#0071e3] rounded-xl flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-blue-50 text-[#D97706] dark:text-[#F7D154] rounded-xl flex items-center justify-center shrink-0">
                     <Server className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-semibold m-0 text-[#262422] dark:text-[#f5f5f7]">1. Data Processing and Ephemeral Storage</h3>
+                  <h3 className="text-xl font-semibold m-0 text-[#0F172A] dark:text-[#f5f5f7]">1. Data Processing and Ephemeral Storage</h3>
                 </div>
-                <p className="text-sm text-[#6e6e73] dark:text-[#a1a1a6] leading-relaxed font-normal">
+                <p className="text-sm text-[#64748B] dark:text-[#a1a1a6] leading-relaxed font-normal">
                   When you upload a dataset to our platform, the file is processed in a transient, isolated environment. We use DuckDB in-memory databases to ensure that your data is never written to persistent disk storage on our servers.
                 </p>
-                <p className="mt-2 text-sm text-[#6e6e73] dark:text-[#a1a1a6] leading-relaxed font-normal">
+                <p className="mt-2 text-sm text-[#64748B] dark:text-[#a1a1a6] leading-relaxed font-normal">
                   Once your session ends or you close your browser, the temporary memory allocation is wiped completely. We do not retain copies of your datasets.
                 </p>
               </div>
 
               <div className="macos-card p-6">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-10 h-10 bg-blue-50 text-[#0071e3] rounded-xl flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-blue-50 text-[#D97706] dark:text-[#F7D154] rounded-xl flex items-center justify-center shrink-0">
                     <EyeOff className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-semibold m-0 text-[#262422] dark:text-[#f5f5f7]">2. AI Integration & Schema-Only Sharing</h3>
+                  <h3 className="text-xl font-semibold m-0 text-[#0F172A] dark:text-[#f5f5f7]">2. AI Integration & Schema-Only Sharing</h3>
                 </div>
-                <p className="text-sm text-[#6e6e73] dark:text-[#a1a1a6] leading-relaxed font-normal">
+                <p className="text-sm text-[#64748B] dark:text-[#a1a1a6] leading-relaxed font-normal">
                   To provide intelligent query generation, we integrate with third-party Large Language Models (such as Groq Llama 3). However, <strong>we strictly prohibit the transmission of raw row data to these models.</strong>
                 </p>
-                <p className="mt-2 text-sm text-[#6e6e73] dark:text-[#a1a1a6] leading-relaxed font-normal">
+                <p className="mt-2 text-sm text-[#64748B] dark:text-[#a1a1a6] leading-relaxed font-normal">
                   Only the structural schema of your dataset (column names, data types) and your natural language prompts are sent to the AI. This ensures that sensitive information contained within your data rows remains completely private.
                 </p>
               </div>
 
               <div className="macos-card p-6">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-10 h-10 bg-blue-50 text-[#0071e3] rounded-xl flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-blue-50 text-[#D97706] dark:text-[#F7D154] rounded-xl flex items-center justify-center shrink-0">
                     <User className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-semibold m-0 text-[#262422] dark:text-[#f5f5f7]">3. Account Information</h3>
+                  <h3 className="text-xl font-semibold m-0 text-[#0F172A] dark:text-[#f5f5f7]">3. Account Information</h3>
                 </div>
-                <p className="text-sm text-[#6e6e73] dark:text-[#a1a1a6] leading-relaxed font-normal">
+                <p className="text-sm text-[#64748B] dark:text-[#a1a1a6] leading-relaxed font-normal">
                   If you create an account, we store minimal information necessary to maintain your profile (e.g., email address, hashed password). We do not share this information with any third parties for marketing purposes.
                 </p>
               </div>
 
               <div className="macos-card p-6">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-10 h-10 bg-blue-50 text-[#0071e3] rounded-xl flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-blue-50 text-[#D97706] dark:text-[#F7D154] rounded-xl flex items-center justify-center shrink-0">
                     <RefreshCcw className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-semibold m-0 text-[#262422] dark:text-[#f5f5f7]">4. Changes to This Policy</h3>
+                  <h3 className="text-xl font-semibold m-0 text-[#0F172A] dark:text-[#f5f5f7]">4. Changes to This Policy</h3>
                 </div>
-                <p className="text-sm text-[#6e6e73] dark:text-[#a1a1a6] leading-relaxed font-normal">
+                <p className="text-sm text-[#64748B] dark:text-[#a1a1a6] leading-relaxed font-normal">
                   We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on this page.
                 </p>
               </div>
@@ -249,13 +249,13 @@ export default function PrivacyPolicy() {
       </section>
 
       {/* Static Footer */}
-      <footer className="bg-[#fcfaf5] dark:bg-[#050505] border-t border-stone-200/80 dark:border-gray-800/50 py-12 text-stone-500 dark:text-gray-400 select-none">
+      <footer className="bg-white dark:bg-[#0B0F14] border-t border-[#E2E8F0] dark:border-[#1B232C] py-12 text-[#64748B] dark:text-[#7B8794] select-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <span className="font-medium">&copy; {new Date().getFullYear()} <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] to-[#06b6d4]">AI Data Analysis</span></span>
           <div className="flex space-x-6 text-sm">
-            <Link to="/docs" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-500 dark:text-gray-400">Documentation</Link>
-            <Link to="/faq" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-500 dark:text-gray-400">FAQs</Link>
-            <Link to="/terms" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-500 dark:text-gray-400">Terms</Link>
+            <Link to="/docs" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-[#64748B] dark:text-[#7B8794]">Documentation</Link>
+            <Link to="/faq" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-[#64748B] dark:text-[#7B8794]">FAQs</Link>
+            <Link to="/terms" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-[#64748B] dark:text-[#7B8794]">Terms</Link>
           </div>
         </div>
       </footer>

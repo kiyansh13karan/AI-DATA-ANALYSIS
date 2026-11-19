@@ -50,25 +50,25 @@ const stats = [
 
 const features = [
   {
-    icon: <Database className="w-5 h-5 text-[#0071e3]" />,
+    icon: <Database className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />,
     badge: "Smart Ingestion",
     title: "Multi-Format Instant Loader",
     description: "Drag and drop CSV, Excel (.xlsx, .xls), SQLite (.db), or SQL files. Automatic type detection, smart parsing, and zero complex setup.",
-    gradient: "from-blue-500/10 to-cyan-500/10"
+    gradient: "from-amber-500/10 to-yellow-500/10"
   },
   {
-    icon: <MessageSquare className="w-5 h-5 text-[#0284c7] dark:text-sky-400" />,
+    icon: <MessageSquare className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />,
     badge: "Natural Language AI",
     title: "Conversational Query Assistant",
     description: "Ask questions in plain English like 'Show me monthly revenue by region with growth rates'. AI crafts sanitized, safe DuckDB SQL queries automatically.",
-    gradient: "from-sky-500/10 to-cyan-500/10"
+    gradient: "from-amber-500/10 to-yellow-500/10"
   },
   {
-    icon: <LineChart className="w-5 h-5 text-cyan-500 dark:text-cyan-400" />,
+    icon: <LineChart className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />,
     badge: "Plotly Interactive",
     title: "Dynamic Smart Visualizations",
     description: "Automatic visual charting: scatter, line, grouped bar, and pie charts with interactive zoom, hover tooltips, and instant PNG/SVG exports.",
-    gradient: "from-cyan-500/10 to-teal-500/10"
+    gradient: "from-amber-500/10 to-yellow-500/10"
   },
   {
     icon: <Zap className="w-5 h-5 text-amber-500" />,
@@ -85,11 +85,11 @@ const features = [
     gradient: "from-emerald-500/10 to-teal-500/10"
   },
   {
-    icon: <Code2 className="w-5 h-5 text-cyan-500" />,
+    icon: <Code2 className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />,
     badge: "Dev & Pro Ready",
     title: "Integrated SQL Editor",
     description: "Switch seamlessly between AI-generated insights and a rich SQL code editor with execution metrics, table filters, and raw data export.",
-    gradient: "from-cyan-500/10 to-blue-500/10"
+    gradient: "from-amber-500/10 to-yellow-500/10"
   }
 ];
 
@@ -117,9 +117,9 @@ GROUP BY device_type;`,
       { label: "DuckDB Latency", value: "18ms", change: "In-Memory", trend: "neutral", sub: "1.42M rows scanned" }
     ],
     bars: [
-      { name: "Mobile (iOS & Android)", value: "$142.50", pct: 90, share: "64.2% volume", color: "from-[#0071e3] to-[#06b6d4]", badge: "Highest Spend" },
-      { name: "Desktop Browsers", value: "$120.75", pct: 74, share: "29.4% volume", color: "from-sky-500 to-cyan-400", badge: "Baseline" },
-      { name: "Tablet Devices", value: "$96.40", pct: 58, share: "6.4% volume", color: "from-stone-400 to-stone-500 dark:from-stone-500 dark:to-stone-600", badge: "Secondary" }
+      { name: "Mobile (iOS & Android)", value: "$142.50", pct: 90, share: "64.2% volume", color: "from-[#D97706] to-[#F7D154]", badge: "Highest Spend" },
+      { name: "Desktop Browsers", value: "$120.75", pct: 74, share: "29.4% volume", color: "from-amber-500 to-yellow-400", badge: "Baseline" },
+      { name: "Tablet Devices", value: "$96.40", pct: 58, share: "6.4% volume", color: "from-stone-400 to-stone-500 dark:from-stone-600 dark:to-stone-700", badge: "Secondary" }
     ]
   },
   {
@@ -146,10 +146,10 @@ LIMIT 4;`,
       { label: "Vector Scan Time", value: "12ms", change: "Parquet", trend: "neutral", sub: "824,500 catalog items" }
     ],
     bars: [
-      { name: "Electronics & Tech", value: "$450,000", pct: 94, share: "Margin: 38%", color: "from-[#0071e3] to-[#06b6d4]", badge: "#1 Revenue" },
+      { name: "Electronics & Tech", value: "$450,000", pct: 94, share: "Margin: 38%", color: "from-[#D97706] to-[#F7D154]", badge: "#1 Revenue" },
       { name: "Home & Kitchen", value: "$310,000", pct: 70, share: "Margin: 52%", color: "from-emerald-500 to-teal-400", badge: "#1 Profit %" },
-      { name: "Apparel & Shoes", value: "$285,000", pct: 62, share: "Margin: 44%", color: "from-sky-500 to-cyan-400", badge: "Balanced" },
-      { name: "Fitness & Sport", value: "$195,000", pct: 45, share: "Margin: 41%", color: "from-amber-500 to-orange-400", badge: "High Growth" }
+      { name: "Apparel & Shoes", value: "$285,000", pct: 62, share: "Margin: 44%", color: "from-amber-500 to-yellow-400", badge: "Balanced" },
+      { name: "Fitness & Sport", value: "$195,000", pct: 45, share: "Margin: 41%", color: "from-stone-400 to-stone-500", badge: "High Growth" }
     ]
   },
   {
@@ -307,13 +307,13 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f5f0] text-[#262422] dark:bg-[#161617] dark:text-[#f5f5f7] font-sans antialiased overflow-x-hidden selection:bg-blue-500/20 transition-colors duration-300">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0B0F14] dark:text-[#F2F4F7] font-sans antialiased overflow-x-hidden selection:bg-[#D97706]/20 dark:selection:bg-[#F7D154]/20 transition-colors duration-300">
       
       {/* Subtle macOS Ambient Aura Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[90vw] h-[600px] bg-gradient-to-b from-blue-400/10 via-sky-300/6 to-transparent dark:from-blue-500/15 dark:via-cyan-500/10 blur-[140px] rounded-full" />
-        <div className="absolute top-[35%] -left-[10%] w-[45vw] h-[450px] bg-cyan-300/8 dark:bg-cyan-600/10 blur-[130px] rounded-full" />
-        <div className="absolute top-[65%] -right-[10%] w-[45vw] h-[450px] bg-blue-300/8 dark:bg-blue-600/10 blur-[130px] rounded-full" />
+        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[90vw] h-[600px] bg-gradient-to-b from-amber-400/10 via-amber-200/5 to-transparent dark:from-[#F7D154]/10 dark:via-[#F7D154]/5 blur-[140px] rounded-full" />
+        <div className="absolute top-[35%] -left-[10%] w-[45vw] h-[450px] bg-amber-200/10 dark:bg-[#F7D154]/5 blur-[130px] rounded-full" />
+        <div className="absolute top-[65%] -right-[10%] w-[45vw] h-[450px] bg-amber-300/10 dark:bg-[#F7D154]/5 blur-[130px] rounded-full" />
       </div>
 
       {/* Dynamic Apple/macOS Navigation Bar (Full width at top -> Floating squeezed pill on scroll) */}
@@ -327,7 +327,7 @@ export default function LandingPage() {
           {/* Main Squeezable Bar (Single morphing container: no flickering lines, pure smooth transition) */}
           <div className={`pointer-events-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled
-              ? "mt-2.5 sm:mt-3 w-full max-w-5xl h-14 sm:h-16 px-3.5 sm:px-7 rounded-2xl sm:rounded-full bg-[#fcfaf5]/75 dark:bg-[#1d1d1f]/75 backdrop-blur-2xl shadow-[0_12px_36px_rgba(40,30,20,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.45)] border border-stone-300/50 dark:border-white/[0.08]"
+              ? "mt-2.5 sm:mt-3 w-full max-w-5xl h-14 sm:h-16 px-3.5 sm:px-7 rounded-2xl sm:rounded-full bg-white/90 dark:bg-[#10171F]/90 backdrop-blur-2xl shadow-[0_12px_36px_rgba(15,23,42,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.6)] border border-[#E2E8F0] dark:border-[#1F2630]"
               : "mt-0 w-full max-w-7xl h-16 sm:h-20 px-3 sm:px-8 bg-transparent border-transparent shadow-none"
           }`}>
           
@@ -338,18 +338,19 @@ export default function LandingPage() {
               alt="AI Data Analysis Logo" 
               className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-transform duration-300 group-hover:scale-105 shrink-0"
             />
-            <span className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-[#38bdf8] dark:via-[#0ea5e9] dark:to-[#06b6d4] bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
+            <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#0F172A] dark:text-[#F2F4F7] group-hover:opacity-90 transition-opacity">
               <span className="hidden sm:inline">AI Data Analysis</span>
               <span className="sm:hidden">AI Analysis</span>
+              <span className="text-[#D97706] dark:text-[#F7D154]">.</span>
             </span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-7 text-sm font-medium text-[#515154] dark:text-[#a1a1a6]">
-            <a href="#features" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Features</a>
-            <a href="#demo" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Interactive Demo</a>
-            <a href="#workflow" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Workflow</a>
-            <a href="#testimonials" className="hover:text-[#0071e3] dark:hover:text-white transition-colors duration-200">Reviews</a>
+          <div className="hidden md:flex items-center space-x-7 text-sm font-medium text-[#64748B] dark:text-[#7B8794]">
+            <a href="#features" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Features</a>
+            <a href="#demo" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Interactive Demo</a>
+            <a href="#workflow" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Workflow</a>
+            <a href="#testimonials" className="hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors duration-200">Reviews</a>
           </div>
 
           {/* Action Controls */}
@@ -362,7 +363,7 @@ export default function LandingPage() {
                 <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
                   <Link 
                     to="/app" 
-                    className="relative group inline-flex items-center justify-center p-2 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#0071e3] hover:bg-[#0077ed] shadow-[0_4px_14px_rgba(0,113,227,0.35)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] transition-all duration-300 cursor-pointer"
+                    className="relative group inline-flex items-center justify-center p-2 sm:px-4 sm:py-2 rounded-full text-white dark:text-[#0B0F14] text-xs sm:text-sm font-extrabold bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] shadow-[0_4px_14px_rgba(217,119,6,0.3)] dark:shadow-[0_4px_14px_rgba(247,209,84,0.25)] transition-all duration-300 cursor-pointer"
                     title="Launch Analytics Studio"
                   >
                     <span className="relative flex items-center gap-1.5">
@@ -375,11 +376,11 @@ export default function LandingPage() {
               </div>
             ) : (
               <>
-                <Link to="/login" className="hidden sm:inline-block text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] dark:hover:text-white font-medium text-sm transition-colors px-3 py-1.5 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06]">
+                <Link to="/login" className="hidden sm:inline-block text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] font-medium text-sm transition-colors px-3 py-1.5 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06]">
                   Sign In
                 </Link>
                 <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                  <Link to="/register" className="relative group inline-flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-white text-xs sm:text-sm font-medium bg-[#0071e3] hover:bg-[#0077ed] shadow-[0_4px_14px_rgba(0,113,227,0.35)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] transition-all duration-300 cursor-pointer">
+                  <Link to="/register" className="relative group inline-flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-white dark:text-[#0B0F14] text-xs sm:text-sm font-extrabold bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] shadow-[0_4px_14px_rgba(217,119,6,0.3)] dark:shadow-[0_4px_14px_rgba(247,209,84,0.25)] transition-all duration-300 cursor-pointer">
                     <span className="relative flex items-center gap-1.5">
                       Get Started <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </span>
@@ -391,7 +392,7 @@ export default function LandingPage() {
             {/* Mobile Hamburger Menu Toggle Button */}
             <button
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-              className="md:hidden p-1.5 sm:p-2 rounded-full text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] dark:hover:text-white bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.08] hover:bg-black/[0.06] dark:hover:bg-white/[0.1] transition-all cursor-pointer select-none"
+              className="md:hidden p-1.5 sm:p-2 rounded-full text-[#64748B] dark:text-[#7B8794] hover:text-[#D97706] dark:hover:text-[#F7D154] bg-[#F1F5F9] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] transition-all cursor-pointer select-none"
               aria-label="Toggle navigation menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -409,25 +410,25 @@ export default function LandingPage() {
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: -10 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-auto md:hidden w-full max-w-5xl mt-2 p-3.5 rounded-2xl bg-[#fcfaf5]/95 dark:bg-[#1d1d1f]/95 border border-stone-200/80 dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl overflow-hidden"
+              className="pointer-events-auto md:hidden w-full max-w-5xl mt-2 p-3.5 rounded-2xl bg-white/95 dark:bg-[#10171F]/95 border border-[#E2E8F0] dark:border-[#1F2630] shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl overflow-hidden"
             >
               {user ? (
                 /* Logged In Mobile Drawer Content */
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#f8f5ee] dark:bg-white/[0.04] border border-stone-200/60 dark:border-white/[0.06]">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#0071e3] to-[#06b6d4] flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-sm">
+                  <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630]">
+                    <div className="w-9 h-9 rounded-full bg-[#D97706] dark:bg-[#F7D154] flex items-center justify-center text-white dark:text-[#0B0F14] text-xs font-bold shrink-0 shadow-sm">
                       {user.username ? user.username.substring(0, 2).toUpperCase() : "US"}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
-                        <p className="text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7] truncate">
+                        <p className="text-sm font-bold text-[#0F172A] dark:text-[#F2F4F7] truncate">
                           {user.username}
                         </p>
-                        <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                        <span className="text-[10px] font-semibold text-[#10B981] dark:text-[#3CCB7F] bg-emerald-500/10 px-2 py-0.5 rounded-full">
                           Logged In
                         </span>
                       </div>
-                      <p className="text-xs text-[#6e6e73] dark:text-[#a1a1a6] truncate font-normal">
+                      <p className="text-xs text-[#64748B] dark:text-[#7B8794] truncate font-normal">
                         {user.email || "Active Session"}
                       </p>
                     </div>
@@ -437,7 +438,7 @@ export default function LandingPage() {
                   <Link
                     to="/app"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#0071e3] to-[#0284c7] text-white text-sm font-semibold shadow-md shadow-blue-500/20 active:scale-[0.98] transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#D97706] dark:bg-[#F7D154] text-white dark:text-[#0B0F14] text-sm font-bold shadow-md shadow-amber-500/20 active:scale-[0.98] transition-all"
                   >
                     <LayoutDashboard className="w-4 h-4" />
                     <span>Open Analytics Studio</span>
@@ -448,69 +449,69 @@ export default function LandingPage() {
                     <Link
                       to="/app?tab=preview"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-2 p-2 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#0071e3] dark:hover:text-white transition-colors"
+                      className="flex items-center gap-2 p-2 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors"
                     >
-                      <Database className="w-3.5 h-3.5 text-[#0071e3]" />
+                      <Database className="w-3.5 h-3.5 text-[#D97706] dark:text-[#F7D154]" />
                       <span>Data Tables</span>
                     </Link>
                     <Link
                       to="/app?tab=chat"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-2 p-2 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#0071e3] dark:hover:text-white transition-colors"
+                      className="flex items-center gap-2 p-2 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors"
                     >
-                      <MessageSquare className="w-3.5 h-3.5 text-[#0284c7]" />
+                      <MessageSquare className="w-3.5 h-3.5 text-[#D97706] dark:text-[#F7D154]" />
                       <span>Ask AI Assistant</span>
                     </Link>
                     <Link
                       to="/app?tab=explore"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-2 p-2 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#0071e3] dark:hover:text-white transition-colors"
+                      className="flex items-center gap-2 p-2 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors"
                     >
-                      <LineChart className="w-3.5 h-3.5 text-cyan-500" />
+                      <LineChart className="w-3.5 h-3.5 text-[#D97706] dark:text-[#F7D154]" />
                       <span>Visualizations</span>
                     </Link>
                     <Link
                       to="/app?tab=profile"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-2 p-2 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#0071e3] dark:hover:text-white transition-colors"
+                      className="flex items-center gap-2 p-2 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors"
                     >
-                      <User className="w-3.5 h-3.5 text-indigo-500" />
+                      <User className="w-3.5 h-3.5 text-amber-500" />
                       <span>My Profile</span>
                     </Link>
                   </div>
 
-                  <div className="h-px bg-stone-200/60 dark:bg-white/[0.08]" />
+                  <div className="h-px bg-[#E2E8F0] dark:bg-[#1F2630]" />
 
                   {/* Section Jump Links */}
                   <div className="space-y-1">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#6e6e73] dark:text-[#a1a1a6] px-2 mb-1">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#64748B] dark:text-[#7B8794] px-2 mb-1">
                       Quick Jump
                     </p>
                     <a
                       href="#features"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors"
+                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors"
                     >
                       Features & Architecture
                     </a>
                     <a
                       href="#demo"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors"
+                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors"
                     >
                       Interactive Demo
                     </a>
                     <a
                       href="#workflow"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors"
+                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors"
                     >
                       How It Works
                     </a>
                     <a
                       href="#testimonials"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors"
+                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors"
                     >
                       User Reviews
                     </a>
@@ -523,45 +524,45 @@ export default function LandingPage() {
                     <Link
                       to="/login"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center justify-center px-4 py-2 rounded-xl border border-stone-300 dark:border-white/10 text-xs font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors"
+                      className="flex items-center justify-center px-4 py-2 rounded-xl border border-[#E2E8F0] dark:border-[#1F2630] text-xs font-semibold text-[#0F172A] dark:text-[#F2F4F7] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors"
                     >
                       Sign In
                     </Link>
                     <Link
                       to="/register"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center justify-center px-4 py-2 rounded-xl bg-[#0071e3] text-white text-xs font-semibold shadow-md shadow-blue-500/20 hover:bg-[#0077ed] transition-colors"
+                      className="flex items-center justify-center px-4 py-2 rounded-xl bg-[#D97706] dark:bg-[#F7D154] text-white dark:text-[#0B0F14] text-xs font-bold shadow-md shadow-amber-500/20 hover:opacity-90 transition-colors"
                     >
                       Get Started
                     </Link>
                   </div>
-                  <div className="h-px bg-stone-200/60 dark:bg-white/[0.08]" />
+                  <div className="h-px bg-[#E2E8F0] dark:bg-[#1F2630]" />
                   <div className="space-y-1">
                     <a
                       href="#features"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors"
+                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors"
                     >
                       Features
                     </a>
                     <a
                       href="#demo"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors"
+                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors"
                     >
                       Interactive Demo
                     </a>
                     <a
                       href="#workflow"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors"
+                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors"
                     >
                       Workflow
                     </a>
                     <a
                       href="#testimonials"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors"
+                      className="block px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors"
                     >
                       Reviews
                     </a>
@@ -589,12 +590,12 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="inline-flex items-center gap-2.5 mb-6 px-4 py-1.5 rounded-full border border-stone-200/80 dark:border-white/[0.12] bg-[#fcfaf5]/85 dark:bg-[#1d1d1f]/85 shadow-[0_2px_12px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.3)] backdrop-blur-xl hover:border-stone-300 dark:hover:border-white/[0.2] transition-all duration-300 cursor-default"
+                className="inline-flex items-center gap-2.5 mb-6 px-4 py-1.5 rounded-full border border-[#E2E8F0] dark:border-[#1F2630] bg-white/80 dark:bg-[#10171F]/80 shadow-[0_2px_12px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.3)] backdrop-blur-xl hover:border-[#D97706]/40 dark:hover:border-[#F7D154]/40 transition-all duration-300 cursor-default"
               >
-                <div className="w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-[#0071e3] dark:text-blue-400 flex items-center justify-center">
+                <div className="w-5 h-5 rounded-full bg-amber-50 dark:bg-[#F7D154]/10 text-[#D97706] dark:text-[#F7D154] flex items-center justify-center">
                   <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                 </div>
-                <span className="text-xs sm:text-sm font-medium text-[#262422] dark:text-[#f5f5f7]">
+                <span className="text-xs sm:text-sm font-semibold text-[#0F172A] dark:text-[#F2F4F7]">
                   Next-Gen Conversational Data Intelligence
                 </span>
               </motion.div>
@@ -604,13 +605,13 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.65rem] xl:text-[4.2rem] tracking-tight mb-6 leading-[1.12] text-[#262422] dark:text-[#f5f5f7]"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.65rem] xl:text-[4.2rem] tracking-tight mb-6 leading-[1.12] text-[#0F172A] dark:text-[#F2F4F7]"
               >
-                <span className="font-kaushan tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300">
+                <span className="font-black text-[#0F172A] dark:text-[#F2F4F7]">
                   Talk to Your Data.
                 </span>
                 <br />
-                <span className="font-kaushan tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-[#0284c7] to-[#0071e3] dark:from-cyan-300 dark:via-sky-400 dark:to-blue-400">
+                <span className="font-caveat font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] text-[#D97706] dark:text-[#F7D154] block mt-1 tracking-normal">
                   Get Instant Visuals.
                 </span>
               </motion.h1>
@@ -620,11 +621,11 @@ export default function LandingPage() {
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="text-base sm:text-lg md:text-xl text-[#6e6e73] dark:text-[#a1a1a6] max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8 font-normal"
+                className="text-base sm:text-lg md:text-xl text-[#64748B] dark:text-[#7B8794] max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8 font-normal"
               >
                 Upload any spreadsheet, SQLite, or SQL file and ask questions naturally.
                 <br />
-                <strong className="text-[#262422] dark:text-[#f5f5f7] font-semibold">AI Data Analysis</strong> turns natural language into high-speed DuckDB SQL, interactive Plotly charts, and business intelligence in seconds.
+                <strong className="text-[#0F172A] dark:text-[#F2F4F7] font-semibold">AI Data Analysis</strong> turns natural language into high-speed DuckDB SQL, interactive Plotly charts, and business intelligence in seconds.
               </motion.p>
 
               {/* CTAs */}
@@ -636,42 +637,42 @@ export default function LandingPage() {
               >
                 <Link 
                   to="/register" 
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-full font-medium text-base text-white bg-[#0071e3] hover:bg-[#0077ed] shadow-[0_6px_20px_rgba(0,113,227,0.35)] flex items-center justify-center gap-2 group transition-all duration-300"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-full font-extrabold text-base text-white dark:text-[#0B0F14] bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] shadow-[0_6px_20px_rgba(217,119,6,0.35)] dark:shadow-[0_6px_20px_rgba(247,209,84,0.25)] flex items-center justify-center gap-2 group transition-all duration-300"
                 >
                   Start Analyzing Free <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a 
                   href="#demo" 
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-full font-medium text-base text-[#262422] dark:text-[#f5f5f7] bg-[#fcfaf5]/90 dark:bg-[#1d1d1f]/90 border border-stone-200/80 dark:border-white/[0.1] hover:bg-[#f3ede3] dark:hover:bg-[#252528] flex items-center justify-center gap-2 shadow-[0_2px_8px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all duration-300"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-full font-semibold text-base text-[#0F172A] dark:text-[#F2F4F7] bg-white dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] hover:bg-[#F8FAFC] dark:hover:bg-[#17212B] flex items-center justify-center gap-2 shadow-[0_2px_8px_rgba(0,0,0,0.04)] backdrop-blur-md transition-all duration-300"
                 >
-                  Explore Live Demo <ChevronRight className="w-4 h-4 text-[#86868b]" />
+                  Explore Live Demo <ChevronRight className="w-4 h-4 text-[#64748B] dark:text-[#7B8794]" />
                 </a>
               </motion.div>
 
               {/* Trust badges */}
-              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs font-medium text-[#6e6e73] dark:text-[#a1a1a6]">
-                <span className="group flex items-center gap-2 cursor-default hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors duration-200">
-                  <div className="p-1 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/60 transition-colors duration-200">
+              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs font-medium text-[#64748B] dark:text-[#7B8794]">
+                <span className="group flex items-center gap-2 cursor-default hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors duration-200">
+                  <div className="p-1 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-[#10B981] dark:text-[#3CCB7F] group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/60 transition-colors duration-200">
                     <Check className="w-3.5 h-3.5" />
                   </div> 
                   <span>No SQL required</span>
                 </span>
-                <span className="group flex items-center gap-2 cursor-default hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors duration-200">
-                  <div className="p-1 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/60 transition-colors duration-200">
+                <span className="group flex items-center gap-2 cursor-default hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors duration-200">
+                  <div className="p-1 rounded-md bg-amber-50 dark:bg-[#F7D154]/10 text-[#D97706] dark:text-[#F7D154] group-hover:bg-amber-100 transition-colors duration-200">
                     <Check className="w-3.5 h-3.5" />
                   </div>
                   <span>100% In-Memory Privacy</span>
                 </span>
-                <span className="group flex items-center gap-2 cursor-default hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7] transition-colors duration-200">
-                  <div className="p-1 rounded-md bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 group-hover:bg-cyan-100 dark:group-hover:bg-cyan-900/60 transition-colors duration-200">
+                <span className="group flex items-center gap-2 cursor-default hover:text-[#0F172A] dark:hover:text-[#F2F4F7] transition-colors duration-200">
+                  <div className="p-1 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-[#10B981] dark:text-[#3CCB7F] group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/60 transition-colors duration-200">
                     <Check className="w-3.5 h-3.5" />
                   </div>
-                      <span>Free to explore</span>
+                  <span>Free to explore</span>
                 </span>
               </div>
             </div>
 
-            {/* Right Column: Animated Vector Assistant Bot (Pure SVG, 100% Transparent, Infinite 4K, Zero Blur, Zero Texts) */}
+            {/* Right Column: Animated Vector Assistant Bot */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -679,14 +680,14 @@ export default function LandingPage() {
               className="lg:col-span-5 flex items-center justify-center relative select-none"
             >
               {/* Soft ambient backglow matching platform brand palette */}
-              <div className="absolute w-[360px] h-[360px] bg-gradient-to-tr from-[#0071e3]/20 via-[#06b6d4]/20 to-[#3b82f6]/20 dark:from-[#0071e3]/25 dark:via-[#06b6d4]/20 dark:to-[#3b82f6]/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute w-[360px] h-[360px] bg-gradient-to-tr from-[#D97706]/15 via-amber-400/10 to-[#F7D154]/15 rounded-full blur-3xl pointer-events-none" />
 
-              {/* Seamless Floating Vector Illustration (Still & Suspended on Screen) */}
+              {/* Seamless Floating Vector Illustration */}
               <div className="relative w-full max-w-[480px] lg:max-w-[540px] flex items-center justify-center">
                 <img
                   src="/assets/Assistant-Bot.svg"
                   alt="AI Assistant Bot"
-                  className="w-full h-auto object-contain pointer-events-none drop-shadow-[0_25px_50px_rgba(0,113,227,0.15)] dark:drop-shadow-[0_25px_50px_rgba(6,182,212,0.2)]"
+                  className="w-full h-auto object-contain pointer-events-none drop-shadow-[0_25px_50px_rgba(217,119,6,0.15)] dark:drop-shadow-[0_25px_50px_rgba(247,209,84,0.15)]"
                 />
               </div>
             </motion.div>
@@ -698,104 +699,104 @@ export default function LandingPage() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-5xl mx-auto rounded-3xl overflow-hidden border border-stone-300/70 dark:border-white/[0.1] shadow-[0_25px_70px_rgba(40,30,20,0.08)] dark:shadow-[0_25px_70px_rgba(0,0,0,0.6)] backdrop-blur-2xl"
+            className="max-w-5xl mx-auto rounded-3xl overflow-hidden border border-[#E2E8F0] dark:border-[#1F2630] shadow-[0_25px_70px_rgba(15,23,42,0.08)] dark:shadow-[0_25px_70px_rgba(0,0,0,0.6)] backdrop-blur-2xl"
           >
             {/* macOS Window Titlebar */}
-            <div className="px-5 py-3 border-b border-stone-200/80 dark:border-white/[0.08] bg-[#f4efe6]/95 dark:bg-[#1a1a1d]/95 backdrop-blur-md flex items-center justify-between select-none">
+            <div className="px-5 py-3 border-b border-[#E2E8F0] dark:border-[#1F2630] bg-[#F8FAFC] dark:bg-[#0B0F14] backdrop-blur-md flex items-center justify-between select-none">
               <div className="flex items-center gap-2.5">
                 <div className="flex items-center gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e] shadow-[0_0_6px_rgba(255,95,86,0.35)]" />
                   <div className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123] shadow-[0_0_6px_rgba(255,189,46,0.35)]" />
                   <div className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29] shadow-[0_0_6px_rgba(39,201,63,0.35)]" />
                 </div>
-                <div className="flex items-center gap-1.5 ml-2 pl-3 border-l border-stone-300/60 dark:border-white/10">
-                  <FileSpreadsheet className="w-3.5 h-3.5 text-[#0071e3] dark:text-cyan-400" />
-                  <span className="text-xs font-semibold text-[#262422] dark:text-[#f5f5f7]">ecommerce_q3_report.csv</span>
-                  <span className="text-[11px] text-stone-500 dark:text-[#a1a1a6] hidden sm:inline">· AI Analytics Studio</span>
+                <div className="flex items-center gap-1.5 ml-2 pl-3 border-l border-[#E2E8F0] dark:border-[#1F2630]">
+                  <FileSpreadsheet className="w-3.5 h-3.5 text-[#D97706] dark:text-[#F7D154]" />
+                  <span className="text-xs font-bold text-[#0F172A] dark:text-[#F2F4F7]">ecommerce_q3_report.csv</span>
+                  <span className="text-[11px] text-[#64748B] dark:text-[#7B8794] hidden sm:inline">· AI Analytics Studio</span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/70 dark:border-emerald-800/40 shadow-2xs">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-[#10B981] dark:text-[#3CCB7F] border border-emerald-500/20 shadow-2xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse" /> DuckDB Connected
                 </span>
               </div>
             </div>
 
             {/* macOS Window Body */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[420px] bg-[#fdfcf9] dark:bg-[#161617]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[420px] bg-white dark:bg-[#10171F]">
               
               {/* Left Side: Conversational Chat Prompt */}
-              <div className="lg:col-span-5 p-5 sm:p-6 border-b lg:border-b-0 lg:border-r border-stone-200/70 dark:border-white/[0.08] bg-[#f8f5ee]/70 dark:bg-[#1a1a1d]/60 flex flex-col justify-between">
+              <div className="lg:col-span-5 p-5 sm:p-6 border-b lg:border-b-0 lg:border-r border-[#E2E8F0] dark:border-[#1F2630] bg-[#F8FAFC]/60 dark:bg-[#0B0F14]/60 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#0071e3] dark:text-cyan-400 flex items-center gap-1.5">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#D97706] dark:text-[#F7D154] flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5" /> Natural Language Query
                   </div>
                   
-                  {/* User Prompt Bubble - Refined Glass Tint with Accent Gradient */}
-                  <div className="p-4 rounded-2xl bg-gradient-to-br from-[#0071e3]/8 via-[#0284c7]/6 to-[#06b6d4]/10 dark:from-[#0071e3]/20 dark:to-[#06b6d4]/15 border border-[#0071e3]/20 dark:border-[#0071e3]/40 shadow-xs relative overflow-hidden">
-                    <div className="flex items-center gap-1.5 mb-2 text-[10px] font-bold text-[#0071e3] dark:text-cyan-400 uppercase tracking-wider">
-                      <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-[#0071e3] to-[#06b6d4] text-white flex items-center justify-center text-[9px] font-bold shadow-2xs">Q</div>
+                  {/* User Prompt Bubble */}
+                  <div className="p-4 rounded-2xl bg-amber-500/10 dark:bg-[#F7D154]/10 border border-[#D97706]/20 dark:border-[#F7D154]/30 shadow-xs relative overflow-hidden">
+                    <div className="flex items-center gap-1.5 mb-2 text-[10px] font-bold text-[#D97706] dark:text-[#F7D154] uppercase tracking-wider">
+                      <div className="w-4 h-4 rounded-full bg-[#D97706] dark:bg-[#F7D154] text-white dark:text-[#0B0F14] flex items-center justify-center text-[9px] font-bold shadow-2xs">Q</div>
                       <span>User Query</span>
                     </div>
-                    <p className="text-sm font-medium text-[#262422] dark:text-[#f5f5f7] leading-relaxed">
+                    <p className="text-sm font-medium text-[#0F172A] dark:text-[#F2F4F7] leading-relaxed">
                       "Which product categories generated the highest profit margin with over $50k revenue?"
                     </p>
                   </div>
 
                   {/* AI Response Card */}
-                  <div className="p-4 rounded-2xl bg-[#ffffff]/95 dark:bg-[#202024]/95 border border-stone-200/80 dark:border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.03)] space-y-3 text-xs">
+                  <div className="p-4 rounded-2xl bg-white dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] shadow-[0_4px_16px_rgba(0,0,0,0.03)] space-y-3 text-xs">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 font-bold text-[#262422] dark:text-[#f5f5f7]">
-                        <div className="w-5 h-5 rounded-lg bg-gradient-to-tr from-[#0071e3] to-[#06b6d4] text-white flex items-center justify-center shadow-xs">
+                      <div className="flex items-center gap-2 font-bold text-[#0F172A] dark:text-[#F2F4F7]">
+                        <div className="w-5 h-5 rounded-lg bg-[#D97706] dark:bg-[#F7D154] text-white dark:text-[#0B0F14] flex items-center justify-center shadow-xs">
                           <Zap className="w-3 h-3" />
                         </div>
                         <span>AI Generated Analysis</span>
                       </div>
-                      <span className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/60">Confidence 99.4%</span>
+                      <span className="text-[10px] font-semibold text-[#10B981] dark:text-[#3CCB7F] bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">Confidence 99.4%</span>
                     </div>
-                    <p className="text-stone-600 dark:text-[#a1a1a6] leading-relaxed font-normal">
-                      Top performing is <strong className="text-[#262422] dark:text-[#f5f5f7] font-semibold">Electronics</strong> ($184,200 rev, <strong className="text-cyan-700 dark:text-cyan-400 font-semibold">42.1% margin</strong>) followed by <strong className="text-[#262422] dark:text-[#f5f5f7] font-semibold">Home Office</strong> ($92,400 rev, <strong className="text-cyan-700 dark:text-cyan-400 font-semibold">38.6% margin</strong>).
+                    <p className="text-[#64748B] dark:text-[#7B8794] leading-relaxed font-normal">
+                      Top performing is <strong className="text-[#0F172A] dark:text-[#F2F4F7] font-semibold">Electronics</strong> ($184,200 rev, <strong className="text-[#D97706] dark:text-[#F7D154] font-semibold">42.1% margin</strong>) followed by <strong className="text-[#0F172A] dark:text-[#F2F4F7] font-semibold">Home Office</strong> ($92,400 rev, <strong className="text-[#D97706] dark:text-[#F7D154] font-semibold">38.6% margin</strong>).
                     </p>
                     
                     {/* Syntax-Colored SQL Box */}
-                    <div className="p-3 rounded-xl bg-[#1c1b1f] border border-stone-800 text-stone-200 font-mono text-[11px] overflow-x-auto shadow-inner">
-                      <div className="flex items-center justify-between text-[10px] text-stone-400 mb-1.5 pb-1 border-b border-stone-800">
-                        <span className="text-cyan-400 font-semibold">DuckDB SQL</span>
-                        <span className="text-emerald-400 font-medium">8.2ms exec</span>
+                    <div className="p-3 rounded-xl bg-[#0B0F14] border border-[#1B232C] text-[#F2F4F7] font-mono text-[11px] overflow-x-auto shadow-inner">
+                      <div className="flex items-center justify-between text-[10px] text-[#7B8794] mb-1.5 pb-1 border-b border-[#1B232C]">
+                        <span className="text-[#F7D154] font-semibold">DuckDB SQL</span>
+                        <span className="text-[#3CCB7F] font-medium">8.2ms exec</span>
                       </div>
                       <div className="leading-relaxed">
-                        <span className="text-sky-400 font-semibold">SELECT</span> category, <span className="text-amber-300">SUM</span>(rev), <span className="text-amber-300">AVG</span>(margin)<br/>
-                        <span className="text-sky-400 font-semibold">FROM</span> sales<br/>
-                        <span className="text-sky-400 font-semibold">GROUP BY</span> 1 <span className="text-sky-400 font-semibold">HAVING</span> <span className="text-amber-300">SUM</span>(rev) &gt; <span className="text-cyan-300">50000</span>;
+                        <span className="text-amber-400 font-semibold">SELECT</span> category, <span className="text-yellow-300">SUM</span>(rev), <span className="text-yellow-300">AVG</span>(margin)<br/>
+                        <span className="text-amber-400 font-semibold">FROM</span> sales<br/>
+                        <span className="text-amber-400 font-semibold">GROUP BY</span> 1 <span className="text-amber-400 font-semibold">HAVING</span> <span className="text-yellow-300">SUM</span>(rev) &gt; <span className="text-amber-300">50000</span>;
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3.5 border-t border-stone-200/70 dark:border-white/[0.08] flex items-center justify-between text-xs text-stone-500 dark:text-[#a1a1a6]">
+                <div className="mt-4 pt-3.5 border-t border-[#E2E8F0] dark:border-[#1F2630] flex items-center justify-between text-xs text-[#64748B] dark:text-[#7B8794]">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <Zap className="w-3.5 h-3.5 text-amber-500" /> Latency: <strong className="text-[#262422] dark:text-[#f5f5f7]">142ms</strong>
+                    <Zap className="w-3.5 h-3.5 text-amber-500" /> Latency: <strong className="text-[#0F172A] dark:text-[#F2F4F7]">142ms</strong>
                   </span>
-                  <span className="font-medium">Rows analyzed: <strong className="text-[#262422] dark:text-[#f5f5f7]">128,450</strong></span>
+                  <span className="font-medium">Rows analyzed: <strong className="text-[#0F172A] dark:text-[#F2F4F7]">128,450</strong></span>
                 </div>
               </div>
 
               {/* Right Side: Interactive Chart Mockup */}
-              <div className="lg:col-span-7 p-6 sm:p-7 flex flex-col justify-between bg-[#fdfcf9] dark:bg-[#161617]">
+              <div className="lg:col-span-7 p-6 sm:p-7 flex flex-col justify-between bg-white dark:bg-[#10171F]">
                 <div>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
                     <div>
                       <div className="flex items-center gap-2">
-                        <BarChart3 className="w-4 h-4 text-[#0071e3] dark:text-cyan-400" />
-                        <h4 className="text-base font-bold text-[#262422] dark:text-[#f5f5f7] tracking-tight">Category Profitability vs Revenue</h4>
+                        <BarChart3 className="w-4 h-4 text-[#D97706] dark:text-[#F7D154]" />
+                        <h4 className="text-base font-bold text-[#0F172A] dark:text-[#F2F4F7] tracking-tight">Category Profitability vs Revenue</h4>
                       </div>
-                      <p className="text-xs text-stone-500 dark:text-[#a1a1a6] mt-0.5">Interactive Plotly Chart visualization · Dynamic aggregation</p>
+                      <p className="text-xs text-[#64748B] dark:text-[#7B8794] mt-0.5">Interactive Plotly Chart visualization · Dynamic aggregation</p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-[#0071e3] dark:text-cyan-300 text-xs font-semibold border border-blue-200/60 dark:border-blue-800/40 shadow-2xs flex items-center gap-1">
+                      <span className="px-2.5 py-1 rounded-lg bg-amber-500/10 text-[#D97706] dark:text-[#F7D154] text-xs font-semibold border border-[#D97706]/20 dark:border-[#F7D154]/20 shadow-2xs flex items-center gap-1">
                         <BarChart3 className="w-3 h-3" /> Bar Chart
                       </span>
-                      <span className="px-2.5 py-1 rounded-lg bg-[#f4efe6] dark:bg-[#222226] text-stone-700 dark:text-[#a1a1a6] text-xs font-medium border border-stone-300/60 dark:border-white/[0.06] hover:bg-[#ede5d8] transition-colors cursor-pointer flex items-center gap-1">
+                      <span className="px-2.5 py-1 rounded-lg bg-[#F1F5F9] dark:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] text-xs font-medium border border-[#E2E8F0] dark:border-[#1F2630] hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors cursor-pointer flex items-center gap-1">
                         <ArrowUpRight className="w-3 h-3" /> Export PNG
                       </span>
                     </div>
@@ -803,67 +804,67 @@ export default function LandingPage() {
 
                   {/* Visual Bar Representation */}
                   <div className="space-y-3.5 pt-1">
-                    <div className="p-3 rounded-xl bg-[#f7f5f0]/80 dark:bg-white/[0.02] border border-stone-200/60 dark:border-white/[0.06] hover:border-stone-300 transition-all">
+                    <div className="p-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] transition-all">
                       <div className="flex justify-between items-center text-xs font-semibold mb-2">
-                        <span className="text-[#262422] dark:text-[#f5f5f7]">Electronics</span>
-                        <span className="px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[#0071e3] dark:text-cyan-300 font-bold border border-blue-200/50 text-[11px]">
+                        <span className="text-[#0F172A] dark:text-[#F2F4F7]">Electronics</span>
+                        <span className="px-2 py-0.5 rounded-md bg-amber-500/10 text-[#D97706] dark:text-[#F7D154] font-bold border border-[#D97706]/20 dark:border-[#F7D154]/20 text-[11px]">
                           $184.2k <span className="text-stone-400 font-normal">|</span> 42.1% margin
                         </span>
                       </div>
-                      <div className="w-full h-3.5 rounded-full bg-[#ede7dc] dark:bg-[#26262a] overflow-hidden p-0.5">
+                      <div className="w-full h-3.5 rounded-full bg-[#E2E8F0] dark:bg-[#17212B] overflow-hidden p-0.5">
                         <motion.div 
                           initial={{ width: 0 }}
                           whileInView={{ width: "92%" }}
                           viewport={{ once: true }}
                           transition={{ duration: 1.2, delay: 0.3 }}
-                          className="h-full rounded-full bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] shadow-[0_0_12px_rgba(0,113,227,0.3)]"
+                          className="h-full rounded-full bg-gradient-to-r from-[#D97706] to-[#F7D154] shadow-[0_0_12px_rgba(217,119,6,0.3)]"
                         />
                       </div>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-[#f7f5f0]/80 dark:bg-white/[0.02] border border-stone-200/60 dark:border-white/[0.06] hover:border-stone-300 transition-all">
+                    <div className="p-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] transition-all">
                       <div className="flex justify-between items-center text-xs font-semibold mb-2">
-                        <span className="text-[#262422] dark:text-[#f5f5f7]">Home Office Furniture</span>
-                        <span className="px-2 py-0.5 rounded-md bg-sky-50 dark:bg-sky-950/60 text-[#0284c7] dark:text-sky-300 font-bold border border-sky-200/50 text-[11px]">
+                        <span className="text-[#0F172A] dark:text-[#F2F4F7]">Home Office Furniture</span>
+                        <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 text-[#10B981] dark:text-[#3CCB7F] font-bold border border-emerald-500/20 text-[11px]">
                           $92.4k <span className="text-stone-400 font-normal">|</span> 38.6% margin
                         </span>
                       </div>
-                      <div className="w-full h-3.5 rounded-full bg-[#ede7dc] dark:bg-[#26262a] overflow-hidden p-0.5">
+                      <div className="w-full h-3.5 rounded-full bg-[#E2E8F0] dark:bg-[#17212B] overflow-hidden p-0.5">
                         <motion.div 
                           initial={{ width: 0 }}
                           whileInView={{ width: "68%" }}
                           viewport={{ once: true }}
                           transition={{ duration: 1.2, delay: 0.4 }}
-                          className="h-full rounded-full bg-gradient-to-r from-[#0284c7] to-[#06b6d4] shadow-[0_0_12px_rgba(2,132,199,0.3)]"
+                          className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 shadow-[0_0_12px_rgba(16,185,129,0.3)]"
                         />
                       </div>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-[#f7f5f0]/80 dark:bg-white/[0.02] border border-stone-200/60 dark:border-white/[0.06] hover:border-stone-300 transition-all">
+                    <div className="p-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] transition-all">
                       <div className="flex justify-between items-center text-xs font-semibold mb-2">
-                        <span className="text-[#262422] dark:text-[#f5f5f7]">Audio & Accessories</span>
-                        <span className="px-2 py-0.5 rounded-md bg-cyan-50 dark:bg-cyan-950/60 text-[#06b6d4] dark:text-cyan-300 font-bold border border-cyan-200/50 text-[11px]">
+                        <span className="text-[#0F172A] dark:text-[#F2F4F7]">Audio & Accessories</span>
+                        <span className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/20 text-[11px]">
                           $64.8k <span className="text-stone-400 font-normal">|</span> 34.2% margin
                         </span>
                       </div>
-                      <div className="w-full h-3.5 rounded-full bg-[#ede7dc] dark:bg-[#26262a] overflow-hidden p-0.5">
+                      <div className="w-full h-3.5 rounded-full bg-[#E2E8F0] dark:bg-[#17212B] overflow-hidden p-0.5">
                         <motion.div 
                           initial={{ width: 0 }}
                           whileInView={{ width: "48%" }}
                           viewport={{ once: true }}
                           transition={{ duration: 1.2, delay: 0.5 }}
-                          className="h-full rounded-full bg-gradient-to-r from-[#06b6d4] to-[#38bdf8] shadow-[0_0_12px_rgba(6,182,212,0.3)]"
+                          className="h-full rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 shadow-[0_0_12px_rgba(245,158,11,0.3)]"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-stone-200/70 dark:border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-medium">
-                  <span className="text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-1 rounded-full border border-emerald-200/60 w-fit">
-                    <TrendingUp className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> +24% YoY margin growth detected
+                <div className="mt-6 pt-4 border-t border-[#E2E8F0] dark:border-[#1F2630] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-medium">
+                  <span className="text-[#10B981] dark:text-[#3CCB7F] flex items-center gap-1.5 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 w-fit">
+                    <TrendingUp className="w-3.5 h-3.5 text-[#10B981] dark:text-[#3CCB7F]" /> +24% YoY margin growth detected
                   </span>
-                  <Link to="/register" className="text-[#0071e3] hover:text-[#0077ed] dark:text-cyan-300 dark:hover:text-cyan-200 flex items-center gap-1 font-semibold group transition-colors">
+                  <Link to="/register" className="text-[#D97706] hover:text-[#b45309] dark:text-[#F7D154] dark:hover:text-[#f5c730] flex items-center gap-1 font-bold group transition-colors">
                     Try with your dataset <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -872,7 +873,7 @@ export default function LandingPage() {
             </div>
           </motion.div>
 
-          {/* Floating Key Performance Stats - No separate section, floating directly on screen */}
+          {/* Floating Key Performance Stats */}
           <div className="max-w-5xl mx-auto mt-12 sm:mt-16">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {stats.map((stat, idx) => {
@@ -885,25 +886,25 @@ export default function LandingPage() {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                     whileHover={{ y: -6, transition: { duration: 0.25 } }}
-                    className="group relative p-5 sm:p-6 rounded-3xl bg-[#fcfaf5]/70 dark:bg-[#1d1d1f]/60 backdrop-blur-2xl border border-stone-200/80 dark:border-white/[0.08] shadow-[0_12px_36px_rgba(40,30,20,0.05)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.45)] hover:shadow-[0_20px_50px_rgba(0,113,227,0.12)] hover:border-[#0071e3]/30 dark:hover:border-cyan-400/30 transition-all duration-300 select-none overflow-hidden"
+                    className="group relative p-5 sm:p-6 rounded-3xl bg-white dark:bg-[#10171F] backdrop-blur-2xl border border-[#E2E8F0] dark:border-[#1F2630] shadow-[0_12px_36px_rgba(15,23,42,0.05)] dark:shadow-[0_12px_36px_rgba(0,0,0,0.45)] hover:shadow-[0_20px_50px_rgba(217,119,6,0.12)] hover:border-[#D97706]/40 dark:hover:border-[#F7D154]/40 transition-all duration-300 select-none overflow-hidden"
                   >
                     {/* Ambient Glow on Card Hover */}
-                    <div className="absolute -right-8 -bottom-8 w-28 h-28 rounded-full bg-gradient-to-br from-[#0071e3]/10 to-[#06b6d4]/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <div className="absolute -right-8 -bottom-8 w-28 h-28 rounded-full bg-gradient-to-br from-[#D97706]/10 to-[#F7D154]/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#0071e3]/10 to-[#06b6d4]/15 dark:from-blue-500/20 dark:to-cyan-500/20 text-[#0071e3] dark:text-cyan-400 flex items-center justify-center border border-[#0071e3]/15 dark:border-cyan-500/20 group-hover:scale-110 transition-transform duration-300 shadow-2xs">
+                      <div className="w-10 h-10 rounded-2xl bg-amber-500/10 dark:bg-[#F7D154]/10 text-[#D97706] dark:text-[#F7D154] flex items-center justify-center border border-[#D97706]/15 dark:border-[#F7D154]/20 group-hover:scale-110 transition-transform duration-300 shadow-2xs">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="w-2 h-2 rounded-full bg-emerald-500/70 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                      <span className="w-2 h-2 rounded-full bg-[#10B981] dark:bg-[#3CCB7F] shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                     </div>
 
-                    <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300 mb-1">
+                    <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#D97706] dark:text-[#F7D154] mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-sm font-bold text-[#262422] dark:text-[#f5f5f7] mb-1 group-hover:text-[#0071e3] dark:group-hover:text-cyan-400 transition-colors">
+                    <div className="text-sm font-bold text-[#0F172A] dark:text-[#F2F4F7] mb-1 group-hover:text-[#D97706] dark:group-hover:text-[#F7D154] transition-colors">
                       {stat.label}
                     </div>
-                    <div className="text-xs text-stone-500 dark:text-[#a1a1a6] leading-relaxed">
+                    <div className="text-xs text-[#64748B] dark:text-[#7B8794] leading-relaxed">
                       {stat.sub}
                     </div>
                   </motion.div>
@@ -926,15 +927,13 @@ export default function LandingPage() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-[#0071e3] dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-blue-100 dark:border-blue-800/40">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 text-[#D97706] dark:text-[#F7D154] text-xs font-semibold uppercase tracking-wider mb-4 border border-[#D97706]/20 dark:border-[#F7D154]/20">
               Comprehensive Analytics Capabilities
             </div>
-            <h2 className="text-4xl sm:text-5xl tracking-tight mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">
-              <span className="font-kaushan text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300">
-                Engineered for Speed, Intelligence & Accuracy
-              </span>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[#0F172A] dark:text-[#F2F4F7]">
+              Engineered for Speed, Intelligence & Accuracy
             </h2>
-            <p className="text-lg text-[#6e6e73] dark:text-[#a1a1a6]">
+            <p className="text-lg text-[#64748B] dark:text-[#7B8794]">
               Everything you need to turn static data files into interactive insight engines in seconds.
             </p>
           </motion.div>
@@ -951,24 +950,24 @@ export default function LandingPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-[#f5f5f7] dark:bg-[#222226] border border-black/[0.04] dark:border-white/[0.06] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                    <div className="w-10 h-10 rounded-xl bg-[#F1F5F9] dark:bg-[#17212B] border border-[#E2E8F0] dark:border-[#1F2630] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                       {feature.icon}
                     </div>
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#f5f5f7] dark:bg-[#222226] text-[#515154] dark:text-[#a1a1a6] border border-black/[0.04] dark:border-white/[0.06]">
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#F1F5F9] dark:bg-[#17212B] text-[#64748B] dark:text-[#7B8794] border border-[#E2E8F0] dark:border-[#1F2630]">
                       {feature.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-semibold mb-2.5 text-[#1d1d1f] dark:text-[#f5f5f7] group-hover:text-[#0071e3] dark:group-hover:text-blue-400 transition-colors duration-200">
+                  <h3 className="text-xl font-bold mb-2.5 text-[#0F172A] dark:text-[#F2F4F7] group-hover:text-[#D97706] dark:group-hover:text-[#F7D154] transition-colors duration-200">
                     {feature.title}
                   </h3>
                   
-                  <p className="text-[#6e6e73] dark:text-[#a1a1a6] text-sm leading-relaxed mb-6 font-normal">
+                  <p className="text-[#64748B] dark:text-[#7B8794] text-sm leading-relaxed mb-6 font-normal">
                     {feature.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between text-xs font-semibold text-[#0071e3] dark:text-blue-400">
+                <div className="pt-4 border-t border-[#E2E8F0] dark:border-[#1F2630] flex items-center justify-between text-xs font-bold text-[#D97706] dark:text-[#F7D154]">
                   <span>Explore capability</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -979,10 +978,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Interactive Live Demo Section (Compact & Mobile-Optimized) */}
+      {/* Interactive Live Demo Section */}
       <section 
         id="demo" 
-        className="py-16 sm:py-20 relative z-10 bg-[#f8f5ee]/70 dark:bg-[#18181b]/70 border-y border-stone-300/60 dark:border-white/[0.08]"
+        className="py-16 sm:py-20 relative z-10 bg-[#F8FAFC] dark:bg-[#0B0F14] border-y border-[#E2E8F0] dark:border-[#1B232C]"
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           
@@ -993,26 +992,24 @@ export default function LandingPage() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-center max-w-xl mx-auto mb-6 sm:mb-8"
           >
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/60 text-[#0284c7] dark:text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-2.5 border border-cyan-200/80 dark:border-cyan-800/50 shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-[#D97706] dark:text-[#F7D154] text-xs font-semibold uppercase tracking-wider mb-2.5 border border-[#D97706]/20 dark:border-[#F7D154]/20 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D97706] dark:bg-[#F7D154] animate-pulse" />
               <span>Interactive Preview</span>
               {isDemoHovered && (
-                <span className="ml-1 text-[10px] font-mono text-amber-600 dark:text-amber-400 bg-amber-500/10 px-1.5 py-0.2 rounded">
+                <span className="ml-1 text-[10px] font-mono text-[#D97706] dark:text-[#F7D154] bg-amber-500/10 px-1.5 py-0.2 rounded">
                   Paused
                 </span>
               )}
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-2.5 text-[#1d1d1f] dark:text-[#f5f5f7]">
-              <span className="font-kaushan text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-[#0071e3] to-[#0284c7] dark:from-cyan-300 dark:via-blue-300 dark:to-sky-300">
-                Experience the AI Assistant in Action
-              </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-2.5 text-[#0F172A] dark:text-[#F2F4F7]">
+              Experience the AI Assistant in Action
             </h2>
-            <p className="text-xs sm:text-sm text-[#6e6e73] dark:text-[#a1a1a6] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#64748B] dark:text-[#7B8794] leading-relaxed">
               Ask in plain English. Get instant DuckDB SQL queries, summary metrics, and presentation-ready charts in milliseconds.
             </p>
           </motion.div>
 
-          {/* Step Switcher (Fully visible and responsive on mobile with flex-wrap, centered on desktop) */}
+          {/* Step Switcher */}
           <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mb-5 px-2 max-w-full">
             {interactiveDemos.map((demo, idx) => (
               <button
@@ -1020,13 +1017,13 @@ export default function LandingPage() {
                 onClick={() => setActiveDemo(idx)}
                 className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
                   activeDemo === idx 
-                    ? "bg-[#0071e3] text-white shadow-[0_4px_14px_rgba(0,113,227,0.3)] scale-[1.02]" 
-                    : "bg-[#fcfaf5] dark:bg-[#202024] text-[#515154] dark:text-[#a1a1a6] border border-stone-300/70 dark:border-white/[0.08] hover:bg-white dark:hover:bg-[#27272b] hover:text-[#1d1d1f] dark:hover:text-white shadow-xs"
+                    ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] font-bold shadow-md shadow-amber-500/20 scale-[1.02]" 
+                    : "bg-white dark:bg-[#10171F] text-[#64748B] dark:text-[#7B8794] border border-[#E2E8F0] dark:border-[#1F2630] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] shadow-xs"
                 }`}
               >
                 <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
                   activeDemo === idx 
-                    ? "bg-white/25 text-white" 
+                    ? "bg-white/25 text-white dark:bg-black/20 dark:text-[#0B0F14]" 
                     : "bg-stone-200/80 dark:bg-white/10 text-stone-600 dark:text-stone-300"
                 }`}>
                   {idx + 1}
@@ -1039,7 +1036,7 @@ export default function LandingPage() {
           {/* Compact macOS Card */}
           <div className="relative">
             {/* Ambient Background Aura Glow */}
-            <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-cyan-500/10 via-[#0071e3]/10 to-sky-500/10 rounded-2xl blur-lg opacity-60 dark:opacity-30 pointer-events-none -z-10" />
+            <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-amber-500/10 via-[#F7D154]/10 to-amber-500/10 rounded-2xl blur-lg opacity-60 dark:opacity-30 pointer-events-none -z-10" />
 
             <AnimatePresence mode="wait">
               <motion.div 
@@ -1050,10 +1047,10 @@ export default function LandingPage() {
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 onMouseEnter={() => setIsDemoHovered(true)}
                 onMouseLeave={() => setIsDemoHovered(false)}
-                className="macos-window overflow-hidden border border-stone-300/80 dark:border-white/[0.12] shadow-[0_16px_40px_rgba(40,30,20,0.06)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+                className="macos-window overflow-hidden border border-[#E2E8F0] dark:border-[#1F2630] shadow-[0_16px_40px_rgba(15,23,42,0.06)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.45)] bg-white dark:bg-[#10171F]"
               >
                 {/* Header Bar */}
-                <div className="flex items-center justify-between px-3.5 sm:px-4 py-2 bg-stone-100/90 dark:bg-white/[0.04] border-b border-stone-200/80 dark:border-white/[0.08]">
+                <div className="flex items-center justify-between px-3.5 sm:px-4 py-2 bg-[#F8FAFC] dark:bg-[#0B0F14] border-b border-[#E2E8F0] dark:border-[#1F2630]">
                   {/* Traffic Lights + Dataset */}
                   <div className="flex items-center gap-2 min-w-0">
                     <div className="flex items-center gap-1.5 shrink-0">
@@ -1061,21 +1058,21 @@ export default function LandingPage() {
                       <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
                       <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
                     </div>
-                    <div className="flex items-center gap-1 ml-1 text-xs text-stone-600 dark:text-stone-300 font-mono truncate">
-                      <Database className="w-3 h-3 text-[#0071e3] dark:text-cyan-400 shrink-0" />
+                    <div className="flex items-center gap-1 ml-1 text-xs text-[#0F172A] dark:text-[#F2F4F7] font-mono truncate">
+                      <Database className="w-3 h-3 text-[#D97706] dark:text-[#F7D154] shrink-0" />
                       <span className="truncate max-w-[110px] sm:max-w-none">{interactiveDemos[activeDemo].dataset}</span>
                     </div>
                   </div>
 
                   {/* Mode Switcher: Chart vs SQL */}
                   <div className="flex items-center gap-2 shrink-0">
-                    <div className="flex items-center p-0.5 rounded-lg bg-stone-200/80 dark:bg-white/10 text-xs font-medium">
+                    <div className="flex items-center p-0.5 rounded-lg bg-[#F1F5F9] dark:bg-[#17212B] text-xs font-medium border border-[#E2E8F0] dark:border-[#1F2630]">
                       <button
                         onClick={() => setCardView("visual")}
                         className={`flex items-center gap-1 px-2.5 py-0.5 rounded-md transition-all cursor-pointer ${
                           cardView === "visual"
-                            ? "bg-white dark:bg-[#1e1e22] text-[#0071e3] dark:text-cyan-300 font-semibold shadow-xs"
-                            : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white"
+                            ? "bg-white dark:bg-[#10171F] text-[#D97706] dark:text-[#F7D154] font-bold shadow-xs"
+                            : "text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7]"
                         }`}
                       >
                         <BarChart3 className="w-3 h-3" />
@@ -1085,8 +1082,8 @@ export default function LandingPage() {
                         onClick={() => setCardView("sql")}
                         className={`flex items-center gap-1 px-2.5 py-0.5 rounded-md transition-all cursor-pointer ${
                           cardView === "sql"
-                            ? "bg-white dark:bg-[#1e1e22] text-[#0071e3] dark:text-cyan-300 font-semibold shadow-xs"
-                            : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white"
+                            ? "bg-white dark:bg-[#10171F] text-[#D97706] dark:text-[#F7D154] font-bold shadow-xs"
+                            : "text-[#64748B] dark:text-[#7B8794] hover:text-[#0F172A] dark:hover:text-[#F2F4F7]"
                         }`}
                       >
                         <Terminal className="w-3 h-3" />
@@ -1094,7 +1091,7 @@ export default function LandingPage() {
                       </button>
                     </div>
 
-                    <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                    <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-[#10B981] dark:text-[#3CCB7F] bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
                       <Zap className="w-3 h-3 text-amber-500 fill-amber-500/20 shrink-0" />
                       {interactiveDemos[activeDemo].execTime}
                     </span>
@@ -1105,11 +1102,11 @@ export default function LandingPage() {
                 <div className="p-3.5 sm:p-5 space-y-3">
                   
                   {/* User Question Capsule */}
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/30">
-                    <div className="p-1.5 rounded-lg bg-white dark:bg-[#202025] text-[#0071e3] dark:text-cyan-400 shrink-0 shadow-xs">
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-amber-500/10 dark:bg-[#F7D154]/10 border border-[#D97706]/20 dark:border-[#F7D154]/20">
+                    <div className="p-1.5 rounded-lg bg-white dark:bg-[#10171F] text-[#D97706] dark:text-[#F7D154] shrink-0 shadow-xs">
                       <MessageSquare className="w-3.5 h-3.5" />
                     </div>
-                    <p className="text-xs sm:text-sm font-semibold text-[#1d1d1f] dark:text-[#f5f5f7] leading-snug truncate">
+                    <p className="text-xs sm:text-sm font-semibold text-[#0F172A] dark:text-[#F2F4F7] leading-snug truncate">
                       "{interactiveDemos[activeDemo].prompt}"
                     </p>
                   </div>
@@ -1123,13 +1120,13 @@ export default function LandingPage() {
                       className="space-y-3"
                     >
                       {/* Interactive Visual Bars Container */}
-                      <div className="p-3 sm:p-3.5 rounded-xl bg-white/80 dark:bg-[#1a1a1e]/80 border border-stone-200/90 dark:border-white/[0.08] shadow-xs space-y-2">
-                        <div className="flex items-center justify-between text-xs pb-1.5 border-b border-stone-200/60 dark:border-white/[0.06]">
-                          <span className="font-semibold text-stone-800 dark:text-stone-200 flex items-center gap-1.5">
-                            <BarChart3 className="w-3.5 h-3.5 text-[#0071e3] dark:text-cyan-400" />
+                      <div className="p-3 sm:p-3.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] shadow-xs space-y-2">
+                        <div className="flex items-center justify-between text-xs pb-1.5 border-b border-[#E2E8F0] dark:border-[#1F2630]">
+                          <span className="font-bold text-[#0F172A] dark:text-[#F2F4F7] flex items-center gap-1.5">
+                            <BarChart3 className="w-3.5 h-3.5 text-[#D97706] dark:text-[#F7D154]" />
                             {interactiveDemos[activeDemo].chartType}
                           </span>
-                          <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.2 rounded-full">
+                          <span className="text-[10px] font-mono text-[#10B981] dark:text-[#3CCB7F] bg-emerald-500/10 px-2 py-0.2 rounded-full">
                             Live Result
                           </span>
                         </div>
@@ -1139,14 +1136,14 @@ export default function LandingPage() {
                           {interactiveDemos[activeDemo].bars.slice(0, 3).map((bar, bIdx) => (
                             <div key={bar.name} className="space-y-0.5">
                               <div className="flex items-center justify-between text-xs">
-                                <span className="font-medium text-stone-700 dark:text-stone-300 truncate max-w-[180px] sm:max-w-none">
+                                <span className="font-medium text-[#0F172A] dark:text-[#F2F4F7] truncate max-w-[180px] sm:max-w-none">
                                   {bar.name}
                                 </span>
-                                <span className="font-mono font-bold text-[#0071e3] dark:text-cyan-300">
+                                <span className="font-mono font-bold text-[#D97706] dark:text-[#F7D154]">
                                   {bar.value}
                                 </span>
                               </div>
-                              <div className="w-full h-2 rounded-full bg-stone-200/70 dark:bg-white/10 overflow-hidden relative">
+                              <div className="w-full h-2 rounded-full bg-[#E2E8F0] dark:bg-[#17212B] overflow-hidden relative">
                                 <motion.div
                                   key={`${activeDemo}-${bar.name}`}
                                   initial={{ width: 0 }}
@@ -1162,7 +1159,7 @@ export default function LandingPage() {
 
                       {/* AI Executive Takeaway & Key Metrics */}
                       <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-2.5 items-stretch">
-                        <div className="sm:col-span-7 p-2.5 sm:p-3 rounded-xl bg-stone-100/80 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/[0.06] text-xs leading-relaxed text-stone-700 dark:text-stone-300 flex items-start gap-2">
+                        <div className="sm:col-span-7 p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] text-xs leading-relaxed text-[#0F172A] dark:text-[#F2F4F7] flex items-start gap-2">
                           <Sparkles className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                           <span>{interactiveDemos[activeDemo].explanation}</span>
                         </div>
@@ -1171,15 +1168,15 @@ export default function LandingPage() {
                           {interactiveDemos[activeDemo].metrics.slice(0, 2).map((metric) => (
                             <div
                               key={metric.label}
-                              className="p-2 sm:p-2.5 rounded-xl bg-stone-100/70 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/[0.06] flex flex-col justify-between"
+                              className="p-2 sm:p-2.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] flex flex-col justify-between"
                             >
-                              <div className="text-[10px] font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider truncate">
+                              <div className="text-[10px] font-medium text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider truncate">
                                 {metric.label}
                               </div>
-                              <div className="my-0.5 text-sm font-bold text-[#1d1d1f] dark:text-[#f5f5f7] font-mono truncate">
+                              <div className="my-0.5 text-sm font-bold text-[#0F172A] dark:text-[#F2F4F7] font-mono truncate">
                                 {metric.value}
                               </div>
-                              <div className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold truncate">
+                              <div className="text-[10px] font-mono text-[#10B981] dark:text-[#3CCB7F] font-semibold truncate">
                                 {metric.change}
                               </div>
                             </div>
@@ -1195,21 +1192,21 @@ export default function LandingPage() {
                       initial={{ opacity: 0, y: 4 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="rounded-xl bg-[#12141c] text-stone-100 border border-black/20 dark:border-white/10 overflow-hidden"
+                      className="rounded-xl bg-[#0B0F14] text-[#F2F4F7] border border-[#1B232C] overflow-hidden"
                     >
-                      <div className="flex items-center justify-between px-3 py-1.5 bg-[#191b26] border-b border-white/[0.06] text-[11px] font-mono">
-                        <div className="flex items-center gap-1.5 text-cyan-400 font-semibold">
+                      <div className="flex items-center justify-between px-3 py-1.5 bg-[#10171F] border-b border-[#1F2630] text-[11px] font-mono">
+                        <div className="flex items-center gap-1.5 text-[#F7D154] font-semibold">
                           <Terminal className="w-3.5 h-3.5" />
                           <span>DuckDB Vector SQL</span>
                         </div>
                         <button
                           onClick={() => handleCopySql(interactiveDemos[activeDemo].sql)}
-                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium text-stone-300 bg-white/10 hover:bg-white/20 transition-all cursor-pointer"
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-medium text-[#F2F4F7] bg-white/10 hover:bg-white/20 transition-all cursor-pointer"
                         >
                           {copiedSql ? (
                             <>
-                              <Check className="w-3 h-3 text-emerald-400" />
-                              <span className="text-emerald-400">Copied</span>
+                              <Check className="w-3 h-3 text-[#3CCB7F]" />
+                              <span className="text-[#3CCB7F]">Copied</span>
                             </>
                           ) : (
                             <>
@@ -1222,7 +1219,7 @@ export default function LandingPage() {
                       <div className="p-3 text-xs">
                         <SQLHighlight code={interactiveDemos[activeDemo].sql} />
                       </div>
-                      <div className="px-3 py-1 bg-[#161822] border-t border-white/[0.04] flex items-center justify-between text-[10px] font-mono text-stone-400">
+                      <div className="px-3 py-1 bg-[#10171F] border-t border-[#1F2630] flex items-center justify-between text-[10px] font-mono text-[#7B8794]">
                         <span>Read-Only In-Memory Execution</span>
                         <span>{interactiveDemos[activeDemo].rows} scanned in {interactiveDemos[activeDemo].execTime}</span>
                       </div>
@@ -1232,14 +1229,14 @@ export default function LandingPage() {
                 </div>
 
                 {/* Compact Bottom Footer */}
-                <div className="px-3.5 sm:px-4 py-2 bg-stone-100/80 dark:bg-white/[0.02] border-t border-stone-200/80 dark:border-white/[0.06] flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+                <div className="px-3.5 sm:px-4 py-2 bg-[#F8FAFC] dark:bg-[#0B0F14] border-t border-[#E2E8F0] dark:border-[#1F2630] flex items-center justify-between text-xs text-[#64748B] dark:text-[#7B8794]">
                   <div className="flex items-center gap-1.5 text-[11px]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] dark:bg-[#3CCB7F]" />
                     <span>In-Memory DuckDB • 0 persistent disk rows</span>
                   </div>
                   <Link 
                     to="/login"
-                    className="inline-flex items-center gap-1 text-[#0071e3] dark:text-cyan-300 hover:underline font-semibold text-[11px]"
+                    className="inline-flex items-center gap-1 text-[#D97706] dark:text-[#F7D154] hover:underline font-bold text-[11px]"
                   >
                     Try live <ArrowRight className="w-3 h-3" />
                   </Link>
@@ -1263,15 +1260,13 @@ export default function LandingPage() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="text-center max-w-3xl mx-auto mb-20"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/40 text-xs font-semibold uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 text-[#D97706] dark:text-[#F7D154] border border-[#D97706]/20 dark:border-[#F7D154]/20 text-xs font-semibold uppercase tracking-wider mb-4">
               Simple 3-Step Flow
             </div>
-            <h2 className="text-4xl sm:text-5xl tracking-tight mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">
-              <span className="font-kaushan text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-[#0071e3] to-[#06b6d4] dark:from-emerald-400 dark:via-blue-300 dark:to-cyan-300">
-                From Raw Files to Decisions in 60 Seconds
-              </span>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[#0F172A] dark:text-[#F2F4F7]">
+              From Raw Files to Decisions in 60 Seconds
             </h2>
-            <p className="text-lg text-[#6e6e73] dark:text-[#a1a1a6]">
+            <p className="text-lg text-[#64748B] dark:text-[#7B8794]">
               No complex database pipelines, no warehouse setups. Just pure browser-speed data analysis.
             </p>
           </motion.div>
@@ -1287,24 +1282,22 @@ export default function LandingPage() {
               className="flex flex-col md:flex-row items-center gap-12 lg:gap-16"
             >
               <div className="flex-1 order-2 md:order-1">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[#0071e3] dark:text-blue-400 font-bold text-xs mb-4 border border-blue-100 dark:border-blue-800/40">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-[#D97706] dark:text-[#F7D154] font-bold text-xs mb-4 border border-[#D97706]/20 dark:border-[#F7D154]/20">
                   STEP 01
                 </div>
-                <h3 className="text-3xl sm:text-4xl mb-4">
-                  <span className="font-kaushan tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300">
-                    Drop Your Data Files
-                  </span>
+                <h3 className="text-3xl sm:text-4xl font-bold mb-4 text-[#0F172A] dark:text-[#F2F4F7]">
+                  Drop Your Data Files
                 </h3>
-                <p className="text-[#6e6e73] dark:text-[#a1a1a6] text-lg leading-relaxed mb-6 font-normal">
+                <p className="text-[#64748B] dark:text-[#7B8794] text-lg leading-relaxed mb-6 font-normal">
                   Upload CSVs, Excel workbooks, or database snapshots. Our engine parses schemas in milliseconds, cleans column mappings, and loads them safely into an in-memory session.
                 </p>
                 <div className="flex flex-wrap items-center gap-2 pt-1">
                   {[".CSV", ".XLSX", ".SQLITE", ".SQL"].map((ext) => (
                     <span
                       key={ext}
-                      className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-mono font-medium text-stone-600 dark:text-stone-300 bg-stone-200/60 dark:bg-white/5 border border-stone-300/60 dark:border-white/10 hover:border-[#0071e3]/60 dark:hover:border-cyan-400/60 hover:bg-white dark:hover:bg-cyan-500/10 hover:text-[#0071e3] dark:hover:text-cyan-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-xs hover:shadow-[#0071e3]/10 dark:hover:shadow-[0_2px_10px_rgba(6,182,212,0.15)] transition-all duration-200 cursor-default select-none"
+                      className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-mono font-medium text-[#64748B] dark:text-[#7B8794] bg-white dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] hover:border-[#D97706]/60 dark:hover:border-[#F7D154]/60 hover:text-[#D97706] dark:hover:text-[#F7D154] hover:scale-105 hover:-translate-y-0.5 transition-all duration-200 cursor-default select-none shadow-xs"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-stone-400/70 dark:bg-stone-500 group-hover:bg-[#0071e3] dark:group-hover:bg-cyan-400 group-hover:scale-125 transition-all duration-200" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-stone-400 dark:bg-stone-500 group-hover:bg-[#D97706] dark:group-hover:bg-[#F7D154] group-hover:scale-125 transition-all duration-200" />
                       {ext}
                     </span>
                   ))}
@@ -1327,7 +1320,7 @@ export default function LandingPage() {
                     }}
                     src="/assets/img1.webp" 
                     alt="Data Ingestion" 
-                    className="w-full max-w-[340px] sm:max-w-[380px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,113,227,0.22)] transition-transform duration-500 hover:scale-[1.05]" 
+                    className="w-full max-w-[340px] sm:max-w-[380px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(217,119,6,0.18)] dark:drop-shadow-[0_20px_35px_rgba(247,209,84,0.18)] transition-transform duration-500 hover:scale-[1.05]" 
                   />
                 </motion.div>
               </div>
@@ -1359,30 +1352,28 @@ export default function LandingPage() {
                     }}
                     src="/assets/img2.webp" 
                     alt="Interactive Charting" 
-                    className="w-full max-w-[340px] sm:max-w-[380px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(6,182,212,0.25)] transition-transform duration-500 hover:scale-[1.05]" 
+                    className="w-full max-w-[340px] sm:max-w-[380px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(217,119,6,0.18)] dark:drop-shadow-[0_20px_35px_rgba(247,209,84,0.18)] transition-transform duration-500 hover:scale-[1.05]" 
                   />
                 </motion.div>
               </div>
               <div className="flex-1">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-50 dark:bg-cyan-950/60 text-[#0284c7] dark:text-cyan-400 font-bold text-xs mb-4 border border-cyan-100 dark:border-cyan-800/40">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-[#D97706] dark:text-[#F7D154] font-bold text-xs mb-4 border border-[#D97706]/20 dark:border-[#F7D154]/20">
                   STEP 02
                 </div>
-                <h3 className="text-3xl sm:text-4xl mb-4">
-                  <span className="font-kaushan tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-[#0284c7] to-[#0071e3] dark:from-cyan-300 dark:via-sky-400 dark:to-blue-400">
-                    Ask, Explore & Visualize
-                  </span>
+                <h3 className="text-3xl sm:text-4xl font-bold mb-4 text-[#0F172A] dark:text-[#F2F4F7]">
+                  Ask, Explore & Visualize
                 </h3>
-                <p className="text-[#6e6e73] dark:text-[#a1a1a6] text-lg leading-relaxed mb-6 font-normal">
+                <p className="text-[#64748B] dark:text-[#7B8794] text-lg leading-relaxed mb-6 font-normal">
                   Chat with your data or build custom charts in the visual explore panel. The system handles aggregations, filters, mathematical transforms, and Plotly renders seamlessly.
                 </p>
                 <div className="flex flex-wrap items-center gap-6 text-sm font-medium">
-                  <span className="group flex items-center gap-2 text-[#262422] dark:text-[#f5f5f7] cursor-default transition-colors duration-200">
-                    <Sparkles className="w-4 h-4 text-[#0071e3] dark:text-blue-400 transition-transform duration-200 group-hover:scale-110" />
-                    <span className="group-hover:text-[#0071e3] dark:group-hover:text-blue-400 transition-colors">AI SQL Execution</span>
+                  <span className="group flex items-center gap-2 text-[#0F172A] dark:text-[#F2F4F7] cursor-default transition-colors duration-200">
+                    <Sparkles className="w-4 h-4 text-[#D97706] dark:text-[#F7D154] transition-transform duration-200 group-hover:scale-110" />
+                    <span className="group-hover:text-[#D97706] dark:group-hover:text-[#F7D154] transition-colors">AI SQL Execution</span>
                   </span>
-                  <span className="group flex items-center gap-2 text-[#262422] dark:text-[#f5f5f7] cursor-default transition-colors duration-200">
-                    <BarChart3 className="w-4 h-4 text-[#0284c7] dark:text-cyan-400 transition-transform duration-200 group-hover:scale-110" />
-                    <span className="group-hover:text-[#0284c7] dark:group-hover:text-cyan-400 transition-colors">Real-time Plotly charts</span>
+                  <span className="group flex items-center gap-2 text-[#0F172A] dark:text-[#F2F4F7] cursor-default transition-colors duration-200">
+                    <BarChart3 className="w-4 h-4 text-[#D97706] dark:text-[#F7D154] transition-transform duration-200 group-hover:scale-110" />
+                    <span className="group-hover:text-[#D97706] dark:group-hover:text-[#F7D154] transition-colors">Real-time Plotly charts</span>
                   </span>
                 </div>
               </div>
@@ -1397,25 +1388,23 @@ export default function LandingPage() {
               className="flex flex-col md:flex-row items-center gap-12 lg:gap-16"
             >
               <div className="flex-1 order-2 md:order-1">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 dark:bg-blue-950/60 text-[#0071e3] dark:text-blue-400 font-bold text-xs mb-4 border border-blue-100 dark:border-blue-800/40">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-[#D97706] dark:text-[#F7D154] font-bold text-xs mb-4 border border-[#D97706]/20 dark:border-[#F7D154]/20">
                   STEP 03
                 </div>
-                <h3 className="text-3xl sm:text-4xl mb-4">
-                  <span className="font-kaushan tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300">
-                    Decide, Export & Share
-                  </span>
+                <h3 className="text-3xl sm:text-4xl font-bold mb-4 text-[#0F172A] dark:text-[#F2F4F7]">
+                  Decide, Export & Share
                 </h3>
-                <p className="text-[#6e6e73] dark:text-[#a1a1a6] text-lg leading-relaxed mb-6 font-normal">
+                <p className="text-[#64748B] dark:text-[#7B8794] text-lg leading-relaxed mb-6 font-normal">
                   Turn discoveries into immediate business actions. Export presentation-ready Plotly charts in SVG or PNG, download cleaned analytical datasets in Excel or CSV, and share instant executive summaries with your team in one click.
                 </p>
                 <div className="flex flex-wrap items-center gap-6 text-sm font-medium">
-                  <span className="group flex items-center gap-2 text-[#262422] dark:text-[#f5f5f7] cursor-default transition-colors duration-200">
-                    <FileSpreadsheet className="w-4 h-4 text-[#0071e3] dark:text-blue-400 transition-transform duration-200 group-hover:scale-110" />
-                    <span className="group-hover:text-[#0071e3] dark:group-hover:text-blue-400 transition-colors">Instant CSV & Excel Download</span>
+                  <span className="group flex items-center gap-2 text-[#0F172A] dark:text-[#F2F4F7] cursor-default transition-colors duration-200">
+                    <FileSpreadsheet className="w-4 h-4 text-[#D97706] dark:text-[#F7D154] transition-transform duration-200 group-hover:scale-110" />
+                    <span className="group-hover:text-[#D97706] dark:group-hover:text-[#F7D154] transition-colors">Instant CSV & Excel Download</span>
                   </span>
-                  <span className="group flex items-center gap-2 text-[#262422] dark:text-[#f5f5f7] cursor-default transition-colors duration-200">
-                    <Download className="w-4 h-4 text-[#0284c7] dark:text-cyan-400 transition-transform duration-200 group-hover:scale-110" />
-                    <span className="group-hover:text-[#0284c7] dark:group-hover:text-cyan-400 transition-colors">High-Res Vector Visuals</span>
+                  <span className="group flex items-center gap-2 text-[#0F172A] dark:text-[#F2F4F7] cursor-default transition-colors duration-200">
+                    <Download className="w-4 h-4 text-[#D97706] dark:text-[#F7D154] transition-transform duration-200 group-hover:scale-110" />
+                    <span className="group-hover:text-[#D97706] dark:group-hover:text-[#F7D154] transition-colors">High-Res Vector Visuals</span>
                   </span>
                 </div>
               </div>
@@ -1438,7 +1427,7 @@ export default function LandingPage() {
                     }}
                     src="/assets/img3.webp" 
                     alt="Export & Decision Flow" 
-                    className="w-full max-w-[340px] sm:max-w-[380px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,113,227,0.22)] transition-transform duration-500 hover:scale-[1.05]" 
+                    className="w-full max-w-[340px] sm:max-w-[380px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(217,119,6,0.18)] dark:drop-shadow-[0_20px_35px_rgba(247,209,84,0.18)] transition-transform duration-500 hover:scale-[1.05]" 
                   />
                 </motion.div>
               </div>
@@ -1451,7 +1440,7 @@ export default function LandingPage() {
       {/* Testimonials Carousel Section */}
       <section 
         id="testimonials" 
-        className="py-28 relative z-10 bg-[#f5f5f7]/60 dark:bg-[#1a1a1d]/60 border-y border-black/[0.06] dark:border-white/[0.08] overflow-hidden"
+        className="py-28 relative z-10 bg-[#F8FAFC] dark:bg-[#0B0F14] border-y border-[#E2E8F0] dark:border-[#1B232C] overflow-hidden"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -1462,12 +1451,10 @@ export default function LandingPage() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="text-center max-w-3xl mx-auto mb-14"
           >
-            <h2 className="text-4xl sm:text-5xl tracking-tight mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">
-              <span className="font-kaushan text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300">
-                Loved by Data Pros & Teams
-              </span>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[#0F172A] dark:text-[#F2F4F7]">
+              Loved by Data Pros & Teams
             </h2>
-            <p className="text-lg text-[#6e6e73] dark:text-[#a1a1a6]">
+            <p className="text-lg text-[#64748B] dark:text-[#7B8794]">
               Real feedback from data analysis teams, engineers, and product teams.
             </p>
           </motion.div>
@@ -1483,27 +1470,27 @@ export default function LandingPage() {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 onMouseEnter={() => setIsTestimonialHovered(true)}
                 onMouseLeave={() => setIsTestimonialHovered(false)}
-                className="w-full p-8 sm:p-10 macos-card shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] flex flex-col justify-between"
+                className="w-full p-8 sm:p-10 macos-card shadow-[0_20px_50px_rgba(15,23,42,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] flex flex-col justify-between bg-white dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630]"
               >
                 <div>
-                  <div className="flex gap-1 text-amber-400 mb-6">
+                  <div className="flex gap-1 text-[#F7D154] mb-6">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
-                  <p className="text-[#1d1d1f] dark:text-[#f5f5f7] text-lg sm:text-xl font-normal leading-relaxed italic mb-8">
+                  <p className="text-[#0F172A] dark:text-[#F2F4F7] text-lg sm:text-xl font-normal leading-relaxed italic mb-8">
                     "{testimonials[currentTestimonial].quote}"
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between pt-6 border-t border-black/[0.06] dark:border-white/[0.08]">
+                <div className="flex items-center justify-between pt-6 border-t border-[#E2E8F0] dark:border-[#1F2630]">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#0071e3] to-[#06b6d4] flex items-center justify-center text-white font-semibold text-sm shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-[#D97706] dark:bg-[#F7D154] flex items-center justify-center text-white dark:text-[#0B0F14] font-bold text-sm shadow-sm">
                       {testimonials[currentTestimonial].avatar}
                     </div>
                     <div>
-                      <div className="font-semibold text-base text-[#1d1d1f] dark:text-[#f5f5f7]">{testimonials[currentTestimonial].author}</div>
-                      <div className="text-xs text-[#86868b] dark:text-[#a1a1a6]">{testimonials[currentTestimonial].role} · {testimonials[currentTestimonial].company}</div>
+                      <div className="font-bold text-base text-[#0F172A] dark:text-[#F2F4F7]">{testimonials[currentTestimonial].author}</div>
+                      <div className="text-xs text-[#64748B] dark:text-[#7B8794]">{testimonials[currentTestimonial].role} · {testimonials[currentTestimonial].company}</div>
                     </div>
                   </div>
 
@@ -1511,14 +1498,14 @@ export default function LandingPage() {
                   <div className="flex items-center gap-2">
                     <button 
                       onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                      className="p-2 rounded-full bg-[#f5f5f7] dark:bg-[#222226] hover:bg-gray-200 dark:hover:bg-[#2c2c30] text-[#515154] dark:text-[#a1a1a6] transition-colors cursor-pointer"
+                      className="p-2 rounded-full bg-[#F1F5F9] dark:bg-[#17212B] hover:bg-stone-200 dark:hover:bg-stone-700 text-[#0F172A] dark:text-[#F2F4F7] border border-[#E2E8F0] dark:border-[#1F2630] transition-colors cursor-pointer"
                       title="Previous"
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </button>
                     <button 
                       onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
-                      className="p-2 rounded-full bg-[#f5f5f7] dark:bg-[#222226] hover:bg-gray-200 dark:hover:bg-[#2c2c30] text-[#515154] dark:text-[#a1a1a6] transition-colors cursor-pointer"
+                      className="p-2 rounded-full bg-[#F1F5F9] dark:bg-[#17212B] hover:bg-stone-200 dark:hover:bg-stone-700 text-[#0F172A] dark:text-[#F2F4F7] border border-[#E2E8F0] dark:border-[#1F2630] transition-colors cursor-pointer"
                       title="Next"
                     >
                       <ChevronRight className="w-4 h-4" />
@@ -1537,8 +1524,8 @@ export default function LandingPage() {
                 onClick={() => setCurrentTestimonial(idx)}
                 className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   currentTestimonial === idx 
-                    ? "w-8 bg-[#0071e3] shadow-[0_2px_10px_rgba(0,113,227,0.4)]" 
-                    : "w-2.5 bg-stone-300 dark:bg-stone-600 hover:bg-stone-400 dark:hover:bg-stone-500"
+                    ? "w-8 bg-[#D97706] dark:bg-[#F7D154] shadow-[0_2px_10px_rgba(217,119,6,0.4)]" 
+                    : "w-2.5 bg-stone-300 dark:bg-stone-700 hover:bg-stone-400 dark:hover:bg-stone-600"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
@@ -1551,50 +1538,44 @@ export default function LandingPage() {
       {/* CTA Section */}
       <section className="py-24 relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl p-10 sm:p-16 lg:p-20 bg-gradient-to-b from-[#fcfaf5] to-[#f5efe4] dark:bg-[#030712] border border-stone-300/80 dark:border-0 shadow-[0_24px_60px_rgba(40,30,20,0.06)] dark:shadow-[0_24px_60px_rgba(0,113,227,0.3)] overflow-hidden text-center group">
+          <div className="relative rounded-3xl p-10 sm:p-16 lg:p-20 bg-white dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] shadow-[0_24px_60px_rgba(15,23,42,0.06)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.6)] overflow-hidden text-center group">
             
             {/* Cybernetic Data Topography Background Images */}
             <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-              {/* Light Mode: Crisp White & Sapphire Blue Digital Topography */}
               <img
                 src="/assets/cta_data_topography_light.webp"
                 alt="Cybernetic Data Topography Light"
-                className="w-full h-full object-cover object-center block dark:hidden opacity-85 contrast-105 brightness-100 transition-transform duration-1000 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover object-center block dark:hidden opacity-30 contrast-105 brightness-100 transition-transform duration-1000 ease-out group-hover:scale-105"
               />
-              {/* Dark Mode: Deep Cybernetic Neon Blue Topography */}
               <img
                 src="/assets/cta_data_topography.webp"
                 alt="Cybernetic Data Topography Dark"
-                className="w-full h-full object-cover object-center hidden dark:block opacity-90 contrast-115 brightness-105 transition-transform duration-1000 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover object-center hidden dark:block opacity-40 contrast-115 brightness-105 transition-transform duration-1000 ease-out group-hover:scale-105"
               />
-              {/* Readability vignettes */}
-              <div className="absolute inset-0 bg-gradient-to-b from-[#fcfaf5]/30 via-transparent to-[#f5efe4]/40 dark:from-[#030712]/80 dark:via-[#030712]/45 dark:to-[#030712]/85" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(252,250,245,0.65)_0%,transparent_75%)] dark:bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(3,7,18,0.85)_100%)]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/70 dark:from-[#10171F]/80 dark:via-[#10171F]/60 dark:to-[#10171F]/90" />
             </div>
 
             {/* Background Ambient Glows */}
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-[#0071e3]/15 dark:bg-cyan-500/25 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[#06b6d4]/15 dark:bg-blue-600/30 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-amber-500/10 dark:bg-[#F7D154]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-amber-500/10 dark:bg-[#F7D154]/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 max-w-xl mx-auto px-2">
-              <h2 className="text-4xl sm:text-5xl tracking-tight mb-4">
-                <span className="font-kaushan tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#005bb5] via-[#0284c7] to-[#0092b8] dark:from-cyan-300 dark:via-sky-200 dark:to-blue-400 drop-shadow-sm">
-                  Start Exploring Your Data Today
-                </span>
+              <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[#0F172A] dark:text-[#F2F4F7]">
+                Start Exploring Your Data Today
               </h2>
-              <p className="text-lg text-stone-800 dark:text-stone-300 mb-8 leading-relaxed font-medium dark:font-normal">
+              <p className="text-lg text-[#64748B] dark:text-[#7B8794] mb-8 leading-relaxed font-normal">
                 Join data teams turning static files into interactive AI Data Analysis and visualizations.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   to="/register"
-                  className="px-8 py-3.5 rounded-full font-medium text-base text-white bg-gradient-to-r from-[#0071e3] to-[#0284c7] hover:from-[#0077ed] hover:to-[#0396db] shadow-[0_6px_20px_rgba(0,113,227,0.35)] hover:shadow-[0_8px_25px_rgba(0,113,227,0.5)] transition-all duration-300 cursor-pointer"
+                  className="px-8 py-3.5 rounded-full font-extrabold text-base text-white dark:text-[#0B0F14] bg-[#D97706] hover:bg-[#b45309] dark:bg-[#F7D154] dark:hover:bg-[#f5c730] shadow-[0_6px_20px_rgba(217,119,6,0.35)] dark:shadow-[0_8px_25px_rgba(247,209,84,0.3)] transition-all duration-300 cursor-pointer"
                 >
                   Create Free Account
                 </Link>
                 <Link
                   to="/login"
-                  className="px-8 py-3.5 rounded-full font-medium text-base text-[#262422] dark:text-white bg-white/80 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 border border-stone-300/80 dark:border-white/25 backdrop-blur-md shadow-sm transition-all duration-300 cursor-pointer"
+                  className="px-8 py-3.5 rounded-full font-semibold text-base text-[#0F172A] dark:text-[#F2F4F7] bg-white dark:bg-[#10171F] hover:bg-[#F8FAFC] dark:hover:bg-[#17212B] border border-[#E2E8F0] dark:border-[#1F2630] backdrop-blur-md shadow-sm transition-all duration-300 cursor-pointer"
                 >
                   Sign In
                 </Link>
@@ -1605,7 +1586,7 @@ export default function LandingPage() {
       </section>
 
       {/* Static Footer with Icons and Scroll-to-Top Navigation */}
-      <footer id="footer" className="border-t border-stone-200/80 dark:border-white/[0.08] bg-[#fcfaf5]/85 dark:bg-[#161617]/80 backdrop-blur-xl relative z-10">
+      <footer id="footer" className="border-t border-[#E2E8F0] dark:border-[#1B232C] bg-white dark:bg-[#0B0F14] backdrop-blur-xl relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             
@@ -1617,28 +1598,28 @@ export default function LandingPage() {
                   alt="AI Data Analysis Logo" 
                   className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-105"
                 />
-                <span className="font-bold text-lg tracking-tight bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-[#38bdf8] dark:via-[#0ea5e9] dark:to-[#06b6d4] bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
-                  AI Data Analysis
+                <span className="font-extrabold text-lg tracking-tight text-[#0F172A] dark:text-[#F2F4F7] group-hover:opacity-90 transition-opacity">
+                  AI Data Analysis<span className="text-[#D97706] dark:text-[#F7D154]">.</span>
                 </span>
               </a>
-              <p className="text-sm text-[#6e6e73] dark:text-[#a1a1a6] max-w-sm font-normal">
+              <p className="text-sm text-[#64748B] dark:text-[#7B8794] max-w-sm font-normal">
                 Next-generation conversational analytics, intelligent DuckDB query processing, and automated Plotly visualizations.
               </p>
             </div>
 
             {/* Resources Links */}
             <div>
-              <h4 className="font-semibold text-sm text-[#1d1d1f] dark:text-[#f5f5f7] mb-4">Resources</h4>
-              <ul className="space-y-2.5 text-sm text-[#6e6e73] dark:text-[#a1a1a6]">
+              <h4 className="font-bold text-sm text-[#0F172A] dark:text-[#F2F4F7] mb-4">Resources</h4>
+              <ul className="space-y-2.5 text-sm text-[#64748B] dark:text-[#7B8794]">
                 <li>
-                  <Link to="/docs" className="flex items-center gap-2 hover:text-[#0071e3] dark:hover:text-blue-400 transition-colors">
-                    <BookOpen className="w-4 h-4 text-[#0071e3] dark:text-blue-400 shrink-0" />
+                  <Link to="/docs" className="flex items-center gap-2 hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors">
+                    <BookOpen className="w-4 h-4 text-[#D97706] dark:text-[#F7D154] shrink-0" />
                     <span>Documentation</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/faq" className="flex items-center gap-2 hover:text-[#0071e3] dark:hover:text-blue-400 transition-colors">
-                    <HelpCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
+                  <Link to="/faq" className="flex items-center gap-2 hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors">
+                    <HelpCircle className="w-4 h-4 text-[#D97706] dark:text-[#F7D154] shrink-0" />
                     <span>FAQs</span>
                   </Link>
                 </li>
@@ -1647,16 +1628,16 @@ export default function LandingPage() {
 
             {/* Legal Links */}
             <div>
-              <h4 className="font-semibold text-sm text-[#1d1d1f] dark:text-[#f5f5f7] mb-4">Legal</h4>
-              <ul className="space-y-2.5 text-sm text-[#6e6e73] dark:text-[#a1a1a6]">
+              <h4 className="font-bold text-sm text-[#0F172A] dark:text-[#F2F4F7] mb-4">Legal</h4>
+              <ul className="space-y-2.5 text-sm text-[#64748B] dark:text-[#7B8794]">
                 <li>
-                  <Link to="/privacy" className="flex items-center gap-2 hover:text-[#0071e3] dark:hover:text-blue-400 transition-colors">
-                    <Shield className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <Link to="/privacy" className="flex items-center gap-2 hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors">
+                    <Shield className="w-4 h-4 text-[#10B981] dark:text-[#3CCB7F] shrink-0" />
                     <span>Privacy Policy</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/terms" className="flex items-center gap-2 hover:text-[#0071e3] dark:hover:text-blue-400 transition-colors">
+                  <Link to="/terms" className="flex items-center gap-2 hover:text-[#D97706] dark:hover:text-[#F7D154] transition-colors">
                     <FileText className="w-4 h-4 text-amber-500 shrink-0" />
                     <span>Terms of Service</span>
                   </Link>
@@ -1666,8 +1647,8 @@ export default function LandingPage() {
 
           </div>
 
-          <div className="mt-8 pt-8 border-t border-black/[0.06] dark:border-white/[0.08] flex flex-col sm:flex-row justify-between items-center text-xs text-[#86868b] dark:text-[#a1a1a6] gap-4">
-            <p>© {new Date().getFullYear()} <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] to-[#06b6d4]">AI Data Analysis</span>. All rights reserved.</p>
+          <div className="mt-8 pt-8 border-t border-[#E2E8F0] dark:border-[#1F2630] flex flex-col sm:flex-row justify-between items-center text-xs text-[#64748B] dark:text-[#7B8794] gap-4">
+            <p>© {new Date().getFullYear()} <span className="font-bold text-[#0F172A] dark:text-[#F2F4F7]">AI Data Analysis</span>. All rights reserved.</p>
             <p>Crafted for fast in-browser data intelligence.</p>
           </div>
         </div>
