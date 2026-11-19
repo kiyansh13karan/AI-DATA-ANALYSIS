@@ -1,0 +1,368 @@
+"""Admin endpoints for Admin Portal: Demo login, paginated MongoDB user management, system health, live log streamer, and Groq API usage tracker."""
+from __future__ import annotations
+
+import logging
+import time
+from datetime import datetime, timezone
+from typing import Any
+
+from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
+from pydantic import BaseModel, Field
+
+from app.config import settings
+from app.db.duckdb_manager import duckdb_manager
+from app.db.mongodb import db, client
+from app.utils.auth import create_access_token, get_current_user, verify_password
+from app.utils.logger_streamer import memory_log_handler
+from app.utils.rate_limit import login_limiter
+from app.validation.nosql_validator import sanitize_regex_query
+
+logger = logging.getLogger(__name__)
+
+router = APIRouter(prefix="/api/admin", tags=["admin"])
+
+
+EMAIL_REGEX = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+
+
+class AdminLoginRequest(BaseModel):
+    email: str = Field(..., min_length=5, max_length=100, pattern=EMAIL_REGEX)
+    password: str = Field(..., min_length=1, max_length=128)
+
+
+# Helper dependency to verify Admin privileges
+async def get_admin_user(current_user: dict = Depends(get_current_user)) -> dict:
+    role = current_user.get("role", "user")
+    is_admin = current_user.get("is_admin", False) or role == "admin"
+    # Allow demo admin account as well
+    demo_email = settings.demo_admin_email.strip().lower()
+    if current_user.get("email", "").strip().lower() == demo_email or is_admin:
+        return current_user
+    raise HTTPException(
+        status_code=status.HTTP_403_FORBIDDEN,
+        detail="Admin authorization required.",
+    )
+
+
+# ── 1. Admin Login Endpoint ────────────────────────────────────────────────────
+@router.post("/login")
+async def admin_login(payload: AdminLoginRequest, request: Request) -> dict[str, Any]:
+    """Login for admin users (including demo admin).
+
+    All credentials are verified against MongoDB — the demo admin account is
+    seeded into the database on first startup by init_db(), so no special-casing
+    is needed here. Login is identical for all admin accounts.
+    """
+    email_clean = payload.email.strip().lower()
+    password = payload.password.strip()
+
+    # Rate limiting: max 5 login attempts per 60s per IP + user email
+    client_ip = request.client.host if request.client else "unknown"
+    login_limiter.check_rate_limit(ip=client_ip, username=email_clean)
+
+    # Fetch admin user from MongoDB by email
+    users_col = db["users"]
+    user = users_col.find_one({"email": email_clean})
+
+    if not user or not verify_password(password, user.get("hashed_password", "")):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid admin credentials.",
+        )
+
+    role = user.get("role", "user")
+    is_admin = user.get("is_admin", False) or role == "admin"
+
+    if not is_admin:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access denied. User does not have admin privileges.",
+        )
+
+    from app.utils.session_tracker import active_session_tracker
+    active_session_tracker.record_activity(
+        user_id_or_email=user["email"],
+        username=user.get("username", user["email"]),
+        role="admin",
+    )
+
+    access_token = create_access_token(data={"sub": user["username"], "role": "admin"})
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": {
+            "username": user["username"],
+            "email": user["email"],
+            "role": "admin",
+            "is_admin": True,
+        },
+    }
+
+
+# ── 2. Paginated User List (MongoDB .skip & .limit) ─────────────────────────
+@router.get("/users")
+async def get_paginated_users(
+    page: int = Query(default=1, ge=1),
+    limit: int = Query(default=10, ge=1, le=100),
+    search: str | None = Query(default=None, max_length=100),
+    role: str | None = Query(default=None, pattern=r"^(admin|user)$"),
+    admin_user: dict = Depends(get_admin_user),
+) -> dict[str, Any]:
+    users_col = db["users"]
+    query: dict[str, Any] = {}
+
+    if role == "admin":
+        admin_match = [{"role": "admin"}, {"is_admin": True}]
+        if search:
+            s = sanitize_regex_query(search)
+            search_match = [{"username": {"$regex": s, "$options": "i"}}, {"email": {"$regex": s, "$options": "i"}}]
+            query = {"$and": [{"$or": admin_match}, {"$or": search_match}]}
+        else:
+            query = {"$or": admin_match}
+    elif role == "user":
+        user_match = {"role": {"$ne": "admin"}, "is_admin": {"$ne": True}}
+        if search:
+            s = sanitize_regex_query(search)
+            search_match = [{"username": {"$regex": s, "$options": "i"}}, {"email": {"$regex": s, "$options": "i"}}]
+            query = {"$and": [user_match, {"$or": search_match}]}
+        else:
+            query = user_match
+    elif search:
+        s = sanitize_regex_query(search)
+        query["$or"] = [
+            {"username": {"$regex": s, "$options": "i"}},
+            {"email": {"$regex": s, "$options": "i"}},
+        ]
+
+    total_users = users_col.count_documents(query)
+    admin_count = users_col.count_documents({"$or": [{"role": "admin"}, {"is_admin": True}]})
+    standard_user_count = users_col.count_documents({"role": {"$ne": "admin"}, "is_admin": {"$ne": True}})
+
+    skip = (page - 1) * limit
+
+    # Perform server-side pagination with skip and limit
+    cursor = (
+        users_col.find(query, {"hashed_password": 0, "otp_hash": 0})
+        .sort("created_at", -1)
+        .skip(skip)
+        .limit(limit)
+    )
+
+    users_list = []
+    for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        if isinstance(doc.get("created_at"), datetime):
+            doc["created_at"] = doc["created_at"].isoformat()
+        users_list.append(doc)
+
+    total_pages = (total_users + limit - 1) // limit if limit > 0 else 1
+
+    return {
+        "users": users_list,
+        "pagination": {
+            "page": page,
+            "limit": limit,
+            "total_users": total_users,
+            "admin_count": admin_count,
+            "standard_user_count": standard_user_count,
+            "total_pages": max(total_pages, 1),
+            "has_next": page < total_pages,
+            "has_prev": page > 1,
+        },
+    }
+
+
+# ── 3. Health Check Endpoint ──────────────────────────────────────────────────
+@router.get("/health")
+async def admin_health_check(
+    admin_user: dict = Depends(get_admin_user),
+) -> dict[str, Any]:
+    start_time = time.time()
+    db_status = "unknown"
+    db_ping_ms = 0.0
+
+    try:
+        ping_start = time.time()
+        client.admin.command("ping")
+        db_ping_ms = round((time.time() - ping_start) * 1000, 2)
+        db_status = "connected"
+    except Exception as exc:
+        db_status = f"error: {exc}"
+
+    duckdb_connections = len(duckdb_manager._connections)
+    from app.utils.session_tracker import active_session_tracker
+    session_summary = active_session_tracker.get_summary()
+
+    return {
+        "status": "healthy" if db_status == "connected" else "degraded",
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "env": settings.app_env,
+        "latency_ms": round((time.time() - start_time) * 1000, 2),
+        "mongodb": {
+            "status": db_status,
+            "ping_ms": db_ping_ms,
+            "database_name": settings.database_name,
+        },
+        "duckdb": {
+            "active_connections": duckdb_connections,
+        },
+        "active_sessions": session_summary,
+        "groq_configured": bool(settings.groq_api_key),
+    }
+
+
+# ── 3b. Active Sessions Tracker Endpoint ──────────────────────────────────────
+@router.get("/active-sessions")
+async def get_active_sessions(
+    admin_user: dict = Depends(get_admin_user),
+) -> dict[str, Any]:
+    from app.utils.session_tracker import active_session_tracker
+    return active_session_tracker.get_summary()
+
+
+# ── 4. System Log Viewer Streamer ─────────────────────────────────────────────
+@router.get("/logs")
+async def get_system_logs(
+    limit: int = Query(default=100, ge=1, le=500),
+    level: str | None = Query(default="ALL", pattern=r"^(ALL|DEBUG|INFO|WARNING|ERROR|CRITICAL)$"),
+    search: str | None = Query(default=None, max_length=100),
+    admin_user: dict = Depends(get_admin_user),
+) -> dict[str, Any]:
+    logs = memory_log_handler.get_logs(limit=limit, level=level, search=search)
+    return {
+        "logs": logs,
+        "count": len(logs),
+        "capacity": memory_log_handler.capacity,
+    }
+
+
+# ── 5. Groq API Usage Analytics (with Date Range Filter) ────────────────────
+@router.get("/groq-usage")
+async def get_groq_usage(
+    start_date: str | None = Query(default=None, pattern=r"^\d{4}-\d{2}-\d{2}$", description="Start date YYYY-MM-DD"),
+    end_date: str | None = Query(default=None, pattern=r"^\d{4}-\d{2}-\d{2}$", description="End date YYYY-MM-DD"),
+    admin_user: dict = Depends(get_admin_user),
+) -> dict[str, Any]:
+    usage_col = db["groq_usage"]
+
+    today_local = datetime.now().strftime("%Y-%m-%d")
+
+    date_filter: dict[str, Any] = {}
+    if start_date and end_date:
+        date_filter["date"] = {"$gte": start_date, "$lte": end_date}
+    elif start_date:
+        date_filter["date"] = {"$gte": start_date}
+    elif end_date:
+        date_filter["date"] = {"$lte": end_date}
+
+    cursor = usage_col.find(date_filter).sort("date", 1)
+
+    daily_records = []
+    total_calls_all_time = 0
+    total_tokens_all_time = 0
+
+    for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        if isinstance(doc.get("updated_at"), datetime):
+            doc["updated_at"] = doc["updated_at"].isoformat()
+
+        date_str = doc.get("date", "")
+        calls = doc.get("total_calls", 0)
+        tokens = doc.get("tokens_estimated", 0)
+
+        total_calls_all_time += calls
+        total_tokens_all_time += tokens
+
+        daily_records.append({
+            "date": date_str,
+            "total_calls": calls,
+            "tokens_estimated": tokens,
+            "calls_breakdown": doc.get("calls", {}),
+        })
+
+    today_doc = usage_col.find_one({"date": today_local})
+    today_calls = today_doc.get("total_calls", 0) if today_doc else 0
+
+    return {
+        "daily_records": daily_records,
+        "filter": {
+            "start_date": start_date,
+            "end_date": end_date,
+        },
+        "summary": {
+            "total_calls_all_time": total_calls_all_time,
+            "total_tokens_all_time": total_tokens_all_time,
+            "today_calls": today_calls,
+            "recorded_days": len(daily_records),
+        },
+    }
+# ── 6. Create or Upgrade Administrator Account ─────────────────────────────
+class CreateAdminRequest(BaseModel):
+    username: str = Field(default="", max_length=30, pattern=r"^[a-zA-Z0-9_.-]*$", description="Admin username")
+    email: str = Field(..., min_length=5, max_length=100, pattern=EMAIL_REGEX, description="Admin email address")
+    password: str = Field(default="Admin@12345", min_length=6, max_length=128, description="Default password")
+
+
+@router.post("/create-admin")
+async def create_admin_account(
+    payload: CreateAdminRequest,
+    admin_user: dict = Depends(get_admin_user),
+) -> dict[str, Any]:
+    email_clean = payload.email.strip().lower()
+    raw_username = payload.username.strip()
+    raw_password = payload.password.strip() or "Admin@12345"
+
+    if not email_clean or "@" not in email_clean or "." not in email_clean:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Valid email address is required.",
+        )
+
+    users_col = db["users"]
+    existing_user = users_col.find_one({"email": email_clean})
+
+    from app.utils.auth import hash_password
+
+    if existing_user:
+        username_final = raw_username or existing_user.get("username", email_clean.split("@")[0])
+        users_col.update_one(
+            {"_id": existing_user["_id"]},
+            {
+                "$set": {
+                    "username": username_final,
+                    "hashed_password": hash_password(raw_password),
+                    "role": "admin",
+                    "is_admin": True,
+                    "is_active": True,
+                    "is_verified": True,
+                    "updated_at": datetime.utcnow(),
+                }
+            },
+        )
+        message = f"Account '{email_clean}' upgraded to Administrator with password '{raw_password}'."
+    else:
+        username_final = raw_username or email_clean.split("@")[0]
+        admin_doc = {
+            "username": username_final,
+            "email": email_clean,
+            "hashed_password": hash_password(raw_password),
+            "role": "admin",
+            "is_admin": True,
+            "is_active": True,
+            "is_verified": True,
+            "created_at": datetime.utcnow(),
+        }
+        users_col.insert_one(admin_doc)
+        message = f"New Admin account created for '{email_clean}' with default password '{raw_password}'."
+
+    return {
+        "status": "success",
+        "message": message,
+        "admin": {
+            "username": username_final,
+            "email": email_clean,
+            "role": "admin",
+            "default_password": raw_password,
+        },
+    }
+

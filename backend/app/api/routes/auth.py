@@ -1,0 +1,622 @@
+"""Authentication endpoints: Register, OTP Verification, Login, Forgot & Reset Password, Profile."""
+from __future__ import annotations
+
+import logging
+import secrets
+from datetime import datetime, timedelta
+# pyrefly: ignore [missing-import]
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
+from typing import Literal
+from pydantic import BaseModel, Field
+
+# pyrefly: ignore [missing-import]
+from app.config import settings
+# pyrefly: ignore [missing-import]
+from app.db.mongodb import db
+# pyrefly: ignore [missing-import]
+from app.utils.auth import (
+    create_access_token,
+    get_current_user,
+    hash_password,
+    verify_password,
+)
+# pyrefly: ignore [missing-import]
+from app.utils.bloom_filter import username_bloom_filter
+# pyrefly: ignore [missing-import]
+from app.utils.firebase_admin_sdk import verify_firebase_token
+# pyrefly: ignore [missing-import]
+from app.utils.mail import send_otp_email
+# pyrefly: ignore [missing-import]
+from app.utils.rate_limit import login_limiter, otp_limiter, otp_failure_lockout
+
+logger = logging.getLogger(__name__)
+
+router = APIRouter(prefix="/api/auth", tags=["auth"])
+
+EMAIL_REGEX = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+USERNAME_REGEX = r"^[a-zA-Z0-9_.-]+$"
+OTP_REGEX = r"^\d{6}$"
+
+# --- Request/Response Models ---
+
+class RegisterRequest(BaseModel):
+    username: str = Field(..., min_length=3, max_length=30, pattern=USERNAME_REGEX)
+    email: str = Field(..., min_length=5, max_length=100, pattern=EMAIL_REGEX)
+    password: str = Field(..., min_length=6, max_length=128)
+
+class VerifyOTPRequest(BaseModel):
+    email: str = Field(..., min_length=5, max_length=100, pattern=EMAIL_REGEX)
+    otp: str = Field(..., min_length=6, max_length=6, pattern=OTP_REGEX)
+
+class LoginRequest(BaseModel):
+    email: str = Field(..., min_length=5, max_length=100, pattern=EMAIL_REGEX)
+    password: str = Field(..., min_length=1, max_length=128)
+
+class ForgotPasswordRequest(BaseModel):
+    email: str = Field(..., min_length=5, max_length=100, pattern=EMAIL_REGEX)
+
+class ResetPasswordRequest(BaseModel):
+    email: str = Field(..., min_length=5, max_length=100, pattern=EMAIL_REGEX)
+    password: str = Field(..., min_length=6, max_length=128)
+    otp: str = Field(..., min_length=6, max_length=6, pattern=OTP_REGEX)
+
+class ChangePasswordRequest(BaseModel):
+    current_password: str = Field(..., min_length=1, max_length=128)
+    new_password: str = Field(..., min_length=6, max_length=128)
+
+class ResendOTPRequest(BaseModel):
+    email: str = Field(..., min_length=5, max_length=100, pattern=EMAIL_REGEX)
+    purpose: Literal["registration", "reset"] = Field(default="registration")
+
+class GoogleAuthRequest(BaseModel):
+    id_token: str = Field(..., min_length=10, max_length=5000)
+
+# --- Helper Functions ---
+
+def generate_otp() -> str:
+    """Generate a secure 6-digit numerical OTP."""
+    return "".join(secrets.choice("0123456789") for _ in range(6))
+
+# --- Endpoints ---
+
+@router.post("/register")
+async def register(payload: RegisterRequest, request: Request, background_tasks: BackgroundTasks):
+    users_col = db["users"]
+    username_clean = payload.username.strip()
+    email_clean = payload.email.strip().lower()
+
+    # Enforce OTP rate limiting (max 3 OTPs per email/IP per 15 minutes)
+    client_ip = request.client.host if request.client else "unknown"
+    otp_limiter.check_rate_limit(ip=client_ip, username=email_clean)
+
+    # Check if email is already registered
+    existing_user = users_col.find_one({"email": email_clean})
+    if existing_user:
+        if existing_user.get("is_verified", False):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="An account with this email address already exists. Please sign in."
+            )
+        # Account was created previously but never verified: update credentials & reissue single fresh OTP
+        user_id = existing_user["_id"]
+        users_col.update_one(
+            {"_id": user_id},
+            {"$set": {
+                "username": username_clean,
+                "hashed_password": hash_password(payload.password),
+                "created_at": datetime.utcnow()
+            }}
+        )
+    else:
+        # Username bloom filter check for new user
+        if username_bloom_filter.might_exist(username_clean):
+            if users_col.find_one({"username": username_clean}):
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="Username already exists. Please choose another username."
+                )
+
+        user_doc = {
+            "username": username_clean,
+            "email": email_clean,
+            "hashed_password": hash_password(payload.password),
+            "role": "user",
+            "is_active": True,
+            "is_verified": False,
+            "created_at": datetime.utcnow()
+        }
+        result = users_col.insert_one(user_doc)
+        user_id = result.inserted_id
+        username_bloom_filter.add(username_clean)
+
+    # Invalidate all previous unused OTPs for this user
+    db["email_verifications"].update_many(
+        {"user_id": {"$in": [user_id, str(user_id)]}, "used": False},
+        {"$set": {"used": True}}
+    )
+
+    # Generate single fresh OTP (15 min expiry)
+    otp = generate_otp()
+    otp_hash = hash_password(otp)
+    otp_expiry = datetime.utcnow() + timedelta(minutes=15)
+    
+    db["email_verifications"].insert_one({
+        "user_id": user_id,
+        "otp_hash": otp_hash,
+        "expires_at": otp_expiry,
+        "used": False,
+        "created_at": datetime.utcnow()
+    })
+    
+    # Send EXACTLY ONE registration OTP in background task
+    background_tasks.add_task(send_otp_email, email_clean, username_clean, otp, "registration")
+    
+    return {
+        "status": "success",
+        "message": "User registered successfully. Please verify your email with the OTP sent.",
+        "email": email_clean
+    }
+
+@router.post("/verify-otp")
+async def verify_otp(payload: VerifyOTPRequest, request: Request):
+    users_col = db["users"]
+    email_clean = payload.email.strip().lower()
+    otp_clean = payload.otp.strip().replace(" ", "").replace("-", "")
+
+    # ── Lockout guard: check *before* any DB work ─────────────────────────────
+    otp_failure_lockout.check_locked(email_clean)
+
+    user = users_col.find_one({"email": email_clean})
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found"
+        )
+        
+    if user.get("is_verified"):
+        return {"status": "success", "message": "Email is already verified"}
+
+    verifications_col = db["email_verifications"]
+    verification = verifications_col.find_one(
+        {"user_id": {"$in": [user["_id"], str(user["_id"])]}, "used": False},
+        sort=[("created_at", -1)]
+    )
+    
+    if not verification:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="No pending verification request found. Please request a new OTP."
+        )
+
+    if verification.get("expires_at") and datetime.utcnow() > verification["expires_at"]:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="OTP code has expired. Please click 'Resend OTP' to receive a new code."
+        )
+
+    if not verify_password(otp_clean, verification["otp_hash"]):
+        # Record this failure; locks the account automatically after max_failures.
+        otp_failure_lockout.record_failure(email_clean)
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid OTP code. Please check your email for the 6-digit verification code."
+        )
+
+    # ── OTP correct: clear the failure counter and mark verified ─────────────
+    otp_failure_lockout.reset(email_clean)
+        
+    # Mark user as verified
+    users_col.update_one(
+        {"_id": user["_id"]},
+        {"$set": {"is_verified": True}}
+    )
+    
+    # Invalidate all verification records for this user
+    verifications_col.update_many(
+        {"user_id": {"$in": [user["_id"], str(user["_id"])]}},
+        {"$set": {"used": True}}
+    )
+    
+    return {"status": "success", "message": "Email verified successfully. You can now log in."}
+
+
+OTP_RESEND_COOLDOWN_SECONDS = 15  # Cooldown between consecutive resends to prevent rapid button mashing
+
+@router.post("/resend-otp")
+async def resend_otp(payload: ResendOTPRequest, request: Request, background_tasks: BackgroundTasks):
+    """Resend OTP for registration verification or password reset."""
+    client_ip = request.client.host if request.client else "unknown"
+    email_clean = payload.email.strip().lower()
+
+    # Enforce OTP rate limiting (max 3 OTPs per email/IP per 15 minutes)
+    otp_limiter.check_rate_limit(ip=client_ip, username=email_clean)
+
+    users_col = db["users"]
+    user = users_col.find_one({"email": email_clean})
+
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No account found with that email address."
+        )
+
+    now = datetime.utcnow()
+
+    if payload.purpose == "registration":
+        if user.get("is_verified"):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Account is already verified. Please sign in."
+            )
+        col = db["email_verifications"]
+        email_purpose = "registration"
+    elif payload.purpose == "reset":
+        col = db["password_resets"]
+        email_purpose = "forgot password"
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid purpose. Must be 'registration' or 'reset'."
+        )
+
+    # Check cooldown: find most recent OTP for this user (used or not)
+    last_doc = col.find_one(
+        {"user_id": user["_id"]},
+        sort=[("created_at", -1)]
+    )
+
+    if last_doc:
+        elapsed = (now - last_doc["created_at"]).total_seconds()
+        if elapsed < OTP_RESEND_COOLDOWN_SECONDS:
+            wait_seconds = int(OTP_RESEND_COOLDOWN_SECONDS - elapsed)
+            next_allowed_at = last_doc["created_at"] + timedelta(seconds=OTP_RESEND_COOLDOWN_SECONDS)
+            raise HTTPException(
+                status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+                detail=f"Please wait {wait_seconds} second(s) before requesting another OTP.",
+                headers={"X-Next-Allowed-At": next_allowed_at.isoformat()}
+            )
+
+    # Invalidate all old unused OTPs for this user
+    col.update_many(
+        {"user_id": {"$in": [user["_id"], str(user["_id"])]}, "used": False},
+        {"$set": {"used": True}}
+    )
+
+    # Generate fresh OTP (15 min expiry)
+    otp = generate_otp()
+    otp_hash = hash_password(otp)
+    otp_expiry = now + timedelta(minutes=15)
+
+    col.insert_one({
+        "user_id": user["_id"],
+        "otp_hash": otp_hash,
+        "expires_at": otp_expiry,
+        "used": False,
+        "created_at": now
+    })
+
+    # Clear any existing OTP failure lockout — the user is now receiving a fresh
+    # code, so previous failed attempts no longer apply.
+    otp_failure_lockout.reset(email_clean)
+
+    background_tasks.add_task(send_otp_email, user["email"], user["username"], otp, email_purpose)
+
+    next_allowed_at = now + timedelta(seconds=OTP_RESEND_COOLDOWN_SECONDS)
+    return {
+        "status": "success",
+        "message": "A new OTP has been sent to your email.",
+        "next_allowed_at": next_allowed_at.isoformat()
+    }
+
+
+@router.post("/login")
+async def login(payload: LoginRequest, request: Request):
+    # Apply Rate limiting (max 5 requests per minute based on IP + Email)
+    client_ip = request.client.host if request.client else "unknown"
+    login_limiter.check_rate_limit(ip=client_ip, username=payload.email.strip().lower())
+
+    users_col = db["users"]
+    user = users_col.find_one({"email": payload.email.strip().lower()})
+    
+    if not user or not verify_password(payload.password, user.get("hashed_password", "")):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password"
+        )
+        
+    if not user.get("is_verified", False):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Account is not verified. Please verify your email first.",
+            headers={"X-Account-Email": user["email"]}
+        )
+        
+    # Generate JWT Session Token (still using username for the sub claim as it's uniquely identifying)
+    access_token = create_access_token(data={"sub": user["username"]})
+    
+    from app.utils.session_tracker import active_session_tracker
+    active_session_tracker.record_activity(
+        user_id_or_email=user["email"],
+        username=user["username"],
+        role="user",
+    )
+
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": {
+            "username": user["username"],
+            "email": user["email"],
+            "created_at": user.get("created_at")
+        }
+    }
+
+@router.post("/forgot-password")
+async def forgot_password(payload: ForgotPasswordRequest, request: Request, background_tasks: BackgroundTasks):
+    users_col = db["users"]
+    email_clean = payload.email.strip().lower()
+    user = users_col.find_one({"email": email_clean})
+    
+    if not user:
+        # Standard security: return success without leaking user existence
+        return {
+            "status": "success",
+            "message": "If the email is registered, a password reset code has been sent."
+        }
+        
+    # Enforce OTP rate limiting (max 3 OTPs per email/IP per 15 minutes)
+    client_ip = request.client.host if request.client else "unknown"
+    otp_limiter.check_rate_limit(ip=client_ip, username=email_clean)
+        
+    # Invalidate previous unused resets
+    db["password_resets"].update_many(
+        {"user_id": {"$in": [user["_id"], str(user["_id"])]}, "used": False},
+        {"$set": {"used": True}}
+    )
+
+    otp = generate_otp()
+    otp_hash = hash_password(otp)
+    otp_expiry = datetime.utcnow() + timedelta(minutes=15)
+    
+    db["password_resets"].insert_one({
+        "user_id": user["_id"],
+        "otp_hash": otp_hash,
+        "expires_at": otp_expiry,
+        "used": False,
+        "created_at": datetime.utcnow()
+    })
+    
+    background_tasks.add_task(send_otp_email, user["email"], user["username"], otp, "forgot password")
+    
+    return {
+        "status": "success",
+        "message": "If the email is registered, a password reset code has been sent."
+    }
+
+@router.post("/reset-password")
+async def reset_password(payload: ResetPasswordRequest):
+    users_col = db["users"]
+    email_clean = payload.email.strip().lower()
+    otp_clean = payload.otp.strip().replace(" ", "").replace("-", "")
+
+    # ── Lockout guard ─────────────────────────────────────────────────────────
+    otp_failure_lockout.check_locked(email_clean)
+
+    user = users_col.find_one({"email": email_clean})
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User with specified email not found"
+        )
+        
+    resets_col = db["password_resets"]
+    reset_doc = resets_col.find_one(
+        {"user_id": {"$in": [user["_id"], str(user["_id"])]}, "used": False},
+        sort=[("created_at", -1)]
+    )
+    
+    if not reset_doc:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="No pending password reset request found. Please request a new code."
+        )
+
+    if reset_doc.get("expires_at") and datetime.utcnow() > reset_doc["expires_at"]:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password reset code has expired. Please request a new code."
+        )
+
+    if not verify_password(otp_clean, reset_doc["otp_hash"]):
+        # Record failure; auto-locks after max_failures consecutive wrong attempts.
+        otp_failure_lockout.record_failure(email_clean)
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid OTP code. Please enter the 6-digit code from your email."
+        )
+
+    # ── OTP correct: clear failure counter before changing password ───────────
+    otp_failure_lockout.reset(email_clean)
+        
+    # Reset password
+    hashed = hash_password(payload.password)
+    users_col.update_one(
+        {"_id": user["_id"]},
+        {"$set": {"hashed_password": hashed}}
+    )
+    
+    # Mark all resets for this user as used
+    resets_col.update_many(
+        {"user_id": {"$in": [user["_id"], str(user["_id"])]}},
+        {"$set": {"used": True}}
+    )
+    
+    return {
+        "status": "success",
+        "message": "Password reset successfully. You can now log in with your new password."
+    }
+
+@router.get("/me")
+async def get_me(current_user: dict = Depends(get_current_user)):
+    return {
+        "username": current_user["username"],
+        "email": current_user["email"],
+        "created_at": current_user.get("created_at")
+    }
+
+class LogoutRequest(BaseModel):
+    email: str | None = None
+    username: str | None = None
+
+@router.post("/logout")
+async def logout(
+    request: Request,
+    payload: LogoutRequest | None = None,
+):
+    """End an active user or admin session immediately."""
+    from app.utils.session_tracker import active_session_tracker
+    removed = []
+
+    # 1. Check if Authorization header is provided
+    auth_header = request.headers.get("Authorization")
+    if auth_header and auth_header.startswith("Bearer "):
+        token = auth_header.split(" ", 1)[1]
+        try:
+            from jose import jwt
+            payload_data = jwt.decode(token, settings.secret_key, algorithms=[settings.algorithm])
+            sub = payload_data.get("sub")
+            if sub:
+                active_session_tracker.remove_session(sub)
+                removed.append(sub)
+        except Exception:
+            pass
+
+    # 2. Check if email/username is sent in payload
+    if payload:
+        if payload.email:
+            active_session_tracker.remove_session(payload.email)
+            removed.append(payload.email)
+        if payload.username:
+            active_session_tracker.remove_session(payload.username)
+            removed.append(payload.username)
+
+    return {
+        "status": "success",
+        "message": "Session terminated successfully.",
+        "removed": removed,
+    }
+
+@router.post("/change-password")
+async def change_password(payload: ChangePasswordRequest, current_user: dict = Depends(get_current_user)):
+    users_col = db["users"]
+    
+    if not verify_password(payload.current_password, current_user.get("hashed_password", "")):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Incorrect current password"
+        )
+        
+    hashed = hash_password(payload.new_password)
+    users_col.update_one(
+        {"username": current_user["username"]},
+        {"$set": {"hashed_password": hashed}}
+    )
+    
+    return {"status": "success", "message": "Password changed successfully"}
+
+
+@router.post("/google")
+async def google_auth(payload: GoogleAuthRequest):
+    """
+    Authenticate a user via Google OAuth.
+
+    Flow:
+      1. Frontend obtains a Firebase ID token after Google popup sign-in.
+      2. This endpoint verifies that token server-side with Firebase Admin SDK.
+      3. Looks up the user in MongoDB by firebase_uid.
+         - Found  → existing user, issue new session JWT.
+         - Missing → create a new user document (Google-only account) and issue JWT.
+      4. Returns the same shape as /login so the frontend can reuse the same handler.
+    """
+    # ── Verify the Firebase ID token ─────────────────────────────────────────
+    try:
+        firebase_user = verify_firebase_token(payload.id_token)
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=str(exc)
+        )
+
+    uid = firebase_user["uid"]
+    email = firebase_user["email"].strip().lower()
+    name = firebase_user.get("name") or email.split("@")[0]  # fallback display name
+
+    if not email:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Google account does not have a verified email address."
+        )
+
+    users_col = db["users"]
+
+    # ── Try to find existing user by firebase_uid (fastest path) ─────────────
+    user = users_col.find_one({"firebase_uid": uid})
+
+    if not user:
+        # ── Also try by email in case they registered before with email/password
+        user = users_col.find_one({"email": email})
+        if user:
+            # Merge: link their existing account to the Google provider
+            users_col.update_one(
+                {"_id": user["_id"]},
+                {
+                    "$set": {"firebase_uid": uid, "is_verified": True},
+                    "$addToSet": {"providers": "google"}
+                }
+            )
+            user = users_col.find_one({"_id": user["_id"]})
+        else:
+            # ── Brand-new Google-only user ────────────────────────────────────
+            # Build a unique username from their display name
+            base_username = name.replace(" ", "").lower()[:30] or "user"
+            username = base_username
+            suffix = 1
+            while users_col.find_one({"username": username}):
+                username = f"{base_username}{suffix}"
+                suffix += 1
+
+            user_doc = {
+                "username": username,
+                "email": email,
+                "hashed_password": None,          # Google-only: no password
+                "firebase_uid": uid,
+                "providers": ["google"],
+                "is_verified": True,              # Google already verified the email
+                "is_active": True,
+                "role": "user",
+                "created_at": datetime.utcnow(),
+            }
+            result = users_col.insert_one(user_doc)
+            user_doc["_id"] = result.inserted_id
+            username_bloom_filter.add(username)
+            user = user_doc
+
+    # ── Issue application JWT ─────────────────────────────────────────────────
+    access_token = create_access_token(data={"sub": user["username"]})
+
+    from app.utils.session_tracker import active_session_tracker
+    active_session_tracker.record_activity(
+        user_id_or_email=user["email"],
+        username=user["username"],
+        role="user",
+    )
+
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": {
+            "username": user["username"],
+            "email": user["email"],
+            "created_at": user.get("created_at"),
+        },
+    }

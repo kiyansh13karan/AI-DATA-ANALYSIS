@@ -1,0 +1,76 @@
+"""Application configuration loaded from environment variables."""
+from __future__ import annotations
+
+import os
+from dataclasses import dataclass, field
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Resolve backend root (one level up from this app directory)
+_BACKEND_ROOT = Path(__file__).resolve().parent.parent
+
+
+@dataclass
+class Settings:
+    app_env: str = os.getenv("APP_ENV", "development")
+    groq_api_key: str = os.getenv("GROQ_API_KEY", "")
+    groq_model: str = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+    max_upload_mb: int = int(os.getenv("MAX_UPLOAD_MB", "200"))
+    # Resolve upload_dir; if it's absolute (like /tmp), use it directly, otherwise make it relative to backend root
+    upload_dir: str = field(
+        default_factory=lambda: str(
+            Path(os.getenv("UPLOAD_DIR", "uploads")).resolve() if Path(os.getenv("UPLOAD_DIR", "uploads")).is_absolute() 
+            else (_BACKEND_ROOT / os.getenv("UPLOAD_DIR", "uploads").lstrip("./")).resolve()
+        )
+    )
+    cors_origins: list[str] = field(
+        default_factory=lambda: [
+            origin.strip().rstrip("/")
+            for origin in os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000").split(",")
+            if origin.strip()
+        ]
+    )
+    allowed_extensions: tuple[str, ...] = (".csv", ".xlsx", ".xls", ".db", ".sqlite", ".sql")
+
+    # DuckDB Lifecycle & Eviction Config
+    duckdb_idle_timeout_seconds: int = int(os.getenv("DUCKDB_IDLE_TIMEOUT_SECONDS", "7200"))
+    duckdb_cleanup_interval_seconds: int = int(os.getenv("DUCKDB_CLEANUP_INTERVAL_SECONDS", "300"))
+    duckdb_max_connections: int = int(os.getenv("DUCKDB_MAX_CONNECTIONS", "50"))
+
+    # MongoDB Config
+    mongodb_uri: str = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
+    database_name: str = os.getenv("DATABASE_NAME", "Ai-data-analyst")
+    mongodb_required: bool = os.getenv("MONGODB_REQUIRED", "false").lower() == "true"
+
+    # JWT Config
+    secret_key: str = os.getenv("SECRET_KEY", "your-secret-key")
+    algorithm: str = os.getenv("ALGORITHM", "HS256")
+    access_token_expire_minutes: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "10080"))
+
+    # Mail Config (SMTP)
+    mail_username: str = os.getenv("MAIL_USERNAME", "")
+    mail_password: str = os.getenv("MAIL_PASSWORD", "")
+    mail_from: str = os.getenv("MAIL_FROM", "")
+    mail_port: int = int(os.getenv("MAIL_PORT", "587"))
+    mail_server: str = os.getenv("MAIL_SERVER", "smtp.gmail.com")
+    mail_starttls: bool = os.getenv("MAIL_STARTTLS", "True").lower() == "true"
+    mail_ssl_tls: bool = os.getenv("MAIL_SSL_TLS", "False").lower() == "true"
+
+    # Cloud Email API Keys (HTTP REST over port 443 - bypasses Render/AWS/ISP SMTP port blocking)
+    resend_api_key: str = os.getenv("RESEND_API_KEY", "")
+    brevo_api_key: str = os.getenv("BREVO_API_KEY", "")
+
+    # Firebase Admin SDK (for verifying Google OAuth ID tokens)
+    firebase_project_id: str = os.getenv("FIREBASE_PROJECT_ID", "")
+    firebase_client_email: str = os.getenv("FIREBASE_CLIENT_EMAIL", "")
+    firebase_private_key: str = os.getenv("FIREBASE_PRIVATE_KEY", "").replace("\\n", "\n")
+
+    # Demo Admin Account (credentials configurable via .env — never hardcoded)
+    demo_admin_email: str = os.getenv("DEMO_ADMIN_EMAIL", "admin@demo.com")
+    demo_admin_password: str = os.getenv("DEMO_ADMIN_PASSWORD", "")
+
+
+settings = Settings()
