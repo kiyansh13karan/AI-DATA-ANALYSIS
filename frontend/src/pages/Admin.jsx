@@ -345,15 +345,15 @@ export default function Admin() {
     const chartHeight = 220;
 
     return (
-      <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 rounded-2xl p-6 shadow-sm">
+      <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] rounded-2xl p-6 shadow-sm">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h3 className="text-base font-bold tracking-tight">Groq API Calls Per Day</h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Recorded in MongoDB <code className="text-blue-600 dark:text-blue-400 font-mono">groq_usage</code> collection
+            <h3 className="text-base font-bold tracking-tight text-[#0F172A] dark:text-[#F2F4F7]">Groq API Calls Per Day</h3>
+            <p className="text-xs text-[#64748B] dark:text-[#7B8794]">
+              Recorded in MongoDB <code className="text-[#D97706] dark:text-[#F7D154] font-mono">groq_usage</code> collection
             </p>
           </div>
-          <span className="text-xs font-semibold px-3 py-1 bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-full border border-cyan-200 dark:border-cyan-500/20">
+          <span className="text-xs font-semibold px-3 py-1 bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] rounded-full border border-[#D97706]/20 dark:border-[#F7D154]/20">
             Daily Aggregated
           </span>
         </div>
@@ -368,8 +368,8 @@ export default function Admin() {
                 const val = Math.round(ratio * maxCalls);
                 return (
                   <g key={i}>
-                    <line x1="35" y1={y} x2="100%" y2={y} stroke="currentColor" className="text-slate-100 dark:text-white/5" strokeDasharray="4 4" />
-                    <text x="5" y={y + 4} className="fill-slate-400 text-[10px] font-mono">{val}</text>
+                    <line x1="35" y1={y} x2="100%" y2={y} stroke="currentColor" className="text-[#E2E8F0] dark:text-[#1B232C]" strokeDasharray="4 4" />
+                    <text x="5" y={y + 4} className="fill-[#64748B] dark:fill-[#7B8794] text-[10px] font-mono">{val}</text>
                   </g>
                 );
               })}
@@ -391,23 +391,23 @@ export default function Admin() {
                       width={barWidth + 8}
                       height={barHeight + 8}
                       rx="8"
-                      className="fill-blue-500/0 group-hover:fill-blue-500/10 transition-colors"
+                      className="fill-[#D97706]/0 group-hover:fill-[#D97706]/10 dark:group-hover:fill-[#F7D154]/10 transition-colors"
                     />
-                    {/* Main Gradient Bar */}
+                    {/* Main Bar */}
                     <rect
                       x={x}
                       y={y}
                       width={barWidth}
                       height={barHeight}
                       rx="6"
-                      className="fill-gradient-to-t fill-blue-600 dark:fill-blue-500 group-hover:fill-cyan-400 transition-all duration-300"
+                      className="fill-[#D97706] dark:fill-[#F7D154] group-hover:opacity-80 transition-all duration-300"
                     />
                     {/* Value Badge on bar */}
                     <text
                       x={x + barWidth / 2}
                       y={y - 8}
                       textAnchor="middle"
-                      className="fill-slate-700 dark:fill-slate-200 text-[11px] font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="fill-[#0F172A] dark:fill-[#F2F4F7] text-[11px] font-bold opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       {r.total_calls} calls
                     </text>
@@ -416,7 +416,7 @@ export default function Admin() {
                       x={x + barWidth / 2}
                       y={chartHeight - 10}
                       textAnchor="middle"
-                      className="fill-slate-500 dark:fill-slate-400 text-[10px] font-mono"
+                      className="fill-[#64748B] dark:fill-[#7B8794] text-[10px] font-mono"
                     >
                       {r.date.slice(5)}
                     </text>
@@ -431,26 +431,26 @@ export default function Admin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f5f0] dark:bg-[#000000] text-stone-900 dark:text-white font-sans transition-colors duration-300 pb-16">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B0F14] text-[#0F172A] dark:text-[#F2F4F7] font-sans transition-colors duration-300 pb-16">
       
       {/* Top Admin Navbar */}
-      <header className="sticky top-0 z-30 bg-[#fcfaf5]/45 dark:bg-[#161618]/45 backdrop-blur-xl border-b border-stone-200/50 dark:border-white/10 px-3.5 sm:px-6 py-3 sm:py-4">
+      <header className="sticky top-0 z-30 bg-[#FFFFFF]/90 dark:bg-[#10171F]/90 backdrop-blur-xl border-b border-[#E2E8F0] dark:border-[#1B232C] px-3.5 sm:px-6 py-3 sm:py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-600 flex items-center justify-center shadow-md shadow-blue-500/20 shrink-0">
-              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#D97706] dark:bg-[#F7D154] flex items-center justify-center shadow-sm shrink-0">
+              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-white dark:text-[#0B0F14]" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center space-x-1.5 sm:space-x-2">
-                <h1 className="font-bold text-base sm:text-lg tracking-tight bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] bg-clip-text text-transparent truncate">
+                <h1 className="font-bold text-base sm:text-lg tracking-tight text-[#0F172A] dark:text-[#F2F4F7] truncate">
                   Admin Portal
                 </h1>
-                <span className="hidden sm:inline-block text-[10px] bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-bold px-2 py-0.5 rounded-full uppercase shrink-0">
+                <span className="hidden sm:inline-block text-[10px] bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] border border-[#D97706]/20 dark:border-[#F7D154]/20 font-bold px-2 py-0.5 rounded-full uppercase shrink-0">
                   Control Center
                 </span>
               </div>
-              <p className="hidden xs:block text-xs text-slate-500 dark:text-slate-400 truncate">
-                Logged in as <span className="font-medium text-slate-800 dark:text-slate-200">{adminUser?.email || "Admin"}</span>
+              <p className="hidden xs:block text-xs text-[#64748B] dark:text-[#7B8794] truncate">
+                Logged in as <span className="font-medium text-[#0F172A] dark:text-[#F2F4F7]">{adminUser?.email || "Admin"}</span>
               </p>
             </div>
           </div>
@@ -459,7 +459,7 @@ export default function Admin() {
             <ThemeToggle />
             <Link
               to="/app"
-              className="p-2 sm:px-3.5 sm:py-2 rounded-xl border border-stone-200/80 dark:border-white/10 hover:bg-[#f3ede3] dark:hover:bg-white/5 text-xs font-medium flex items-center space-x-1.5 transition"
+              className="p-2 sm:px-3.5 sm:py-2 rounded-xl border border-[#E2E8F0] dark:border-[#1F2630] bg-[#FFFFFF] dark:bg-[#10171F] hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] text-xs font-semibold text-[#0F172A] dark:text-[#F2F4F7] flex items-center space-x-1.5 transition"
               title="Go to App"
             >
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -467,7 +467,7 @@ export default function Admin() {
             </Link>
             <button
               onClick={handleLogout}
-              className="p-2 sm:px-3.5 sm:py-2 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-xs font-semibold flex items-center space-x-1.5 transition border border-rose-200 dark:border-rose-800/40"
+              className="p-2 sm:px-3.5 sm:py-2 rounded-xl bg-[#EF4444]/10 dark:bg-[#E5484D]/10 text-[#EF4444] dark:text-[#E5484D] hover:bg-[#EF4444]/20 dark:hover:bg-[#E5484D]/20 text-xs font-semibold flex items-center space-x-1.5 transition border border-[#EF4444]/20 dark:border-[#E5484D]/20 cursor-pointer"
               title="Logout"
             >
               <LogOut className="w-3.5 h-3.5" />
@@ -481,13 +481,13 @@ export default function Admin() {
       <main className="max-w-7xl mx-auto px-6 pt-8">
         
         {/* Navigation Tabs */}
-        <div className="flex items-center space-x-2 border-b border-slate-200 dark:border-white/10 mb-8 overflow-x-auto pb-2">
+        <div className="flex items-center space-x-2 border-b border-[#E2E8F0] dark:border-[#1B232C] mb-8 overflow-x-auto pb-2">
           <button
             onClick={() => setActiveTab("groq")}
-            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-medium text-xs transition-all whitespace-nowrap ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all whitespace-nowrap cursor-pointer ${
               activeTab === "groq"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-white/5"
+                ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#F1F5F9] dark:hover:bg-[#10171F]"
             }`}
           >
             <BarChart3 className="w-4 h-4" />
@@ -496,22 +496,22 @@ export default function Admin() {
 
           <button
             onClick={() => setActiveTab("admins")}
-            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-medium text-xs transition-all whitespace-nowrap ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all whitespace-nowrap cursor-pointer ${
               activeTab === "admins"
-                ? "bg-cyan-600 text-white shadow-md shadow-cyan-500/20"
-                : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-white/5"
+                ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#F1F5F9] dark:hover:bg-[#10171F]"
             }`}
           >
-            <ShieldCheck className="w-4 h-4 text-cyan-200" />
+            <ShieldCheck className="w-4 h-4" />
             <span>Admin Management</span>
           </button>
 
           <button
             onClick={() => setActiveTab("users")}
-            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-medium text-xs transition-all whitespace-nowrap ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all whitespace-nowrap cursor-pointer ${
               activeTab === "users"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-white/5"
+                ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#F1F5F9] dark:hover:bg-[#10171F]"
             }`}
           >
             <Users className="w-4 h-4" />
@@ -520,10 +520,10 @@ export default function Admin() {
 
           <button
             onClick={() => setActiveTab("health")}
-            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-medium text-xs transition-all whitespace-nowrap ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all whitespace-nowrap cursor-pointer ${
               activeTab === "health"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-white/5"
+                ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#F1F5F9] dark:hover:bg-[#10171F]"
             }`}
           >
             <Activity className="w-4 h-4" />
@@ -532,10 +532,10 @@ export default function Admin() {
 
           <button
             onClick={() => setActiveTab("logs")}
-            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-medium text-xs transition-all whitespace-nowrap ${
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all whitespace-nowrap cursor-pointer ${
               activeTab === "logs"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-white/5"
+                ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#F1F5F9] dark:hover:bg-[#10171F]"
             }`}
           >
             <Terminal className="w-4 h-4" />
@@ -552,117 +552,117 @@ export default function Admin() {
               <StatCardSkeletonGrid count={4} />
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+                <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">
                       Total API Calls
                     </span>
-                    <Sparkles className="w-4 h-4 text-blue-500" />
+                    <Sparkles className="w-4 h-4 text-[#D97706] dark:text-[#F7D154]" />
                   </div>
-                  <div className="text-2xl font-black tracking-tight">
+                  <div className="text-2xl font-black tracking-tight text-[#0F172A] dark:text-[#F2F4F7]">
                     {groqData?.summary?.total_calls_all_time || 0}
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1">All-time Groq LLM requests</p>
+                  <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-1">All-time Groq LLM requests</p>
                 </div>
 
-                <div className="bg-emerald-50/40 dark:bg-emerald-950/20 border border-emerald-200/80 dark:border-emerald-900/40 p-5 rounded-2xl shadow-sm">
+                <div className="bg-[#10B981]/10 dark:bg-[#3CCB7F]/10 border border-[#10B981]/20 dark:border-[#3CCB7F]/20 p-5 rounded-2xl shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-[#10B981] dark:text-[#3CCB7F] uppercase tracking-wider">
                       Today's Calls
                     </span>
-                    <Clock className="w-4 h-4 text-emerald-500" />
+                    <Clock className="w-4 h-4 text-[#10B981] dark:text-[#3CCB7F]" />
                   </div>
-                  <div className="text-3xl font-black tracking-tight text-emerald-600 dark:text-emerald-400">
+                  <div className="text-3xl font-black tracking-tight text-[#10B981] dark:text-[#3CCB7F]">
                     {groqData?.summary?.today_calls ?? 0}
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1">Groq LLM calls executed today</p>
+                  <p className="text-[11px] text-[#10B981]/80 dark:text-[#3CCB7F]/80 mt-1">Groq LLM calls executed today</p>
                 </div>
 
-                <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+                <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">
                       Estimated Tokens
                     </span>
-                    <Cpu className="w-4 h-4 text-sky-500" />
+                    <Cpu className="w-4 h-4 text-[#D97706] dark:text-[#F7D154]" />
                   </div>
-                  <div className="text-2xl font-black tracking-tight">
+                  <div className="text-2xl font-black tracking-tight text-[#0F172A] dark:text-[#F2F4F7]">
                     {(groqData?.summary?.total_tokens_all_time || 0).toLocaleString()}
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1">Tokens processed across requests</p>
+                  <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-1">Tokens processed across requests</p>
                 </div>
 
-                <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+                <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">
                       Tracked Days
                     </span>
-                    <Database className="w-4 h-4 text-cyan-500" />
+                    <Database className="w-4 h-4 text-[#D97706] dark:text-[#F7D154]" />
                   </div>
-                  <div className="text-2xl font-black tracking-tight">
+                  <div className="text-2xl font-black tracking-tight text-[#0F172A] dark:text-[#F2F4F7]">
                     {groqData?.summary?.recorded_days || 0}
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1">Days logged in MongoDB collection</p>
+                  <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-1">Days logged in MongoDB collection</p>
                 </div>
               </div>
             )}
 
             {/* Groq API Usage Date Filter Control Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-4 rounded-2xl shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-4 rounded-2xl shadow-sm">
               <div className="flex items-center space-x-2">
-                <Calendar className="w-4 h-4 text-blue-500" />
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                <Calendar className="w-4 h-4 text-[#D97706] dark:text-[#F7D154]" />
+                <span className="text-xs font-bold text-[#0F172A] dark:text-[#F2F4F7] uppercase tracking-wider">
                   Filter Usage By Date
                 </span>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <div className="flex items-center space-x-1 p-1 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl text-xs font-semibold">
+                <div className="flex items-center space-x-1 p-1 bg-[#F1F5F9] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] rounded-xl text-xs font-semibold">
                   <button
                     onClick={() => handleGroqPresetRange("all")}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-lg transition font-bold cursor-pointer ${
                       groqRangeMode === "all"
-                        ? "bg-blue-600 text-white shadow-sm"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10"
+                        ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                        : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#FFFFFF] dark:hover:bg-[#10171F]"
                     }`}
                   >
                     All Time
                   </button>
                   <button
                     onClick={() => handleGroqPresetRange("today")}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-lg transition font-bold cursor-pointer ${
                       groqRangeMode === "today"
-                        ? "bg-blue-600 text-white shadow-sm"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10"
+                        ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                        : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#FFFFFF] dark:hover:bg-[#10171F]"
                     }`}
                   >
                     Today
                   </button>
                   <button
                     onClick={() => handleGroqPresetRange("7days")}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-lg transition font-bold cursor-pointer ${
                       groqRangeMode === "7days"
-                        ? "bg-blue-600 text-white shadow-sm"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10"
+                        ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                        : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#FFFFFF] dark:hover:bg-[#10171F]"
                     }`}
                   >
                     Last 7 Days
                   </button>
                   <button
                     onClick={() => handleGroqPresetRange("30days")}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-lg transition font-bold cursor-pointer ${
                       groqRangeMode === "30days"
-                        ? "bg-blue-600 text-white shadow-sm"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10"
+                        ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                        : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#FFFFFF] dark:hover:bg-[#10171F]"
                     }`}
                   >
                     Last 30 Days
                   </button>
                   <button
                     onClick={() => setGroqRangeMode("custom")}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-lg transition font-bold cursor-pointer ${
                       groqRangeMode === "custom"
-                        ? "bg-blue-600 text-white shadow-sm"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10"
+                        ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                        : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#FFFFFF] dark:hover:bg-[#10171F]"
                     }`}
                   >
                     Custom Date Range
@@ -675,18 +675,18 @@ export default function Admin() {
                       type="date"
                       value={groqStartDate}
                       onChange={(e) => setGroqStartDate(e.target.value)}
-                      className="px-2.5 py-1.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-medium focus:outline-none"
+                      className="px-2.5 py-1.5 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1B232C] text-xs font-medium text-[#0F172A] dark:text-[#F2F4F7] focus:outline-none"
                     />
-                    <span className="text-slate-400 font-semibold">to</span>
+                    <span className="text-[#64748B] dark:text-[#7B8794] font-semibold">to</span>
                     <input
                       type="date"
                       value={groqEndDate}
                       onChange={(e) => setGroqEndDate(e.target.value)}
-                      className="px-2.5 py-1.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-medium focus:outline-none"
+                      className="px-2.5 py-1.5 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1B232C] text-xs font-medium text-[#0F172A] dark:text-[#F2F4F7] focus:outline-none"
                     />
                     <button
                       onClick={() => fetchGroqUsage(groqStartDate, groqEndDate)}
-                      className="px-3 py-1.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition active:scale-95 shadow-sm"
+                      className="px-3 py-1.5 bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] rounded-xl font-bold transition active:scale-95 shadow-sm cursor-pointer"
                     >
                       Apply Filter
                     </button>
@@ -709,42 +709,42 @@ export default function Admin() {
           <div className="space-y-6">
             {/* Header Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="bg-cyan-50/50 dark:bg-cyan-950/20 border border-cyan-200 dark:border-cyan-900/40 p-5 rounded-2xl shadow-sm">
+              <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">
+                  <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">
                     Total Administrator Accounts
                   </span>
-                  <ShieldCheck className="w-5 h-5 text-cyan-500" />
+                  <ShieldCheck className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />
                 </div>
-                <div className="text-3xl font-black text-cyan-600 dark:text-cyan-400">
+                <div className="text-3xl font-black text-[#D97706] dark:text-[#F7D154]">
                   {pagination.admin_count || pagination.total_users || 0}
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1">Users with administrator privileges</p>
+                <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-1">Users with administrator privileges</p>
               </div>
 
-              <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+              <div className="bg-[#10B981]/10 dark:bg-[#3CCB7F]/10 border border-[#10B981]/20 dark:border-[#3CCB7F]/20 p-5 rounded-2xl shadow-sm">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Active Admin Sessions</span>
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                  <span className="text-xs font-semibold text-[#10B981] dark:text-[#3CCB7F] uppercase tracking-wider">Active Admin Sessions</span>
+                  <CheckCircle2 className="w-5 h-5 text-[#10B981] dark:text-[#3CCB7F]" />
                 </div>
-                <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400">1 Active</div>
-                <p className="text-[11px] text-slate-400 mt-1">Current logged-in admin session</p>
+                <div className="text-3xl font-black text-[#10B981] dark:text-[#3CCB7F]">1 Active</div>
+                <p className="text-[11px] text-[#10B981]/80 dark:text-[#3CCB7F]/80 mt-1">Current logged-in admin session</p>
               </div>
 
-              <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+              <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Security Access Level</span>
-                  <Sparkles className="w-5 h-5 text-sky-500" />
+                  <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">Security Access Level</span>
+                  <Sparkles className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />
                 </div>
-                <div className="text-3xl font-black text-slate-800 dark:text-slate-200">Super Admin</div>
-                <p className="text-[11px] text-slate-400 mt-1">MongoDB & DuckDB system control</p>
+                <div className="text-3xl font-black text-[#0F172A] dark:text-[#F2F4F7]">Super Admin</div>
+                <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-1">MongoDB & DuckDB system control</p>
               </div>
             </div>
 
             {/* Admin Controls & Search Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-4 rounded-2xl shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-4 rounded-2xl shadow-sm">
               <div className="relative w-full sm:w-80">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#64748B] dark:text-[#7B8794] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={userSearch}
@@ -753,28 +753,28 @@ export default function Admin() {
                     fetchUsers(1, pagination.limit, e.target.value, "admin");
                   }}
                   placeholder="Search admin username or email..."
-                  className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                  className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-[#0F172A] dark:text-[#F2F4F7] focus:outline-none focus:ring-2 focus:ring-[#D97706]/50 dark:focus:ring-[#F7D154]/50"
                 />
               </div>
 
               <div className="flex items-center space-x-3 text-xs w-full sm:w-auto justify-between sm:justify-end">
                 <button
                   onClick={() => setShowCreateModal(!showCreateModal)}
-                  className="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold rounded-xl text-xs flex items-center space-x-2 transition shadow-md shadow-cyan-500/20 active:scale-95"
+                  className="px-4 py-2 bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-bold rounded-xl text-xs flex items-center space-x-2 transition shadow-sm active:scale-95 cursor-pointer"
                 >
                   <ShieldCheck className="w-3.5 h-3.5" />
                   <span>{showCreateModal ? "Cancel" : "+ Add New Admin"}</span>
                 </button>
 
                 <div className="flex items-center space-x-2">
-                  <span className="text-slate-500 font-medium">Rows:</span>
+                  <span className="text-[#64748B] dark:text-[#7B8794] font-medium">Rows:</span>
                   <select
                     value={pagination.limit}
                     onChange={(e) => {
                       const newLimit = Number(e.target.value);
                       fetchUsers(1, newLimit, userSearch, "admin");
                     }}
-                    className="px-2.5 py-1.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold focus:outline-none"
+                    className="px-2.5 py-1.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-[#0F172A] dark:text-[#F2F4F7] text-xs font-semibold focus:outline-none cursor-pointer"
                   >
                     <option value={5}>5</option>
                     <option value={10}>10</option>
@@ -784,7 +784,7 @@ export default function Admin() {
 
                   <button
                     onClick={() => fetchUsers(pagination.page, pagination.limit, userSearch, "admin")}
-                    className="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 border border-slate-200 dark:border-white/10 transition"
+                    className="p-2 rounded-xl hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] border border-[#E2E8F0] dark:border-[#1B232C] text-[#0F172A] dark:text-[#F2F4F7] transition cursor-pointer"
                     title="Refresh Admin List"
                   >
                     <RefreshCw className={`w-3.5 h-3.5 ${loadingUsers ? "animate-spin" : ""}`} />
@@ -795,22 +795,22 @@ export default function Admin() {
 
             {/* Create Admin Form Card (Collapsible) */}
             {showCreateModal && (
-              <form onSubmit={handleCreateAdmin} className="bg-gradient-to-r from-blue-900/10 via-cyan-900/10 to-slate-900/10 dark:from-blue-950/40 dark:to-cyan-950/40 border border-cyan-500/30 p-6 rounded-2xl space-y-4 shadow-lg backdrop-blur-md">
-                <div className="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+              <form onSubmit={handleCreateAdmin} className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#D97706]/40 dark:border-[#F7D154]/40 p-6 rounded-2xl space-y-4 shadow-lg">
+                <div className="flex items-center justify-between border-b border-[#E2E8F0] dark:border-[#1B232C] pb-3">
                   <div className="flex items-center space-x-2">
-                    <ShieldCheck className="w-5 h-5 text-cyan-500" />
-                    <h4 className="font-extrabold text-sm text-cyan-900 dark:text-cyan-200">
+                    <ShieldCheck className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />
+                    <h4 className="font-extrabold text-sm text-[#0F172A] dark:text-[#F2F4F7]">
                       Assign New Administrator Account
                     </h4>
                   </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] border border-[#D97706]/20 dark:border-[#F7D154]/20">
                     Default Password Assisted
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1 uppercase tracking-wider">
+                    <label className="block text-[11px] font-bold text-[#0F172A] dark:text-[#F2F4F7] mb-1 uppercase tracking-wider">
                       Admin Email *
                     </label>
                     <input
@@ -819,12 +819,12 @@ export default function Admin() {
                       value={newAdminEmail}
                       onChange={(e) => setNewAdminEmail(e.target.value)}
                       placeholder="admin2@domain.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-xs text-[#0F172A] dark:text-[#F2F4F7] focus:outline-none focus:ring-2 focus:ring-[#D97706]/50 dark:focus:ring-[#F7D154]/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1 uppercase tracking-wider">
+                    <label className="block text-[11px] font-bold text-[#0F172A] dark:text-[#F2F4F7] mb-1 uppercase tracking-wider">
                       Admin Username (Optional)
                     </label>
                     <input
@@ -832,12 +832,12 @@ export default function Admin() {
                       value={newAdminUsername}
                       onChange={(e) => setNewAdminUsername(e.target.value)}
                       placeholder="admin_john"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-xs text-[#0F172A] dark:text-[#F2F4F7] focus:outline-none focus:ring-2 focus:ring-[#D97706]/50 dark:focus:ring-[#F7D154]/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1 uppercase tracking-wider">
+                    <label className="block text-[11px] font-bold text-[#0F172A] dark:text-[#F2F4F7] mb-1 uppercase tracking-wider">
                       Default Password *
                     </label>
                     <input
@@ -846,13 +846,13 @@ export default function Admin() {
                       value={newAdminPassword}
                       onChange={(e) => setNewAdminPassword(e.target.value)}
                       placeholder="Admin@12345"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-xs font-mono text-[#0F172A] dark:text-[#F2F4F7] focus:outline-none focus:ring-2 focus:ring-[#D97706]/50 dark:focus:ring-[#F7D154]/50"
                     />
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  <p className="text-[11px] text-[#64748B] dark:text-[#7B8794]">
                     If account exists, it will be upgraded to Admin and assigned this default password.
                   </p>
 
@@ -860,7 +860,7 @@ export default function Admin() {
                     <button
                       type="button"
                       onClick={() => setShowCreateModal(false)}
-                      className="px-4 py-2 rounded-xl text-xs font-medium text-slate-500 hover:text-slate-700 dark:hover:text-white transition"
+                      className="px-4 py-2 rounded-xl text-xs font-medium text-[#64748B] hover:text-[#0F172A] dark:text-[#7B8794] dark:hover:text-[#F2F4F7] transition cursor-pointer"
                     >
                       Cancel
                     </button>
@@ -868,10 +868,10 @@ export default function Admin() {
                     <button
                       type="submit"
                       disabled={creatingAdmin}
-                      className="px-5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs flex items-center space-x-2 shadow-md transition disabled:opacity-50"
+                      className="px-5 py-2 rounded-xl bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-bold text-xs flex items-center space-x-2 shadow-sm transition disabled:opacity-50 cursor-pointer"
                     >
                       {creatingAdmin ? (
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-4 h-4 border-2 border-white dark:border-[#0B0F14] border-t-transparent rounded-full animate-spin"></div>
                       ) : (
                         <>
                           <CheckCircle2 className="w-4 h-4" />
@@ -885,22 +885,22 @@ export default function Admin() {
             )}
 
             {/* Admin Table */}
-            <div className="bg-white dark:bg-[#161618] border border-cyan-200 dark:border-cyan-900/40 rounded-2xl overflow-hidden shadow-sm">
-              <div className="px-5 py-3.5 bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-950/40 dark:to-blue-950/40 border-b border-cyan-200/60 dark:border-cyan-800/30 flex items-center justify-between">
+            <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] rounded-2xl overflow-hidden shadow-sm">
+              <div className="px-5 py-3.5 bg-[#F8FAFC] dark:bg-[#0B0F14] border-b border-[#E2E8F0] dark:border-[#1B232C] flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <ShieldCheck className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                  <h3 className="font-bold text-xs uppercase tracking-wider text-cyan-900 dark:text-cyan-200">
+                  <ShieldCheck className="w-4 h-4 text-[#D97706] dark:text-[#F7D154]" />
+                  <h3 className="font-bold text-xs uppercase tracking-wider text-[#0F172A] dark:text-[#F2F4F7]">
                     Administrator Accounts Directory
                   </h3>
                 </div>
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-200/60 dark:bg-cyan-900/60 text-cyan-800 dark:text-cyan-200">
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] border border-[#D97706]/20 dark:border-[#F7D154]/20">
                   {pagination.total_users || 0} Admins Found
                 </span>
               </div>
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50/50 dark:bg-white/[0.01] border-b border-slate-200 dark:border-white/10 text-slate-500 font-semibold uppercase tracking-wider">
+                  <thead className="bg-[#F8FAFC] dark:bg-[#0B0F14] border-b border-[#E2E8F0] dark:border-[#1B232C] text-[#64748B] dark:text-[#7B8794] font-semibold uppercase tracking-wider">
                     <tr>
                       <th className="py-3.5 px-4">Admin User</th>
                       <th className="py-3.5 px-4">Email</th>
@@ -909,19 +909,19 @@ export default function Admin() {
                       <th className="py-3.5 px-4">Joined Date</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#1B232C]">
                     {loadingUsers ? (
                       Array.from({ length: 5 }).map((_, idx) => (
                         <tr key={idx} className="animate-pulse">
                           <td className="py-3.5 px-4 flex items-center space-x-2">
-                            <div className="w-7 h-7 rounded-full bg-cyan-500/20" />
+                            <div className="w-7 h-7 rounded-full bg-[#D97706]/20 dark:bg-[#F7D154]/20" />
                             <div className="h-3 w-24 rounded bg-stone-300/60 dark:bg-white/10" />
                           </td>
                           <td className="py-3.5 px-4">
                             <div className="h-3 w-36 rounded bg-stone-200/70 dark:bg-white/[0.07]" />
                           </td>
                           <td className="py-3.5 px-4">
-                            <div className="h-4 w-24 rounded-full bg-cyan-200/50 dark:bg-cyan-950/40" />
+                            <div className="h-4 w-24 rounded-full bg-[#D97706]/20" />
                           </td>
                           <td className="py-3.5 px-4">
                             <div className="h-4 w-20 rounded-full bg-emerald-200/50 dark:bg-emerald-950/40" />
@@ -933,29 +933,29 @@ export default function Admin() {
                       ))
                     ) : users.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="py-8 text-center text-slate-400">No administrator accounts found.</td>
+                        <td colSpan={5} className="py-8 text-center text-[#64748B] dark:text-[#7B8794]">No administrator accounts found.</td>
                       </tr>
                     ) : (
                       users.map((u) => (
-                        <tr key={u._id} className="hover:bg-cyan-50/30 dark:hover:bg-cyan-950/10 transition">
-                          <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white flex items-center space-x-2">
-                            <div className="w-7 h-7 rounded-full bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold text-xs">
+                        <tr key={u._id} className="hover:bg-[#F1F5F9]/50 dark:hover:bg-[#17212B]/50 transition">
+                          <td className="py-3.5 px-4 font-bold text-[#0F172A] dark:text-[#F2F4F7] flex items-center space-x-2">
+                            <div className="w-7 h-7 rounded-full bg-[#D97706]/20 text-[#D97706] dark:bg-[#F7D154]/20 dark:text-[#F7D154] flex items-center justify-center font-bold text-xs">
                               {u.username?.[0]?.toUpperCase() || "A"}
                             </div>
                             <span>{u.username}</span>
                           </td>
-                          <td className="py-3.5 px-4 font-mono text-slate-600 dark:text-slate-400">{u.email}</td>
+                          <td className="py-3.5 px-4 font-mono text-[#64748B] dark:text-[#7B8794]">{u.email}</td>
                           <td className="py-3.5 px-4">
-                            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-cyan-100 dark:bg-cyan-950/80 text-cyan-700 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800">
+                            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-[#D97706]/10 text-[#D97706] border border-[#D97706]/20 dark:bg-[#F7D154]/10 dark:text-[#F7D154] dark:border-[#F7D154]/20">
                               ADMINISTRATOR
                             </span>
                           </td>
                           <td className="py-3.5 px-4">
-                            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#10B981]/10 text-[#10B981] dark:bg-[#3CCB7F]/10 dark:text-[#3CCB7F]">
                               Active & Verified
                             </span>
                           </td>
-                          <td className="py-3.5 px-4 text-slate-500 font-mono text-[11px]">
+                          <td className="py-3.5 px-4 text-[#64748B] dark:text-[#7B8794] font-mono text-[11px]">
                             {u.created_at ? new Date(u.created_at).toLocaleDateString() : "N/A"}
                           </td>
                         </tr>
@@ -966,10 +966,10 @@ export default function Admin() {
               </div>
 
               {/* Server-side Pagination */}
-              <div className="flex items-center justify-between px-4 py-3 bg-slate-50/50 dark:bg-white/[0.02] border-t border-slate-200 dark:border-white/10 text-xs text-slate-500">
+              <div className="flex items-center justify-between px-4 py-3 bg-[#F8FAFC] dark:bg-[#0B0F14] border-t border-[#E2E8F0] dark:border-[#1B232C] text-xs text-[#64748B] dark:text-[#7B8794]">
                 <div>
-                  Showing page <span className="font-semibold text-slate-800 dark:text-slate-200">{pagination.page}</span> of{" "}
-                  <span className="font-semibold text-slate-800 dark:text-slate-200">{pagination.total_pages}</span> (
+                  Showing page <span className="font-semibold text-[#0F172A] dark:text-[#F2F4F7]">{pagination.page}</span> of{" "}
+                  <span className="font-semibold text-[#0F172A] dark:text-[#F2F4F7]">{pagination.total_pages}</span> (
                   <span className="font-medium">{pagination.total_users} total admins</span>)
                 </div>
 
@@ -977,14 +977,14 @@ export default function Admin() {
                   <button
                     disabled={!pagination.has_prev || loadingUsers}
                     onClick={() => fetchUsers(pagination.page - 1, pagination.limit, userSearch, "admin")}
-                    className="p-1.5 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 disabled:opacity-40 transition"
+                    className="p-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#1B232C] hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] disabled:opacity-40 transition cursor-pointer"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
                     disabled={!pagination.has_next || loadingUsers}
                     onClick={() => fetchUsers(pagination.page + 1, pagination.limit, userSearch, "admin")}
-                    className="p-1.5 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 disabled:opacity-40 transition"
+                    className="p-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#1B232C] hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] disabled:opacity-40 transition cursor-pointer"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>
@@ -1002,22 +1002,22 @@ export default function Admin() {
               <StatCardSkeletonGrid count={4} />
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-                <div className="bg-sky-50/50 dark:bg-sky-950/20 border border-sky-200 dark:border-sky-900/40 p-5 rounded-2xl shadow-sm">
+                <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">
                       Total Standard Users
                     </span>
-                    <Users className="w-5 h-5 text-sky-500" />
+                    <Users className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />
                   </div>
-                  <div className="text-3xl font-black text-sky-600 dark:text-sky-400">
+                  <div className="text-3xl font-black text-[#D97706] dark:text-[#F7D154]">
                     {pagination.standard_user_count || pagination.total_users || 0}
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1">Application end-user accounts</p>
+                  <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-1">Application end-user accounts</p>
                 </div>
 
-                <div className="bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 p-5 rounded-2xl shadow-sm">
+                <div className="bg-[#10B981]/10 dark:bg-[#3CCB7F]/10 border border-[#10B981]/20 dark:border-[#3CCB7F]/20 p-5 rounded-2xl shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-[#10B981] dark:text-[#3CCB7F] uppercase tracking-wider">
                       Active User Sessions
                     </span>
                     <div className="relative flex h-2.5 w-2.5">
@@ -1025,38 +1025,38 @@ export default function Admin() {
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                     </div>
                   </div>
-                  <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400">
+                  <div className="text-3xl font-black text-[#10B981] dark:text-[#3CCB7F]">
                     {activeSessions?.active_user_sessions ?? activeSessions?.total_active_sessions ?? 1} Active
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1">Live active user sessions</p>
+                  <p className="text-[11px] text-[#10B981]/80 dark:text-[#3CCB7F]/80 mt-1">Live active user sessions</p>
                 </div>
 
-                <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+                <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Verified Accounts</span>
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                    <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">Verified Accounts</span>
+                    <CheckCircle2 className="w-5 h-5 text-[#10B981] dark:text-[#3CCB7F]" />
                   </div>
-                  <div className="text-3xl font-black text-slate-800 dark:text-slate-200">
+                  <div className="text-3xl font-black text-[#0F172A] dark:text-[#F2F4F7]">
                     {users.filter(u => u.is_verified).length} Verified
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1">OTP verified user emails</p>
+                  <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-1">OTP verified user emails</p>
                 </div>
 
-                <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+                <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Database Isolation</span>
-                    <Database className="w-5 h-5 text-blue-500" />
+                    <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">Database Isolation</span>
+                    <Database className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />
                   </div>
-                  <div className="text-3xl font-black text-slate-800 dark:text-slate-200">MongoDB</div>
-                  <p className="text-[11px] text-slate-400 mt-1">Per-session isolated data</p>
+                  <div className="text-3xl font-black text-[#0F172A] dark:text-[#F2F4F7]">MongoDB</div>
+                  <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-1">Per-session isolated data</p>
                 </div>
               </div>
             )}
 
             {/* User Controls & Search Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-4 rounded-2xl shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-4 rounded-2xl shadow-sm">
               <div className="relative w-full sm:w-80">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#64748B] dark:text-[#7B8794] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={userSearch}
@@ -1065,19 +1065,19 @@ export default function Admin() {
                     fetchUsers(1, pagination.limit, e.target.value, "user");
                   }}
                   placeholder="Search standard user username or email..."
-                  className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500/50"
+                  className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-[#0F172A] dark:text-[#F2F4F7] focus:outline-none focus:ring-2 focus:ring-[#D97706]/50 dark:focus:ring-[#F7D154]/50"
                 />
               </div>
 
               <div className="flex items-center space-x-3 text-xs">
-                <span className="text-slate-500 font-medium">Rows per page:</span>
+                <span className="text-[#64748B] dark:text-[#7B8794] font-medium">Rows per page:</span>
                 <select
                   value={pagination.limit}
                   onChange={(e) => {
                     const newLimit = Number(e.target.value);
                     fetchUsers(1, newLimit, userSearch, "user");
                   }}
-                  className="px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold focus:outline-none"
+                  className="px-3 py-1.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-[#0F172A] dark:text-[#F2F4F7] text-xs font-semibold focus:outline-none cursor-pointer"
                 >
                   <option value={5}>5</option>
                   <option value={10}>10</option>
@@ -1087,7 +1087,7 @@ export default function Admin() {
 
                 <button
                   onClick={() => fetchUsers(pagination.page, pagination.limit, userSearch, "user")}
-                  className="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 border border-slate-200 dark:border-white/10 transition"
+                  className="p-2 rounded-xl hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] border border-[#E2E8F0] dark:border-[#1B232C] text-[#0F172A] dark:text-[#F2F4F7] transition cursor-pointer"
                   title="Refresh User List"
                 >
                   <RefreshCw className={`w-3.5 h-3.5 ${loadingUsers ? "animate-spin" : ""}`} />
@@ -1096,20 +1096,20 @@ export default function Admin() {
             </div>
 
             {/* Standard User Table */}
-            <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 rounded-2xl overflow-hidden shadow-sm">
-              <div className="px-5 py-3.5 bg-slate-50/80 dark:bg-white/[0.03] border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
+            <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] rounded-2xl overflow-hidden shadow-sm">
+              <div className="px-5 py-3.5 bg-[#F8FAFC] dark:bg-[#0B0F14] border-b border-[#E2E8F0] dark:border-[#1B232C] flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Users className="w-4 h-4 text-sky-500" />
-                  <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                  <Users className="w-4 h-4 text-[#D97706] dark:text-[#F7D154]" />
+                  <h3 className="font-bold text-xs uppercase tracking-wider text-[#0F172A] dark:text-[#F2F4F7]">
                     Standard User Accounts Directory
                   </h3>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 flex items-center space-x-1">
+                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#10B981]/10 text-[#10B981] dark:bg-[#3CCB7F]/10 dark:text-[#3CCB7F] border border-[#10B981]/20 dark:border-[#3CCB7F]/20 flex items-center space-x-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span>{activeSessions?.active_user_sessions ?? activeSessions?.total_active_sessions ?? 1} Active Now</span>
                   </span>
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300">
+                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#F1F5F9] dark:bg-[#0B0F14] text-[#64748B] dark:text-[#7B8794]">
                     {pagination.total_users || 0} Total Users
                   </span>
                 </div>
@@ -1117,7 +1117,7 @@ export default function Admin() {
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 dark:bg-white/[0.02] border-b border-slate-200 dark:border-white/10 text-slate-500 font-semibold uppercase tracking-wider">
+                  <thead className="bg-[#F8FAFC] dark:bg-[#0B0F14] border-b border-[#E2E8F0] dark:border-[#1B232C] text-[#64748B] dark:text-[#7B8794] font-semibold uppercase tracking-wider">
                     <tr>
                       <th className="py-3.5 px-4">User</th>
                       <th className="py-3.5 px-4">Email</th>
@@ -1126,12 +1126,12 @@ export default function Admin() {
                       <th className="py-3.5 px-4">Joined Date</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#1B232C]">
                     {loadingUsers ? (
                       Array.from({ length: 5 }).map((_, idx) => (
                         <tr key={idx} className="animate-pulse">
                           <td className="py-3.5 px-4 flex items-center space-x-2">
-                            <div className="w-7 h-7 rounded-full bg-sky-500/20" />
+                            <div className="w-7 h-7 rounded-full bg-[#D97706]/20 dark:bg-[#F7D154]/20" />
                             <div className="h-3 w-24 rounded bg-stone-300/60 dark:bg-white/10" />
                           </td>
                           <td className="py-3.5 px-4">
@@ -1150,33 +1150,33 @@ export default function Admin() {
                       ))
                     ) : users.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="py-8 text-center text-slate-400">No standard user accounts found.</td>
+                        <td colSpan={5} className="py-8 text-center text-[#64748B] dark:text-[#7B8794]">No standard user accounts found.</td>
                       </tr>
                     ) : (
                       users.map((u) => (
-                        <tr key={u._id} className="hover:bg-slate-50/50 dark:hover:bg-white/[0.01] transition">
-                          <td className="py-3.5 px-4 font-semibold text-slate-800 dark:text-slate-200 flex items-center space-x-2">
-                            <div className="w-7 h-7 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold text-xs">
+                        <tr key={u._id} className="hover:bg-[#F1F5F9]/50 dark:hover:bg-[#17212B]/50 transition">
+                          <td className="py-3.5 px-4 font-semibold text-[#0F172A] dark:text-[#F2F4F7] flex items-center space-x-2">
+                            <div className="w-7 h-7 rounded-full bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] flex items-center justify-center font-bold text-xs">
                               {u.username?.[0]?.toUpperCase() || "U"}
                             </div>
                             <span>{u.username}</span>
                           </td>
-                          <td className="py-3.5 px-4 font-mono text-slate-600 dark:text-slate-400">{u.email}</td>
+                          <td className="py-3.5 px-4 font-mono text-[#64748B] dark:text-[#7B8794]">{u.email}</td>
                           <td className="py-3.5 px-4">
-                            <span className="px-2 py-0.5 rounded-full text-[10px] font-medium uppercase bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300">
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-medium uppercase bg-[#F1F5F9] dark:bg-[#0B0F14] text-[#64748B] dark:text-[#7B8794]">
                               Standard User
                             </span>
                           </td>
                           <td className="py-3.5 px-4">
                             <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${
                               u.is_verified
-                                ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300"
-                                : "bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300"
+                                ? "bg-[#10B981]/10 text-[#10B981] dark:bg-[#3CCB7F]/10 dark:text-[#3CCB7F]"
+                                : "bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154]"
                             }`}>
                               {u.is_verified ? "Verified" : "Unverified"}
                             </span>
                           </td>
-                          <td className="py-3.5 px-4 text-slate-500 font-mono text-[11px]">
+                          <td className="py-3.5 px-4 text-[#64748B] dark:text-[#7B8794] font-mono text-[11px]">
                             {u.created_at ? new Date(u.created_at).toLocaleDateString() : "N/A"}
                           </td>
                         </tr>
@@ -1187,10 +1187,10 @@ export default function Admin() {
               </div>
 
               {/* Server-side Pagination */}
-              <div className="flex items-center justify-between px-4 py-3 bg-slate-50/50 dark:bg-white/[0.02] border-t border-slate-200 dark:border-white/10 text-xs text-slate-500">
+              <div className="flex items-center justify-between px-4 py-3 bg-[#F8FAFC] dark:bg-[#0B0F14] border-t border-[#E2E8F0] dark:border-[#1B232C] text-xs text-[#64748B] dark:text-[#7B8794]">
                 <div>
-                  Showing page <span className="font-semibold text-slate-800 dark:text-slate-200">{pagination.page}</span> of{" "}
-                  <span className="font-semibold text-slate-800 dark:text-slate-200">{pagination.total_pages}</span> (
+                  Showing page <span className="font-semibold text-[#0F172A] dark:text-[#F2F4F7]">{pagination.page}</span> of{" "}
+                  <span className="font-semibold text-[#0F172A] dark:text-[#F2F4F7]">{pagination.total_pages}</span> (
                   <span className="font-medium">{pagination.total_users} total users</span>)
                 </div>
 
@@ -1198,14 +1198,14 @@ export default function Admin() {
                   <button
                     disabled={!pagination.has_prev || loadingUsers}
                     onClick={() => fetchUsers(pagination.page - 1, pagination.limit, userSearch, "user")}
-                    className="p-1.5 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 disabled:opacity-40 transition"
+                    className="p-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#1B232C] hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] disabled:opacity-40 transition cursor-pointer"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
                     disabled={!pagination.has_next || loadingUsers}
                     onClick={() => fetchUsers(pagination.page + 1, pagination.limit, userSearch, "user")}
-                    className="p-1.5 rounded-lg border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 disabled:opacity-40 transition"
+                    className="p-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#1B232C] hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] disabled:opacity-40 transition cursor-pointer"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>
@@ -1215,23 +1215,23 @@ export default function Admin() {
           </div>
         )}
 
-        {/* ── TAB 3: Health Check ───────────────────────────────────────────── */}
+        {/* ── TAB 4: Health Check ───────────────────────────────────────────── */}
         {activeTab === "health" && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+            <div className="flex items-center justify-between bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
               <div className="flex items-center space-x-3">
                 <div className={`w-3 h-3 rounded-full ${
-                  healthData?.status === "healthy" ? "bg-emerald-500 animate-pulse" : "bg-rose-500"
+                  healthData?.status === "healthy" ? "bg-[#10B981] dark:bg-[#3CCB7F] animate-pulse" : "bg-[#EF4444] dark:bg-[#E5484D]"
                 }`} />
                 <div>
-                  <h3 className="font-bold text-base">System Status: {healthData?.status?.toUpperCase() || "CHECKING"}</h3>
-                  <p className="text-xs text-slate-500">Last verified at {healthData?.timestamp ? new Date(healthData.timestamp).toLocaleTimeString() : "N/A"}</p>
+                  <h3 className="font-bold text-base text-[#0F172A] dark:text-[#F2F4F7]">System Status: {healthData?.status?.toUpperCase() || "CHECKING"}</h3>
+                  <p className="text-xs text-[#64748B] dark:text-[#7B8794]">Last verified at {healthData?.timestamp ? new Date(healthData.timestamp).toLocaleTimeString() : "N/A"}</p>
                 </div>
               </div>
               <button
                 onClick={fetchHealth}
                 disabled={loadingHealth}
-                className="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-semibold flex items-center space-x-2 transition hover:bg-blue-700 active:scale-95 shadow-md shadow-blue-500/20"
+                className="px-4 py-2 bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] rounded-xl text-xs font-bold flex items-center space-x-2 transition active:scale-95 shadow-sm cursor-pointer"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${loadingHealth ? "animate-spin" : ""}`} />
                 <span>Re-check Health</span>
@@ -1243,72 +1243,72 @@ export default function Admin() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
               {/* MongoDB Diagnostics */}
-              <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+              <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
-                    <Database className="w-5 h-5 text-emerald-500" />
-                    <h4 className="font-bold text-sm">MongoDB Database</h4>
+                    <Database className="w-5 h-5 text-[#10B981] dark:text-[#3CCB7F]" />
+                    <h4 className="font-bold text-sm text-[#0F172A] dark:text-[#F2F4F7]">MongoDB Database</h4>
                   </div>
-                  <span className="px-2 py-0.5 bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded-full border border-emerald-200 dark:border-emerald-800">
+                  <span className="px-2 py-0.5 bg-[#10B981]/10 text-[#10B981] dark:bg-[#3CCB7F]/10 dark:text-[#3CCB7F] text-[10px] font-bold rounded-full border border-[#10B981]/20 dark:border-[#3CCB7F]/20">
                     {healthData?.mongodb?.status || "Unknown"}
                   </span>
                 </div>
                 <div className="space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-slate-100 dark:border-white/5">
-                    <span className="text-slate-500">Ping Response:</span>
-                    <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">{healthData?.mongodb?.ping_ms} ms</span>
+                  <div className="flex justify-between py-1 border-b border-[#E2E8F0] dark:border-[#1B232C]">
+                    <span className="text-[#64748B] dark:text-[#7B8794]">Ping Response:</span>
+                    <span className="font-mono font-bold text-[#10B981] dark:text-[#3CCB7F]">{healthData?.mongodb?.ping_ms} ms</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-500">Database Name:</span>
-                    <span className="font-mono text-slate-700 dark:text-slate-300">{healthData?.mongodb?.database_name}</span>
+                    <span className="text-[#64748B] dark:text-[#7B8794]">Database Name:</span>
+                    <span className="font-mono text-[#0F172A] dark:text-[#F2F4F7]">{healthData?.mongodb?.database_name}</span>
                   </div>
                 </div>
               </div>
 
               {/* DuckDB Engine Diagnostics */}
-              <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+              <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
-                    <Cpu className="w-5 h-5 text-blue-500" />
-                    <h4 className="font-bold text-sm">DuckDB Engine</h4>
+                    <Cpu className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />
+                    <h4 className="font-bold text-sm text-[#0F172A] dark:text-[#F2F4F7]">DuckDB Engine</h4>
                   </div>
-                  <span className="px-2 py-0.5 bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full border border-blue-200 dark:border-blue-800">
+                  <span className="px-2 py-0.5 bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] text-[10px] font-bold rounded-full border border-[#D97706]/20 dark:border-[#F7D154]/20">
                     Active
                   </span>
                 </div>
                 <div className="space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-slate-100 dark:border-white/5">
-                    <span className="text-slate-500">Active Connections:</span>
-                    <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{healthData?.duckdb?.active_connections}</span>
+                  <div className="flex justify-between py-1 border-b border-[#E2E8F0] dark:border-[#1B232C]">
+                    <span className="text-[#64748B] dark:text-[#7B8794]">Active Connections:</span>
+                    <span className="font-mono font-bold text-[#0F172A] dark:text-[#F2F4F7]">{healthData?.duckdb?.active_connections}</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-500">Isolation Mode:</span>
-                    <span className="font-mono text-slate-700 dark:text-slate-300">In-Memory Sandbox</span>
+                    <span className="text-[#64748B] dark:text-[#7B8794]">Isolation Mode:</span>
+                    <span className="font-mono text-[#0F172A] dark:text-[#F2F4F7]">In-Memory Sandbox</span>
                   </div>
                 </div>
               </div>
 
               {/* Live WebApp Sessions */}
-              <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+              <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
-                    <Users className="w-5 h-5 text-sky-500" />
-                    <h4 className="font-bold text-sm">Active WebApp Sessions</h4>
+                    <Users className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />
+                    <h4 className="font-bold text-sm text-[#0F172A] dark:text-[#F2F4F7]">Active WebApp Sessions</h4>
                   </div>
-                  <span className="px-2 py-0.5 bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 text-[10px] font-bold rounded-full border border-sky-200 dark:border-sky-800">
+                  <span className="px-2 py-0.5 bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] text-[10px] font-bold rounded-full border border-[#D97706]/20 dark:border-[#F7D154]/20">
                     Live Tracking
                   </span>
                 </div>
                 <div className="space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-slate-100 dark:border-white/5">
-                    <span className="text-slate-500">Active Sessions (5m):</span>
-                    <span className="font-mono font-bold text-sky-600 dark:text-sky-400">
+                  <div className="flex justify-between py-1 border-b border-[#E2E8F0] dark:border-[#1B232C]">
+                    <span className="text-[#64748B] dark:text-[#7B8794]">Active Sessions (5m):</span>
+                    <span className="font-mono font-bold text-[#D97706] dark:text-[#F7D154]">
                       {activeSessions?.sessions?.length ?? activeSessions?.total_active_sessions ?? healthData?.active_sessions?.total_active_sessions ?? 0} Live
                     </span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-500">Admins / Users:</span>
-                    <span className="font-mono text-slate-700 dark:text-slate-300">
+                    <span className="text-[#64748B] dark:text-[#7B8794]">Admins / Users:</span>
+                    <span className="font-mono text-[#0F172A] dark:text-[#F2F4F7]">
                       {activeSessions?.sessions?.filter(s => s.role === "admin").length ?? activeSessions?.active_admin_sessions ?? healthData?.active_sessions?.active_admin_sessions ?? 0} Admins | {activeSessions?.sessions?.filter(s => s.role !== "admin").length ?? activeSessions?.active_user_sessions ?? healthData?.active_sessions?.active_user_sessions ?? 0} Users
                     </span>
                   </div>
@@ -1316,28 +1316,28 @@ export default function Admin() {
               </div>
 
               {/* Groq API Configuration */}
-              <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-sm">
+              <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
-                    <Sparkles className="w-5 h-5 text-cyan-500" />
-                    <h4 className="font-bold text-sm">Groq LLM Service</h4>
+                    <Sparkles className="w-5 h-5 text-[#D97706] dark:text-[#F7D154]" />
+                    <h4 className="font-bold text-sm text-[#0F172A] dark:text-[#F2F4F7]">Groq LLM Service</h4>
                   </div>
                   <span className={`px-2 py-0.5 text-[10px] font-bold rounded-full border ${
                     healthData?.groq_configured
-                      ? "bg-cyan-50 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800"
-                      : "bg-rose-50 dark:bg-rose-950 text-rose-600 border-rose-200"
+                      ? "bg-[#10B981]/10 text-[#10B981] dark:bg-[#3CCB7F]/10 dark:text-[#3CCB7F] border-[#10B981]/20 dark:border-[#3CCB7F]/20"
+                      : "bg-[#EF4444]/10 text-[#EF4444] border-[#EF4444]/20"
                   }`}>
                     {healthData?.groq_configured ? "API Key Loaded" : "Key Missing"}
                   </span>
                 </div>
                 <div className="space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-slate-100 dark:border-white/5">
-                    <span className="text-slate-500">App Environment:</span>
-                    <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{healthData?.env}</span>
+                  <div className="flex justify-between py-1 border-b border-[#E2E8F0] dark:border-[#1B232C]">
+                    <span className="text-[#64748B] dark:text-[#7B8794]">App Environment:</span>
+                    <span className="font-mono font-bold text-[#0F172A] dark:text-[#F2F4F7]">{healthData?.env}</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-500">API Health Latency:</span>
-                    <span className="font-mono text-slate-700 dark:text-slate-300">{healthData?.latency_ms} ms</span>
+                    <span className="text-[#64748B] dark:text-[#7B8794]">API Health Latency:</span>
+                    <span className="font-mono text-[#0F172A] dark:text-[#F2F4F7]">{healthData?.latency_ms} ms</span>
                   </div>
                 </div>
               </div>
@@ -1345,21 +1345,21 @@ export default function Admin() {
             )}
 
             {/* Live Active Sessions Table */}
-            <div className="bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 rounded-2xl overflow-hidden shadow-sm">
-              <div className="px-5 py-3.5 bg-slate-50/80 dark:bg-white/[0.03] border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
+            <div className="bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] rounded-2xl overflow-hidden shadow-sm">
+              <div className="px-5 py-3.5 bg-[#F8FAFC] dark:bg-[#0B0F14] border-b border-[#E2E8F0] dark:border-[#1B232C] flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Users className="w-4 h-4 text-sky-500" />
-                  <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                  <Users className="w-4 h-4 text-[#D97706] dark:text-[#F7D154]" />
+                  <h3 className="font-bold text-xs uppercase tracking-wider text-[#0F172A] dark:text-[#F2F4F7]">
                     Live Active User Sessions
                   </h3>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
+                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] border border-[#D97706]/20 dark:border-[#F7D154]/20">
                     {activeSessions?.sessions?.length ?? 1} Active Session(s)
                   </span>
                   <button
                     onClick={fetchActiveSessions}
-                    className="p-1 rounded-lg hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 transition"
+                    className="p-1 rounded-lg hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] text-[#64748B] dark:text-[#7B8794] transition cursor-pointer"
                     title="Refresh Active Sessions"
                   >
                     <RefreshCw className="w-3.5 h-3.5" />
@@ -1369,7 +1369,7 @@ export default function Admin() {
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 dark:bg-white/[0.02] border-b border-slate-200 dark:border-white/10 text-slate-500 font-semibold uppercase tracking-wider">
+                  <thead className="bg-[#F8FAFC] dark:bg-[#0B0F14] border-b border-[#E2E8F0] dark:border-[#1B232C] text-[#64748B] dark:text-[#7B8794] font-semibold uppercase tracking-wider">
                     <tr>
                       <th className="py-3.5 px-4">User Session</th>
                       <th className="py-3.5 px-4">Role</th>
@@ -1378,35 +1378,35 @@ export default function Admin() {
                       <th className="py-3.5 px-4">State</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#1B232C]">
                     {(!activeSessions?.sessions || activeSessions.sessions.length === 0) ? (
-                      <tr className="hover:bg-slate-50/50 dark:hover:bg-white/[0.01] transition">
-                        <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white flex items-center space-x-2">
-                          <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold text-[10px]">
+                      <tr className="hover:bg-[#F1F5F9]/50 dark:hover:bg-[#17212B]/50 transition">
+                        <td className="py-3.5 px-4 font-bold text-[#0F172A] dark:text-[#F2F4F7] flex items-center space-x-2">
+                          <div className="w-6 h-6 rounded-full bg-[#D97706]/20 text-[#D97706] dark:bg-[#F7D154]/20 dark:text-[#F7D154] flex items-center justify-center font-bold text-[10px]">
                             A
                           </div>
                           <span>{adminUser?.email || "admin@demo.com"}</span>
                         </td>
                         <td className="py-3.5 px-4">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154]">
                             ADMIN
                           </span>
                         </td>
-                        <td className="py-3.5 px-4 font-mono text-slate-500 text-[11px]">Just now</td>
-                        <td className="py-3.5 px-4 font-mono text-emerald-600 dark:text-emerald-400 font-bold">Active (&lt;1s)</td>
+                        <td className="py-3.5 px-4 font-mono text-[#64748B] dark:text-[#7B8794] text-[11px]">Just now</td>
+                        <td className="py-3.5 px-4 font-mono text-[#10B981] dark:text-[#3CCB7F] font-bold">Active (&lt;1s)</td>
                         <td className="py-3.5 px-4">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#10B981]/10 text-[#10B981] dark:bg-[#3CCB7F]/10 dark:text-[#3CCB7F]">
                             Online
                           </span>
                         </td>
                       </tr>
                     ) : (
                       activeSessions.sessions.map((sess, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50/50 dark:hover:bg-white/[0.01] transition">
-                          <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                        <tr key={idx} className="hover:bg-[#F1F5F9]/50 dark:hover:bg-[#17212B]/50 transition">
+                          <td className="py-3.5 px-4 font-bold text-[#0F172A] dark:text-[#F2F4F7] flex items-center space-x-2">
                             <div className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-[10px] ${
                               sess.role === "admin"
-                                ? "bg-cyan-500/20 text-cyan-600 dark:text-cyan-400"
+                                ? "bg-[#D97706]/20 text-[#D97706] dark:bg-[#F7D154]/20 dark:text-[#F7D154]"
                                 : "bg-sky-500/10 text-sky-600 dark:text-sky-400"
                             }`}>
                               {sess.username?.[0]?.toUpperCase() || "U"}
@@ -1416,21 +1416,21 @@ export default function Admin() {
                           <td className="py-3.5 px-4">
                             <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${
                               sess.role === "admin"
-                                ? "bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300"
-                                : "bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300"
+                                ? "bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154]"
+                                : "bg-[#F1F5F9] dark:bg-[#0B0F14] text-[#64748B] dark:text-[#7B8794]"
                             }`}>
                               {sess.role}
                             </span>
                           </td>
-                          <td className="py-3.5 px-4 font-mono text-slate-500 text-[11px]">
+                          <td className="py-3.5 px-4 font-mono text-[#64748B] dark:text-[#7B8794] text-[11px]">
                             {sess.login_at ? new Date(sess.login_at).toLocaleTimeString() : "N/A"}
                           </td>
-                          <td className="py-3.5 px-4 font-mono font-semibold text-slate-700 dark:text-slate-300">
+                          <td className="py-3.5 px-4 font-mono font-semibold text-[#0F172A] dark:text-[#F2F4F7]">
                             {sess.idle_seconds}s idle
                           </td>
                           <td className="py-3.5 px-4">
-                            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 flex items-center space-x-1 w-fit">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#10B981]/10 text-[#10B981] dark:bg-[#3CCB7F]/10 dark:text-[#3CCB7F] flex items-center space-x-1 w-fit">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] dark:bg-[#3CCB7F] animate-pulse" />
                               <span>Online</span>
                             </span>
                           </td>
@@ -1444,33 +1444,33 @@ export default function Admin() {
           </div>
         )}
 
-        {/* ── TAB 4: Live System Log Viewer ───────────────────────────────────── */}
+        {/* ── TAB 5: Live System Log Viewer ───────────────────────────────────── */}
         {activeTab === "logs" && (
           <div className="space-y-4">
             
             {/* Filter and Control Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#fcfaf5] dark:bg-[#161618] border border-stone-200/80 dark:border-white/10 p-4 rounded-2xl shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-4 rounded-2xl shadow-sm">
               <div className="flex items-center space-x-3 w-full sm:w-auto">
                 <div className="relative w-full sm:w-72">
-                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Search className="w-4 h-4 text-[#64748B] dark:text-[#7B8794] absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     value={logSearch}
                     onChange={(e) => setLogSearch(e.target.value)}
                     placeholder="Search backend log text..."
-                    className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none"
+                    className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-[#0F172A] dark:text-[#F2F4F7] focus:outline-none"
                   />
                 </div>
 
-                <div className="flex items-center space-x-1 border border-slate-200 dark:border-white/10 rounded-xl p-1 bg-slate-50 dark:bg-white/5">
+                <div className="flex items-center space-x-1 border border-[#E2E8F0] dark:border-[#1B232C] rounded-xl p-1 bg-[#F1F5F9] dark:bg-[#0B0F14]">
                   {["ALL", "INFO", "WARNING", "ERROR"].map((lvl) => (
                     <button
                       key={lvl}
                       onClick={() => setLogLevel(lvl)}
-                      className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition ${
+                      className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition cursor-pointer ${
                         logLevel === lvl
-                          ? "bg-blue-600 text-white"
-                          : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-white/10"
+                          ? "bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] shadow-sm"
+                          : "text-[#64748B] dark:text-[#7B8794] hover:bg-[#FFFFFF] dark:hover:bg-[#10171F]"
                       }`}
                     >
                       {lvl}
@@ -1485,15 +1485,15 @@ export default function Admin() {
                     type="checkbox"
                     checked={autoRefreshLogs}
                     onChange={(e) => setAutoRefreshLogs(e.target.checked)}
-                    className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    className="rounded border-[#E2E8F0] dark:border-[#1B232C] text-[#D97706] dark:text-[#F7D154] focus:ring-[#D97706] dark:focus:ring-[#F7D154]"
                   />
-                  <span className="text-slate-600 dark:text-slate-400 font-medium">Live Auto-Stream (3s)</span>
+                  <span className="text-[#64748B] dark:text-[#7B8794] font-medium">Live Auto-Stream (3s)</span>
                 </label>
 
                 <button
                   onClick={fetchLogs}
                   disabled={loadingLogs}
-                  className="px-3 py-1.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition active:scale-95"
+                  className="px-3 py-1.5 bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] rounded-xl text-xs font-bold flex items-center space-x-1.5 transition active:scale-95 shadow-sm cursor-pointer"
                 >
                   <RefreshCw className={`w-3.5 h-3.5 ${loadingLogs ? "animate-spin" : ""}`} />
                   <span>Refresh</span>
@@ -1502,42 +1502,42 @@ export default function Admin() {
             </div>
 
             {/* Dark Terminal Log Window */}
-            <div className="bg-[#0d1117] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl font-mono text-xs">
-              <div className="bg-[#161b22] px-4 py-2.5 border-b border-slate-800 flex items-center justify-between">
+            <div className="bg-[#0B0F14] border border-[#1F2630] rounded-2xl overflow-hidden shadow-2xl font-mono text-xs">
+              <div className="bg-[#10171F] px-4 py-2.5 border-b border-[#1B232C] flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Terminal className="w-3.5 h-3.5 text-slate-400" />
-                  <span className="text-slate-300 text-[11px] font-medium">backend_system.log (In-Memory Ring Buffer)</span>
+                  <Terminal className="w-3.5 h-3.5 text-[#7B8794]" />
+                  <span className="text-[#F2F4F7] text-[11px] font-medium">backend_system.log (In-Memory Ring Buffer)</span>
                 </div>
-                <span className="text-slate-500 text-[10px]">{logs.length} entries captured</span>
+                <span className="text-[#7B8794] text-[10px]">{logs.length} entries captured</span>
               </div>
 
               <div className="p-4 h-[450px] overflow-y-auto space-y-2">
                 {logs.length === 0 ? (
-                  <div className="text-slate-500 text-center py-20">
+                  <div className="text-[#7B8794] text-center py-20">
                     No backend logs captured for current filter criteria.
                   </div>
                 ) : (
                   logs.map((log, idx) => (
                     <div key={idx} className="flex items-start space-x-3 hover:bg-white/[0.02] p-1 rounded transition">
-                      <span className="text-slate-500 text-[11px] whitespace-nowrap">
+                      <span className="text-[#7B8794] text-[11px] whitespace-nowrap">
                         {log.timestamp ? new Date(log.timestamp).toLocaleTimeString() : ""}
                       </span>
 
                       <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase whitespace-nowrap ${
                         log.level === "ERROR"
-                          ? "bg-rose-500/20 text-rose-400 border border-rose-500/30"
+                          ? "bg-[#E5484D]/20 text-[#E5484D] border border-[#E5484D]/30"
                           : log.level === "WARNING"
-                          ? "bg-amber-500/20 text-amber-400 border border-amber-500/30"
+                          ? "bg-[#F7D154]/20 text-[#F7D154] border border-[#F7D154]/30"
                           : "bg-blue-500/20 text-blue-400 border border-blue-500/30"
                       }`}>
                         {log.level}
                       </span>
 
-                      <span className="text-slate-400 text-[11px] font-semibold whitespace-nowrap">
+                      <span className="text-[#7B8794] text-[11px] font-semibold whitespace-nowrap">
                         [{log.logger}]:
                       </span>
 
-                      <span className="text-slate-200 text-[11px] break-all">
+                      <span className="text-[#F2F4F7] text-[11px] break-all">
                         {log.message}
                       </span>
                     </div>

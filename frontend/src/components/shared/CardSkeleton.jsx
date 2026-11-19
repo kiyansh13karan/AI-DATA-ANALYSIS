@@ -19,7 +19,7 @@ export function Shimmer({ className = "" }) {
 export function CardSkeleton({ className = "", children }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl bg-[#fcfaf5]/85 dark:bg-[#1c1c1e]/80 border border-stone-200/80 dark:border-white/[0.08] backdrop-blur-xl p-5 shadow-xs transition-all ${className}`}
+      className={`relative overflow-hidden rounded-2xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] backdrop-blur-xl p-5 shadow-xs transition-all ${className}`}
     >
       <Shimmer />
       {children ? (
@@ -43,15 +43,15 @@ export function CardSkeleton({ className = "", children }) {
  */
 export function StatCardSkeleton({ accent = "blue" }) {
   const accentGlow = {
-    blue: "bg-blue-500/10 text-blue-500 dark:text-blue-400",
+    blue: "bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154]",
     emerald: "bg-emerald-500/10 text-emerald-500 dark:text-emerald-400",
-    sky: "bg-sky-500/10 text-sky-500 dark:text-sky-400",
-    cyan: "bg-cyan-500/10 text-cyan-500 dark:text-cyan-400",
+    sky: "bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154]",
+    cyan: "bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154]",
     amber: "bg-amber-500/10 text-amber-500 dark:text-amber-400",
-  }[accent] || "bg-blue-500/10 text-blue-500 dark:text-blue-400";
+  }[accent] || "bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154]";
 
   return (
-    <div className="relative overflow-hidden bg-[#fcfaf5]/85 dark:bg-[#161618]/90 border border-stone-200/80 dark:border-white/10 p-5 rounded-2xl shadow-xs backdrop-blur-xl">
+    <div className="relative overflow-hidden bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] p-5 rounded-2xl shadow-xs">
       <Shimmer />
       <div className="flex items-center justify-between mb-3">
         {/* Label placeholder */}
@@ -90,13 +90,13 @@ export function ChartSkeleton({ title = "Generating Chart Visualization…", mes
   const barHeights = [45, 75, 30, 90, 60, 80, 40, 65, 85, 50, 70, 95];
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-[#fcfaf5]/90 dark:bg-[#1c1c1e]/85 border border-stone-200/80 dark:border-white/[0.08] backdrop-blur-2xl p-6 shadow-sm animate-fade-in">
+    <div className="relative overflow-hidden rounded-3xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] backdrop-blur-2xl p-6 shadow-sm animate-fade-in">
       <Shimmer />
 
       {/* Header bar placeholder */}
-      <div className="flex items-center justify-between pb-4 mb-4 border-b border-black/[0.04] dark:border-white/[0.06]">
+      <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E2E8F0] dark:border-[#1B232C]">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-xl bg-[#0071e3]/10 dark:bg-blue-500/20 text-[#0071e3] dark:text-blue-400 flex items-center justify-center">
+          <div className="w-7 h-7 rounded-xl bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] flex items-center justify-center">
             <BarChart3 size={15} />
           </div>
           <div className="space-y-1">
@@ -106,26 +106,26 @@ export function ChartSkeleton({ title = "Generating Chart Visualization…", mes
         </div>
 
         {/* Floating status pill */}
-        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#0071e3]/10 dark:bg-blue-500/20 border border-[#0071e3]/20 dark:border-blue-400/20">
-          <Loader2 size={12} className="text-[#0071e3] dark:text-blue-400 animate-spin" />
-          <span className="text-[11px] font-semibold text-[#0071e3] dark:text-blue-300">
+        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] border border-[#D97706]/20 dark:border-[#F7D154]/20">
+          <Loader2 size={12} className="text-[#D97706] dark:text-[#F7D154] animate-spin" />
+          <span className="text-[11px] font-semibold text-[#D97706] dark:text-[#F7D154]">
             Rendering in background
           </span>
         </div>
       </div>
 
       {/* Chart Canvas Area */}
-      <div className="relative h-64 sm:h-72 w-full flex items-end justify-between gap-2 sm:gap-4 px-4 pb-6 pt-8 bg-black/[0.015] dark:bg-white/[0.02] rounded-2xl border border-black/[0.03] dark:border-white/[0.04]">
+      <div className="relative h-64 sm:h-72 w-full flex items-end justify-between gap-2 sm:gap-4 px-4 pb-6 pt-8 bg-black/[0.015] dark:bg-white/[0.02] rounded-2xl border border-[#E2E8F0] dark:border-[#1B232C]">
         {/* Horizontal grid guide lines */}
-        <div className="absolute inset-x-4 top-10 border-b border-dashed border-black/[0.05] dark:border-white/[0.06]" />
-        <div className="absolute inset-x-4 top-1/2 border-b border-dashed border-black/[0.05] dark:border-white/[0.06]" />
-        <div className="absolute inset-x-4 bottom-6 border-b border-black/[0.08] dark:border-white/[0.1]" />
+        <div className="absolute inset-x-4 top-10 border-b border-dashed border-[#E2E8F0] dark:border-[#1B232C]" />
+        <div className="absolute inset-x-4 top-1/2 border-b border-dashed border-[#E2E8F0] dark:border-[#1B232C]" />
+        <div className="absolute inset-x-4 bottom-6 border-b border-[#E2E8F0] dark:border-[#1B232C]" />
 
         {/* Animated simulated bars */}
         {barHeights.map((h, i) => (
           <div key={i} className="flex-1 flex flex-col items-center justify-end h-full z-10">
             <div
-              className="w-full max-w-[28px] rounded-t-lg bg-gradient-to-t from-[#0071e3]/20 via-[#0284c7]/30 to-[#06b6d4]/40 dark:from-blue-500/20 dark:via-sky-500/30 dark:to-cyan-400/35 animate-pulse"
+              className="w-full max-w-[28px] rounded-t-lg bg-[#D97706]/20 dark:bg-[#F7D154]/25 animate-pulse"
               style={{
                 height: `${h}%`,
                 animationDelay: `${i * 100}ms`,
@@ -141,13 +141,13 @@ export function ChartSkeleton({ title = "Generating Chart Visualization…", mes
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="px-5 py-3 rounded-2xl bg-[#fcfaf5]/90 dark:bg-[#1c1c1e]/90 border border-stone-200/90 dark:border-white/[0.12] shadow-lg backdrop-blur-xl flex flex-col items-center space-y-1.5 max-w-sm"
+            className="px-5 py-3 rounded-2xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] shadow-lg backdrop-blur-xl flex flex-col items-center space-y-1.5 max-w-sm"
           >
-            <div className="flex items-center gap-2 text-xs font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">
-              <span className="w-2 h-2 rounded-full bg-[#0071e3] dark:bg-cyan-400 animate-ping" />
+            <div className="flex items-center gap-2 text-xs font-bold text-[#0F172A] dark:text-[#F2F4F7]">
+              <span className="w-2 h-2 rounded-full bg-[#D97706] dark:bg-[#F7D154] animate-ping" />
               <span>{title}</span>
             </div>
-            <p className="text-[11px] text-[#6e6e73] dark:text-[#a1a1a6] font-medium leading-tight">
+            <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] font-medium leading-tight">
               {message}
             </p>
           </motion.div>
@@ -166,27 +166,27 @@ export function TableSkeleton({
   message = "Running DuckDB execution & preparing data table…",
 }) {
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-[#fcfaf5]/90 dark:bg-[#1c1c1e]/80 border border-stone-200/80 dark:border-white/[0.08] backdrop-blur-2xl shadow-xs animate-fade-in flex flex-col">
+    <div className="relative overflow-hidden rounded-2xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] backdrop-blur-2xl shadow-xs animate-fade-in flex flex-col">
       <Shimmer />
 
       {/* Header with Title & Status */}
-      <div className="px-4 py-3 bg-black/[0.02] dark:bg-white/[0.02] border-b border-stone-200/70 dark:border-white/[0.08] flex items-center justify-between">
+      <div className="px-4 py-3 bg-[#F8FAFC] dark:bg-[#0B0F14] border-b border-[#E2E8F0] dark:border-[#1B232C] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-md bg-[#0071e3]/10 dark:bg-blue-400/20 text-[#0071e3] dark:text-blue-400 flex items-center justify-center">
+          <div className="w-5 h-5 rounded-md bg-[#D97706]/10 text-[#D97706] dark:bg-[#F7D154]/10 dark:text-[#F7D154] flex items-center justify-center">
             <Database size={12} />
           </div>
-          <span className="text-xs font-semibold text-[#1d1d1f] dark:text-[#f5f5f7]">
+          <span className="text-xs font-semibold text-[#0F172A] dark:text-[#F2F4F7]">
             {title}
           </span>
         </div>
-        <div className="flex items-center gap-1.5 text-[11px] font-medium text-[#0071e3] dark:text-blue-400">
+        <div className="flex items-center gap-1.5 text-[11px] font-medium text-[#D97706] dark:text-[#F7D154]">
           <Loader2 size={12} className="animate-spin" />
           <span>{message}</span>
         </div>
       </div>
 
       {/* Table Head Skeletons */}
-      <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 px-4 py-2.5 bg-black/[0.015] dark:bg-white/[0.01] border-b border-black/[0.04] dark:border-white/[0.06]">
+      <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 px-4 py-2.5 bg-[#F8FAFC]/50 dark:bg-[#0B0F14]/50 border-b border-[#E2E8F0] dark:border-[#1B232C]">
         {Array.from({ length: 5 }).map((_, idx) => (
           <div
             key={idx}
@@ -198,7 +198,7 @@ export function TableSkeleton({
       </div>
 
       {/* Table Row Skeletons */}
-      <div className="divide-y divide-black/[0.03] dark:divide-white/[0.04]">
+      <div className="divide-y divide-[#E2E8F0] dark:divide-[#1B232C]">
         {Array.from({ length: rowsCount }).map((_, rowIdx) => (
           <div
             key={rowIdx}
@@ -222,20 +222,20 @@ export function TableSkeleton({
 export function ChatAiSkeleton({ message = "AI analyzing dataset & generating response…" }) {
   return (
     <div className="flex justify-start w-full max-w-[95%] animate-fade-in">
-      <div className="w-full relative overflow-hidden rounded-2xl rounded-tl-xs p-4.5 bg-[#fcfaf5]/90 dark:bg-[#1c1c1e]/85 backdrop-blur-2xl border border-stone-200/80 dark:border-white/[0.08] shadow-xs space-y-3">
+      <div className="w-full relative overflow-hidden rounded-2xl rounded-tl-xs p-4.5 bg-[#FFFFFF] dark:bg-[#10171F] backdrop-blur-2xl border border-[#E2E8F0] dark:border-[#1F2630] shadow-xs space-y-3">
         <Shimmer />
 
         {/* AI Header pill */}
-        <div className="flex items-center gap-2.5 pb-2 border-b border-black/[0.04] dark:border-white/[0.06]">
-          <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#0071e3] to-[#06b6d4] flex items-center justify-center shadow-xs">
-            <Sparkles size={12} className="text-white animate-spin" style={{ animationDuration: "4s" }} />
+        <div className="flex items-center gap-2.5 pb-2 border-b border-[#E2E8F0] dark:border-[#1B232C]">
+          <div className="w-6 h-6 rounded-lg bg-[#D97706] dark:bg-[#F7D154] flex items-center justify-center shadow-xs">
+            <Sparkles size={12} className="text-white dark:text-[#0B0F14] animate-spin" style={{ animationDuration: "4s" }} />
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold bg-gradient-to-r from-[#0071e3] to-[#06b6d4] bg-clip-text text-transparent">
+            <span className="text-xs font-bold text-[#D97706] dark:text-[#F7D154]">
               Groq Llama 3.3
             </span>
-            <span className="text-[11px] text-[#6e6e73] dark:text-[#a1a1a6] flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] animate-ping" />
+            <span className="text-[11px] text-[#64748B] dark:text-[#7B8794] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D97706] dark:bg-[#F7D154] animate-ping" />
               {message}
             </span>
           </div>
@@ -249,11 +249,11 @@ export function ChatAiSkeleton({ message = "AI analyzing dataset & generating re
         </div>
 
         {/* Simulated code/query card block */}
-        <div className="p-3 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.04] dark:border-white/[0.06] space-y-1.5">
+        <div className="p-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] space-y-1.5">
           <div className="flex items-center gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-[#ff5f56]/70" />
-            <div className="w-2 h-2 rounded-full bg-[#ffbd2e]/70" />
-            <div className="w-2 h-2 rounded-full bg-[#27c93f]/70" />
+            <div className="w-2 h-2 rounded-full bg-[#E5484D]/70" />
+            <div className="w-2 h-2 rounded-full bg-[#F7D154]/70" />
+            <div className="w-2 h-2 rounded-full bg-[#3CCB7F]/70" />
           </div>
           <div className="h-3 w-2/3 rounded bg-stone-300/40 dark:bg-white/[0.05]" />
           <div className="h-3 w-1/2 rounded bg-stone-300/30 dark:bg-white/[0.04]" />
