@@ -12,23 +12,23 @@ const NAV_ITEMS = [
 export default function Sidebar({ active, onSelect, isOpen = true, onToggle }) {
   return (
     <aside 
-      className={`sidebar-wrapper shrink-0 border-r border-stone-200/80 dark:border-white/[0.08] bg-[#f8f5ee]/85 dark:bg-[#161617]/75 backdrop-blur-2xl select-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between relative z-40 ${
+      className={`sidebar-wrapper shrink-0 border-r border-[#E2E8F0] dark:border-[#1B232C] bg-[#FFFFFF] dark:bg-[#10171F] select-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between relative z-40 ${
         isOpen ? "w-56 p-3" : "w-16 p-2"
       }`}
     >
       <div className="flex flex-col gap-2">
         {/* Sidebar Header with macOS Toggle Icon Button */}
-        <div className={`flex items-center pb-2 border-b border-black/[0.04] dark:border-white/[0.06] ${
+        <div className={`flex items-center pb-2 border-b border-[#E2E8F0] dark:border-[#1B232C] ${
           isOpen ? "justify-between px-1" : "justify-center"
         }`}>
           {isOpen && (
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#6e6e73] dark:text-[#a1a1a6]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-[#7B8794]">
               Workspace
             </span>
           )}
           <button
             onClick={onToggle}
-            className="p-1.5 rounded-xl text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.06] dark:hover:bg-white/[0.08] hover:text-[#0071e3] transition-all duration-200 cursor-pointer shadow-sm"
+            className="p-1.5 rounded-xl text-[#64748B] dark:text-[#7B8794] hover:bg-stone-100 dark:hover:bg-[#1B232C] hover:text-[#D97706] dark:hover:text-[#F7D154] transition-all duration-200 cursor-pointer shadow-sm"
             title={isOpen ? "Collapse sidebar" : "Expand sidebar"}
             aria-label="Toggle Sidebar"
           >
@@ -51,11 +51,11 @@ export default function Sidebar({ active, onSelect, isOpen = true, onToggle }) {
                       : "justify-center p-2.5"
                   } ${
                     isActive
-                      ? "bg-gradient-to-r from-[#0071e3] to-[#0284c7] dark:from-[#0071e3] dark:to-[#06b6d4] text-white shadow-[0_4px_14px_rgba(0,113,227,0.35)] scale-[1.02]"
-                      : "text-[#515154] dark:text-[#a1a1a6] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]"
+                      ? "bg-[#D97706] dark:bg-[#F7D154] text-white dark:text-[#0B0F14] font-bold shadow-[0_4px_14px_rgba(247,209,84,0.35)] scale-[1.02]"
+                      : "text-[#64748B] dark:text-[#7B8794] hover:bg-stone-100 dark:hover:bg-[#1B232C] hover:text-[#0F172A] dark:hover:text-[#F2F4F7]"
                   }`}
                 >
-                  <Icon size={18} className={isActive ? "text-white shrink-0 drop-shadow-sm" : "opacity-80 shrink-0 group-hover:scale-110 transition-transform"} />
+                  <Icon size={18} className={isActive ? "text-white dark:text-[#0B0F14] shrink-0 drop-shadow-sm" : "opacity-80 shrink-0 group-hover:scale-110 transition-transform"} />
                   {isOpen && (
                     <span className="sidebar-label tracking-tight truncate">{item.label}</span>
                   )}
@@ -63,9 +63,9 @@ export default function Sidebar({ active, onSelect, isOpen = true, onToggle }) {
 
                 {/* Floating macOS Tooltip (Shown on hover when collapsed) */}
                 {!isOpen && (
-                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-3 px-2.5 py-1 rounded-lg bg-black/90 dark:bg-white/95 text-white dark:text-black text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 shadow-xl backdrop-blur-md z-50">
+                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-3 px-2.5 py-1 rounded-lg bg-[#0F172A] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] text-white text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 shadow-xl z-50">
                     {item.label}
-                    <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-black/90 dark:border-r-white/95" />
+                    <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-[#0F172A] dark:border-r-[#10171F]" />
                   </div>
                 )}
               </div>
@@ -76,16 +76,16 @@ export default function Sidebar({ active, onSelect, isOpen = true, onToggle }) {
 
       {/* Bottom status badge / indicator */}
       {isOpen ? (
-        <div className="px-2 py-1.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.04] dark:border-white/[0.05] text-[11px] text-[#6e6e73] dark:text-[#a1a1a6] flex items-center justify-between">
+        <div className="px-2 py-1.5 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1B232C] text-[11px] text-[#64748B] dark:text-[#7B8794] flex items-center justify-between">
           <span className="font-medium">Studio Engine</span>
-          <span className="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="inline-flex items-center gap-1 font-semibold text-[#10B981] dark:text-[#3CCB7F]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] dark:bg-[#3CCB7F] animate-pulse" />
             Active
           </span>
         </div>
       ) : (
         <div className="flex justify-center pb-1">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="Engine Active" />
+          <span className="w-2 h-2 rounded-full bg-[#10B981] dark:bg-[#3CCB7F] animate-pulse" title="Engine Active" />
         </div>
       )}
     </aside>

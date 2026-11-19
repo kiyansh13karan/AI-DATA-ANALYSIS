@@ -25,7 +25,7 @@ export default function DownloadButtons({ datasetId, sql }) {
   };
 
   const btnClass =
-    "flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-stone-300/80 dark:border-gray-700 bg-[#fcfaf5] dark:bg-transparent text-[#262422] dark:text-inherit hover:bg-[#f2ece1] dark:hover:bg-gray-800 transition-colors font-medium";
+    "flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#1F2630] bg-[#FFFFFF] dark:bg-[#10171F] text-[#0F172A] dark:text-[#F2F4F7] hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] transition-colors font-medium cursor-pointer";
 
   return (
     <div className="flex gap-2">

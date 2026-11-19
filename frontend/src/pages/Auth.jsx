@@ -334,33 +334,33 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen w-full flex bg-[#f7f5f0] dark:bg-[#050505] text-stone-900 dark:text-white overflow-hidden select-none transition-colors duration-500">
+    <div className="min-h-screen w-full flex bg-[#F8FAFC] dark:bg-[#0B0F14] text-[#0F172A] dark:text-[#F2F4F7] overflow-hidden select-none transition-colors duration-500">
       {/* Left side: Premium Brand & Feature Showcase (Hidden on Mobile) */}
-      <div className="hidden lg:flex lg:w-[50%] relative bg-[#f4efe6] dark:bg-slate-900/40 flex-col justify-between p-12 overflow-hidden border-r border-stone-200/80 dark:border-slate-800 transition-colors duration-500">
+      <div className="hidden lg:flex lg:w-[50%] relative bg-[#FFFFFF] dark:bg-[#10171F] flex-col justify-between p-12 overflow-hidden border-r border-[#E2E8F0] dark:border-[#1B232C] transition-colors duration-500">
         {/* SVG Grid Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] pointer-events-none transition-colors duration-500" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1B232C_1px,transparent_1px),linear-gradient(to_bottom,#1B232C_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] pointer-events-none transition-colors duration-500" />
         
-        {/* Subtle moving glows (violet color removed) */}
-        <div className="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] rounded-full bg-sky-500/[0.04] dark:bg-sky-500/[0.06] blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-cyan-500/[0.04] dark:bg-cyan-500/[0.06] blur-[100px] pointer-events-none" />
+        {/* Subtle moving glows */}
+        <div className="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] rounded-full bg-[#D97706]/[0.05] dark:bg-[#F7D154]/[0.05] blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-[#D97706]/[0.03] dark:bg-[#F7D154]/[0.03] blur-[100px] pointer-events-none" />
 
         {/* Brand Header */}
         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="relative z-10 flex items-center gap-2.5 group cursor-pointer">
           <img src="/favicon.webp" alt="AI Data Analysis Logo" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm" />
-          <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-700 dark:from-white dark:via-cyan-200 dark:to-slate-300 bg-clip-text text-transparent">
+          <span className="text-xl font-bold tracking-tight text-[#0F172A] dark:text-[#F2F4F7]">
             AI Data Analysis
           </span>
         </Link>
 
         {/* Feature List Container */}
         <div className="relative z-10 my-auto max-w-md">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#0071e3] dark:text-blue-400 text-xs font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#D97706]/10 border border-[#D97706]/20 text-[#D97706] dark:bg-[#F7D154]/10 dark:border-[#F7D154]/20 dark:text-[#F7D154] text-xs font-semibold mb-6">
             <Sparkles className="w-3.5 h-3.5" /> Intelligent Data Exploration
           </div>
           
           <h2 className="text-4xl font-extrabold tracking-tight leading-tight mb-8">
             The simplest way to <br />
-            <span className="bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-[#38bdf8] dark:via-[#0ea5e9] dark:to-[#06b6d4] bg-clip-text text-transparent">
+            <span className="text-[#D97706] dark:text-[#F7D154]">
               explore & analyze
             </span> your data.
           </h2>
@@ -369,15 +369,15 @@ export default function Auth() {
             {/* Feature 1: Multi-Format Data Loader */}
             <div className="flex gap-4 items-start group cursor-default select-none">
               <div 
-                className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#fcfaf5] dark:bg-slate-900 border border-stone-200/80 dark:border-slate-800 flex items-center justify-center shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:scale-110 group-hover:shadow-md group-hover:border-stone-300 dark:group-hover:border-slate-700 cursor-default"
+                className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] flex items-center justify-center shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:scale-110 group-hover:shadow-md group-hover:border-[#D97706]/40 dark:group-hover:border-[#F7D154]/40 cursor-default"
               >
-                <Database className="w-5 h-5 text-[#0071e3] dark:text-[#38bdf8] transition-transform duration-300 group-hover:scale-105 pointer-events-none" />
+                <Database className="w-5 h-5 text-[#D97706] dark:text-[#F7D154] transition-transform duration-300 group-hover:scale-105 pointer-events-none" />
               </div>
               <div className="cursor-default select-none">
-                <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 cursor-default select-none">
+                <h4 className="text-sm font-semibold text-[#0F172A] dark:text-[#F2F4F7] cursor-default select-none">
                   Multi-Format Data Loader
                 </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed cursor-default select-none">
+                <p className="text-xs text-[#64748B] dark:text-[#7B8794] mt-1 leading-relaxed cursor-default select-none">
                   Seamlessly drop CSV, Excel, or JSON files. Automatic column detection, clean mappings, and ready in seconds.
                 </p>
               </div>
@@ -386,15 +386,15 @@ export default function Auth() {
             {/* Feature 2: Interactive Plotly Charts */}
             <div className="flex gap-4 items-start group cursor-default select-none">
               <div 
-                className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#fcfaf5] dark:bg-slate-900 border border-stone-200/80 dark:border-slate-800 flex items-center justify-center shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:scale-110 group-hover:shadow-md group-hover:border-stone-300 dark:group-hover:border-slate-700 cursor-default"
+                className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] flex items-center justify-center shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:scale-110 group-hover:shadow-md group-hover:border-[#D97706]/40 dark:group-hover:border-[#F7D154]/40 cursor-default"
               >
-                <TrendingUp className="w-5 h-5 text-[#0284c7] dark:text-[#38bdf8] transition-transform duration-300 group-hover:scale-105 pointer-events-none" />
+                <TrendingUp className="w-5 h-5 text-[#D97706] dark:text-[#F7D154] transition-transform duration-300 group-hover:scale-105 pointer-events-none" />
               </div>
               <div className="cursor-default select-none">
-                <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 cursor-default select-none">
+                <h4 className="text-sm font-semibold text-[#0F172A] dark:text-[#F2F4F7] cursor-default select-none">
                   Interactive Plotly Charts
                 </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed cursor-default select-none">
+                <p className="text-xs text-[#64748B] dark:text-[#7B8794] mt-1 leading-relaxed cursor-default select-none">
                   Interact with dynamic scatter, line, bar, or pie charts. Zoom, pan, filter, and export high-resolution assets instantly.
                 </p>
               </div>
@@ -403,15 +403,15 @@ export default function Auth() {
             {/* Feature 3: Conversational Insights */}
             <div className="flex gap-4 items-start group cursor-default select-none">
               <div 
-                className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#fcfaf5] dark:bg-slate-900 border border-stone-200/80 dark:border-slate-800 flex items-center justify-center shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:scale-110 group-hover:shadow-md group-hover:border-stone-300 dark:group-hover:border-slate-700 cursor-default"
+                className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#F8FAFC] dark:bg-[#0B0F14] border border-[#E2E8F0] dark:border-[#1F2630] flex items-center justify-center shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:scale-110 group-hover:shadow-md group-hover:border-[#D97706]/40 dark:group-hover:border-[#F7D154]/40 cursor-default"
               >
-                <MessageSquare className="w-5 h-5 text-[#06b6d4] dark:text-[#22d3ee] transition-transform duration-300 group-hover:scale-105 pointer-events-none" />
+                <MessageSquare className="w-5 h-5 text-[#D97706] dark:text-[#F7D154] transition-transform duration-300 group-hover:scale-105 pointer-events-none" />
               </div>
               <div className="cursor-default select-none">
-                <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 cursor-default select-none">
+                <h4 className="text-sm font-semibold text-[#0F172A] dark:text-[#F2F4F7] cursor-default select-none">
                   Conversational Insights
                 </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed cursor-default select-none">
+                <p className="text-xs text-[#64748B] dark:text-[#7B8794] mt-1 leading-relaxed cursor-default select-none">
                   Ask natural questions about your dataset. Our AI system writes backend Python code, handles processing, and replies in real-time.
                 </p>
               </div>
@@ -420,18 +420,18 @@ export default function Auth() {
         </div>
 
         {/* Left Side Footer */}
-        <div className="relative z-10 flex justify-between items-center text-xs text-slate-500 dark:text-slate-600">
+        <div className="relative z-10 flex justify-between items-center text-xs text-[#64748B] dark:text-[#7B8794]">
           <span>&copy; {new Date().getFullYear()} AI Data Analysis. All rights reserved.</span>
           <span>v2.1.0</span>
         </div>
       </div>
 
       {/* Right side: Auth Form container */}
-      <div className="w-full lg:w-[50%] flex items-center justify-center p-6 sm:p-12 relative bg-[#f7f5f0] dark:bg-[#050505] transition-colors duration-500">
+      <div className="w-full lg:w-[50%] flex items-center justify-center p-6 sm:p-12 relative bg-[#F8FAFC] dark:bg-[#0B0F14] transition-colors duration-500">
         
         {/* Top Actions: Back to Home & Theme Toggle */}
         <div className="absolute top-6 left-6 right-6 sm:top-10 sm:left-10 sm:right-10 flex items-center justify-between z-20 pointer-events-auto">
-          <Link to="/" className="text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center text-sm font-semibold transition-colors">
+          <Link to="/" className="text-[#64748B] hover:text-[#0F172A] dark:hover:text-[#F2F4F7] flex items-center text-sm font-semibold transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
           </Link>
           <ThemeToggle />
@@ -445,8 +445,8 @@ export default function Auth() {
         <div className="w-full max-w-[400px] relative z-10">
           {/* Logo for mobile only */}
           <div className="flex items-center gap-2.5 mb-8 lg:hidden justify-center mt-8 sm:mt-0">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-brand-500/25">
-              <Sparkles className="w-4.5 h-4.5 text-white" />
+            <div className="w-9 h-9 rounded-xl bg-[#D97706] dark:bg-[#F7D154] flex items-center justify-center shadow-lg shadow-amber-500/20">
+              <Sparkles className="w-4.5 h-4.5 text-white dark:text-[#0B0F14]" />
             </div>
             <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-700 dark:from-white dark:via-cyan-200 dark:to-slate-300 bg-clip-text text-transparent">
               AI Data Analysis
@@ -486,7 +486,7 @@ export default function Auth() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     autoComplete="off"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-brand-500/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 outline-none transition-all duration-200 pr-10"
+                    className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] hover:border-[#D97706]/50 dark:hover:border-[#F7D154]/50 focus:border-[#D97706] dark:focus:border-[#F7D154] focus:bg-white dark:focus:bg-[#0B0F14] focus:ring-4 focus:ring-amber-500/10 text-sm text-[#0F172A] dark:text-[#F2F4F7] placeholder-[#64748B]/60 dark:placeholder-[#7B8794]/60 outline-none transition-all duration-200 pr-10"
                   />
                   {email && (
                     <button
@@ -521,7 +521,7 @@ export default function Auth() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
                     autoComplete="new-password"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-brand-500/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 outline-none transition-all duration-200 pr-16"
+                    className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] hover:border-[#D97706]/50 dark:hover:border-[#F7D154]/50 focus:border-[#D97706] dark:focus:border-[#F7D154] focus:bg-white dark:focus:bg-[#0B0F14] focus:ring-4 focus:ring-amber-500/10 text-sm text-[#0F172A] dark:text-[#F2F4F7] placeholder-[#64748B]/60 dark:placeholder-[#7B8794]/60 outline-none transition-all duration-200 pr-16"
                   />
                   <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-2">
                     {password && (
@@ -547,7 +547,7 @@ export default function Auth() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-cyan-600 hover:from-brand-600 hover:to-cyan-700 text-white font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 focus:ring-2 focus:ring-brand-500/50 outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full mt-2 py-3.5 rounded-xl bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-md outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -569,7 +569,7 @@ export default function Auth() {
                 id="google-signin-btn"
                 onClick={handleGoogleSignIn}
                 disabled={googleLoading}
-                className="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-slate-200/60 dark:hover:shadow-slate-900/60 focus:ring-2 focus:ring-brand-500/30 outline-none flex justify-center items-center gap-2.5 disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full py-3 rounded-xl border border-[#E2E8F0] dark:border-[#1F2630] bg-[#FFFFFF] dark:bg-[#10171F] hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] cursor-pointer font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-sm outline-none flex justify-center items-center gap-2.5 disabled:opacity-50 disabled:pointer-events-none"
               >
                 {googleLoading ? (
                   <div className="w-4 h-4 border-2 border-slate-400 border-t-transparent rounded-full animate-spin" />
@@ -606,7 +606,7 @@ export default function Auth() {
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Pick a username"
                     autoComplete="off"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-brand-500/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 outline-none transition-all duration-200 pr-10"
+                    className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] hover:border-[#D97706]/50 dark:hover:border-[#F7D154]/50 focus:border-[#D97706] dark:focus:border-[#F7D154] focus:bg-white dark:focus:bg-[#0B0F14] focus:ring-4 focus:ring-amber-500/10 text-sm text-[#0F172A] dark:text-[#F2F4F7] placeholder-[#64748B]/60 dark:placeholder-[#7B8794]/60 outline-none transition-all duration-200 pr-10"
                   />
                   {username && (
                     <button
@@ -665,7 +665,7 @@ export default function Auth() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Choose a strong password"
                     autoComplete="new-password"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-brand-500/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 outline-none transition-all duration-200 pr-16"
+                    className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] hover:border-[#D97706]/50 dark:hover:border-[#F7D154]/50 focus:border-[#D97706] dark:focus:border-[#F7D154] focus:bg-white dark:focus:bg-[#0B0F14] focus:ring-4 focus:ring-amber-500/10 text-sm text-[#0F172A] dark:text-[#F2F4F7] placeholder-[#64748B]/60 dark:placeholder-[#7B8794]/60 outline-none transition-all duration-200 pr-16"
                   />
                   <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-2">
                     {password && (
@@ -691,7 +691,7 @@ export default function Auth() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-cyan-600 hover:from-brand-600 hover:to-cyan-700 text-white font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 focus:ring-2 focus:ring-brand-500/50 outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full mt-2 py-3.5 rounded-xl bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-md outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -713,7 +713,7 @@ export default function Auth() {
                 id="google-signup-btn"
                 onClick={handleGoogleSignIn}
                 disabled={googleLoading}
-                className="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-slate-200/60 dark:hover:shadow-slate-900/60 focus:ring-2 focus:ring-brand-500/30 outline-none flex justify-center items-center gap-2.5 disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full py-3 rounded-xl border border-[#E2E8F0] dark:border-[#1F2630] bg-[#FFFFFF] dark:bg-[#10171F] hover:bg-[#F1F5F9] dark:hover:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] cursor-pointer font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-sm outline-none flex justify-center items-center gap-2.5 disabled:opacity-50 disabled:pointer-events-none"
               >
                 {googleLoading ? (
                   <div className="w-4 h-4 border-2 border-slate-400 border-t-transparent rounded-full animate-spin" />
@@ -761,14 +761,14 @@ export default function Auth() {
                   value={otp}
                   onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
                   placeholder="&bull;&bull;&bull;&bull;&bull;&bull;"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-brand-500/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 outline-none tracking-widest text-center font-bold transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] focus:border-[#D97706] dark:focus:border-[#F7D154] focus:bg-white dark:focus:bg-[#0B0F14] focus:ring-4 focus:ring-amber-500/10 text-sm text-[#0F172A] dark:text-[#F2F4F7] placeholder-[#64748B]/60 dark:placeholder-[#7B8794]/60 outline-none tracking-widest text-center font-bold transition-all duration-200"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-cyan-600 hover:from-brand-600 hover:to-cyan-700 text-white font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 focus:ring-2 focus:ring-brand-500/50 outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full mt-2 py-3.5 rounded-xl bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-md outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -879,7 +879,7 @@ export default function Auth() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-cyan-600 hover:from-brand-600 hover:to-cyan-700 text-white font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 focus:ring-2 focus:ring-brand-500/50 outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full mt-2 py-3.5 rounded-xl bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-md outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -926,7 +926,7 @@ export default function Auth() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter new password"
                     autoComplete="new-password"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-brand-500/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 outline-none transition-all duration-200 pr-16"
+                    className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] hover:border-[#D97706]/50 dark:hover:border-[#F7D154]/50 focus:border-[#D97706] dark:focus:border-[#F7D154] focus:bg-white dark:focus:bg-[#0B0F14] focus:ring-4 focus:ring-amber-500/10 text-sm text-[#0F172A] dark:text-[#F2F4F7] placeholder-[#64748B]/60 dark:placeholder-[#7B8794]/60 outline-none transition-all duration-200 pr-16"
                   />
                   <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-2">
                     {password && (
@@ -961,14 +961,14 @@ export default function Auth() {
                   onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
                   placeholder="&bull;&bull;&bull;&bull;&bull;&bull;"
                   autoComplete="off"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-brand-500/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 outline-none tracking-widest text-center font-bold transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] focus:border-[#D97706] dark:focus:border-[#F7D154] focus:bg-white dark:focus:bg-[#0B0F14] focus:ring-4 focus:ring-amber-500/10 text-sm text-[#0F172A] dark:text-[#F2F4F7] placeholder-[#64748B]/60 dark:placeholder-[#7B8794]/60 outline-none tracking-widest text-center font-bold transition-all duration-200"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-cyan-600 hover:from-brand-600 hover:to-cyan-700 text-white font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 focus:ring-2 focus:ring-brand-500/50 outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full mt-2 py-3.5 rounded-xl bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#f5c730] dark:text-[#0B0F14] font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-md outline-none flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

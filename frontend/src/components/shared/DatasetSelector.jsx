@@ -54,21 +54,21 @@ export default function DatasetSelector({ allowAll = false }) {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="group flex items-center gap-2.5 sm:gap-3 px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#1c1c1e] hover:bg-stone-50 dark:hover:bg-[#28282b] border border-stone-300 dark:border-white/[0.15] shadow-sm transition-all duration-150 cursor-pointer text-left select-none"
+        className="group flex items-center gap-2.5 sm:gap-3 px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#10171F] hover:bg-stone-50 dark:hover:bg-[#17212B] border border-[#E2E8F0] dark:border-[#1F2630] shadow-sm transition-all duration-150 cursor-pointer text-left select-none"
       >
         {/* Label Tag with Database Icon */}
-        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-blue-500/10 dark:bg-blue-400/15 border border-blue-500/25 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider shrink-0">
+        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-[#D97706]/15 dark:bg-[#F7D154]/15 border border-[#D97706]/30 dark:border-[#F7D154]/30 text-[#D97706] dark:text-[#F7D154] text-[10px] font-bold uppercase tracking-wider shrink-0">
           <Database size={12} className="shrink-0" />
           <span>Dataset</span>
         </div>
 
         {/* Selected Table Name + Stats */}
         <div className="flex items-center gap-2 truncate max-w-[200px] sm:max-w-[300px]">
-          <span className="font-semibold text-xs text-stone-900 dark:text-white truncate">
+          <span className="font-semibold text-xs text-[#0F172A] dark:text-[#F2F4F7] truncate">
             {currentFile?.filename}
           </span>
           {currentFile?.schema?.row_count != null && (
-            <span className="hidden sm:inline-block text-[11px] text-stone-500 dark:text-stone-400 font-mono shrink-0">
+            <span className="hidden sm:inline-block text-[11px] text-[#64748B] dark:text-[#7B8794] font-mono shrink-0">
               — {currentFile.schema.row_count.toLocaleString()} rows, {currentFile.schema.column_count} cols
             </span>
           )}
@@ -76,13 +76,13 @@ export default function DatasetSelector({ allowAll = false }) {
 
         {/* Badge with Files Count & Chevron */}
         <div className="flex items-center gap-2 shrink-0 ml-auto">
-          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-white/[0.1] text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-white/[0.1]">
+          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#F1F5F9] dark:bg-[#17212B] text-[#64748B] dark:text-[#7B8794] border border-[#E2E8F0] dark:border-[#1F2630]">
             {files.length} files
           </span>
           <ChevronDown
             size={14}
-            className={`text-stone-400 dark:text-stone-400 ${
-              isOpen ? "rotate-180 text-blue-600 dark:text-blue-400" : ""
+            className={`text-stone-400 dark:text-[#7B8794] ${
+              isOpen ? "rotate-180 text-[#D97706] dark:text-[#F7D154]" : ""
             }`}
           />
         </div>
@@ -90,14 +90,14 @@ export default function DatasetSelector({ allowAll = false }) {
 
       {/* ── Custom Pop-up Menu (100% Solid Non-Bleeding Background, Instant Open) ── */}
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-full min-w-[340px] sm:min-w-[420px] rounded-2xl bg-white dark:bg-[#18181b] border border-stone-300 dark:border-stone-700 shadow-2xl overflow-hidden p-2 z-50">
+        <div className="absolute left-0 mt-2 w-full min-w-[340px] sm:min-w-[420px] rounded-2xl bg-white dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] shadow-2xl overflow-hidden p-2 z-50">
           {/* Header Row */}
-          <div className="px-3 py-2 mb-1.5 flex items-center justify-between border-b border-stone-200 dark:border-stone-800">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400 flex items-center gap-1.5">
-              <Table2 size={13} className="text-blue-600 dark:text-blue-400" />
+          <div className="px-3 py-2 mb-1.5 flex items-center justify-between border-b border-[#E2E8F0] dark:border-[#1B232C]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-[#7B8794] flex items-center gap-1.5">
+              <Table2 size={13} className="text-[#D97706] dark:text-[#F7D154]" />
               Switch Active Table
             </span>
-            <span className="text-[10px] font-semibold text-stone-500 dark:text-stone-400 font-mono bg-stone-100 dark:bg-stone-800 px-2 py-0.5 rounded-full">
+            <span className="text-[10px] font-semibold text-[#64748B] dark:text-[#7B8794] font-mono bg-[#F1F5F9] dark:bg-[#17212B] px-2 py-0.5 rounded-full border border-[#E2E8F0] dark:border-[#1F2630]">
               {files.length} tables in memory
             </span>
           </div>
@@ -113,22 +113,22 @@ export default function DatasetSelector({ allowAll = false }) {
                 }}
                 className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl text-left transition-all cursor-pointer ${
                   activeFileIndex === -1
-                    ? "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-sky-300 border border-blue-300 dark:border-blue-700 font-semibold"
-                    : "bg-stone-50 dark:bg-stone-900/60 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-900 dark:text-stone-200 border border-stone-200 dark:border-stone-800"
+                    ? "bg-amber-50 dark:bg-[#F7D154]/15 text-[#D97706] dark:text-[#F7D154] border border-[#D97706]/30 dark:border-[#F7D154]/40 font-semibold"
+                    : "bg-[#F8FAFC] dark:bg-[#0B0F14] hover:bg-stone-100 dark:hover:bg-[#1B232C] text-[#0F172A] dark:text-[#F2F4F7] border border-[#E2E8F0] dark:border-[#1F2630]"
                 }`}
               >
                 <div className="flex items-center gap-2.5 truncate">
-                  <div className={`p-1.5 rounded-lg shrink-0 ${activeFileIndex === -1 ? "bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300" : "bg-stone-200 dark:bg-stone-800 text-stone-600 dark:text-stone-400"}`}>
+                  <div className={`p-1.5 rounded-lg shrink-0 ${activeFileIndex === -1 ? "bg-[#D97706]/20 dark:bg-[#F7D154]/20 text-[#D97706] dark:text-[#F7D154]" : "bg-stone-200 dark:bg-[#1B232C] text-[#64748B] dark:text-[#7B8794]"}`}>
                     <Layers size={15} />
                   </div>
                   <div className="flex flex-col truncate">
-                    <span className="text-xs font-bold text-stone-900 dark:text-white">All Tables Combined</span>
-                    <span className="text-[11px] text-stone-600 dark:text-stone-400">
+                    <span className="text-xs font-bold text-[#0F172A] dark:text-[#F2F4F7]">All Tables Combined</span>
+                    <span className="text-[11px] text-[#64748B] dark:text-[#7B8794]">
                       Query across all {files.length} tables in SQL & AI
                     </span>
                   </div>
                 </div>
-                {activeFileIndex === -1 && <Check size={16} className="shrink-0 text-blue-600 dark:text-sky-400 font-bold" />}
+                {activeFileIndex === -1 && <Check size={16} className="shrink-0 text-[#D97706] dark:text-[#F7D154] font-bold" />}
               </button>
             )}
 
@@ -144,26 +144,26 @@ export default function DatasetSelector({ allowAll = false }) {
                   }}
                   className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl text-left cursor-pointer ${
                     isSelected
-                      ? "bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-sky-200 border border-blue-400 dark:border-blue-600 shadow-xs"
-                      : "bg-white dark:bg-[#202023] hover:bg-stone-100 dark:hover:bg-[#2a2a2e] text-stone-900 dark:text-stone-100 border border-stone-200 dark:border-white/[0.08]"
+                      ? "bg-amber-50 dark:bg-[#F7D154]/15 text-[#D97706] dark:text-[#F7D154] border border-[#D97706]/40 dark:border-[#F7D154]/40 shadow-xs"
+                      : "bg-[#FFFFFF] dark:bg-[#10171F] hover:bg-stone-100 dark:hover:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] border border-[#E2E8F0] dark:border-[#1F2630]"
                   }`}
                 >
                   <div className="flex items-center gap-2.5 truncate">
                     <div
                       className={`p-1.5 rounded-lg shrink-0 ${
                         isSelected
-                          ? "bg-blue-500 text-white shadow-xs"
-                          : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300"
+                          ? "bg-[#D97706] dark:bg-[#F7D154] text-white dark:text-[#0B0F14] shadow-xs"
+                          : "bg-[#F1F5F9] dark:bg-[#17212B] text-[#64748B] dark:text-[#7B8794]"
                       }`}
                     >
                       <FileSpreadsheet size={15} />
                     </div>
                     <div className="flex flex-col truncate">
-                      <span className={`text-xs truncate ${isSelected ? "font-bold text-blue-700 dark:text-sky-300" : "font-semibold text-stone-900 dark:text-white"}`}>
+                      <span className={`text-xs truncate ${isSelected ? "font-bold text-[#D97706] dark:text-[#F7D154]" : "font-semibold text-[#0F172A] dark:text-[#F2F4F7]"}`}>
                         {f.filename}
                       </span>
                       {f.schema?.row_count != null && (
-                        <span className={`text-[11px] font-mono mt-0.5 ${isSelected ? "text-blue-600 dark:text-sky-400" : "text-stone-600 dark:text-stone-400"}`}>
+                        <span className={`text-[11px] font-mono mt-0.5 ${isSelected ? "text-[#D97706] dark:text-[#F7D154]/90" : "text-[#64748B] dark:text-[#7B8794]"}`}>
                           {f.schema.row_count.toLocaleString()} rows · {f.schema.column_count} columns
                         </span>
                       )}
@@ -172,10 +172,10 @@ export default function DatasetSelector({ allowAll = false }) {
 
                   {isSelected && (
                     <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-100 dark:bg-blue-900/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-700 uppercase tracking-wider">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#D97706] dark:bg-[#F7D154] text-white dark:text-[#0B0F14] uppercase tracking-wider">
                         Active
                       </span>
-                      <Check size={16} className="text-blue-600 dark:text-sky-400 font-bold" />
+                      <Check size={16} className="text-[#D97706] dark:text-[#F7D154] font-bold" />
                     </div>
                   )}
                 </button>

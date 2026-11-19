@@ -234,7 +234,7 @@ export default function ChatPanel() {
               <button
                 key={q}
                 onClick={() => send(q)}
-                className="text-xs px-3 py-1.5 rounded-full bg-[#fcfaf5]/85 dark:bg-[#1c1c1e]/70 border border-stone-200/80 dark:border-white/[0.08] hover:border-[#0071e3] text-[#515154] dark:text-[#a1a1a6] hover:text-[#0071e3] transition-all cursor-pointer shadow-2xs"
+                className="text-xs px-3 py-1.5 rounded-full bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] hover:border-[#D97706] dark:hover:border-[#F7D154] text-[#64748B] dark:text-[#7B8794] hover:text-[#D97706] dark:hover:text-[#F7D154] transition-all cursor-pointer shadow-2xs"
               >
                 {q}
               </button>
@@ -259,7 +259,7 @@ export default function ChatPanel() {
                     <Copy size={14} />
                   )}
                 </button>
-                <div className="chat-user-bubble bg-[#0071e3] text-white rounded-2xl rounded-tr-xs px-4 py-2 text-sm shadow-sm break-words whitespace-pre-wrap">
+                <div className="chat-user-bubble bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] font-semibold rounded-2xl rounded-tr-xs px-4 py-2 text-sm shadow-sm break-words whitespace-pre-wrap">
                   {m.content}
                 </div>
               </div>
@@ -271,8 +271,8 @@ export default function ChatPanel() {
                     m.response_type === "error" || m.warning
                       ? "bg-amber-500/[0.08] border-amber-500/30 text-amber-900 dark:text-amber-200"
                       : m.response_type === "clarification"
-                      ? "bg-blue-500/[0.06] border-blue-500/30 text-[#1d1d1f] dark:text-[#f5f5f7]"
-                      : "bg-[#fcfaf5]/85 dark:bg-[#1c1c1e]/80 backdrop-blur-xl border-stone-200/80 dark:border-white/[0.08]"
+                      ? "bg-amber-500/[0.06] border-amber-500/30 text-[#0F172A] dark:text-[#F2F4F7]"
+                      : "bg-[#FFFFFF] dark:bg-[#10171F] border-[#E2E8F0] dark:border-[#1F2630]"
                   }`}
                 >
                   {/* Badge header for clarification or explanation */}
@@ -357,12 +357,12 @@ export default function ChatPanel() {
           onChange={(e) => setInput(e.target.value)}
           maxLength={2000}
           placeholder="Ask anything about your data… (e.g. Total revenue by region)"
-          className="chat-input w-full rounded-full border border-stone-300/60 dark:border-white/[0.12] bg-[#fcfaf5]/85 dark:bg-[#1c1c1e]/70 backdrop-blur-2xl pl-5 pr-12 py-3 text-sm text-[#262422] dark:text-[#f5f5f7] outline-none focus:ring-2 focus:ring-[#0071e3]/40 focus:border-[#0071e3] transition-all shadow-xs"
+          className="chat-input w-full rounded-full border border-[#E2E8F0] dark:border-[#1F2630] bg-[#FFFFFF] dark:bg-[#10171F] pl-5 pr-12 py-3 text-sm text-[#0F172A] dark:text-[#F2F4F7] outline-none focus:ring-2 focus:ring-[#D97706]/40 dark:focus:ring-[#F7D154]/40 focus:border-[#D97706] dark:focus:border-[#F7D154] transition-all shadow-xs"
         />
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-[#0071e3] text-white hover:bg-[#0077ed] disabled:opacity-40 transition-all cursor-pointer"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-[#D97706] text-white dark:bg-[#F7D154] dark:text-[#0B0F14] hover:opacity-90 disabled:opacity-40 transition-all cursor-pointer font-bold"
         >
           <Send size={15} />
         </button>

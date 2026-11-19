@@ -146,20 +146,20 @@ export default function SqlEditorPanel() {
     <div className="space-y-3 h-[calc(100vh-100px)] flex flex-col animate-fade-in">
       {/* Header Banner */}
       <div className="shrink-0">
-        <h2 className="font-outfit font-bold text-xl sm:text-2xl bg-gradient-to-r from-[#262422] via-[#0071e3] to-[#06b6d4] dark:from-[#f5f5f7] dark:via-[#38bdf8] dark:to-[#06b6d4] bg-clip-text text-transparent tracking-tight">
+        <h2 className="font-outfit font-bold text-xl sm:text-2xl bg-gradient-to-r from-[#D97706] to-[#F59E0B] dark:from-[#F7D154] dark:to-[#FDE68A] bg-clip-text text-transparent tracking-tight">
           SQL Studio & Schema Explorer
         </h2>
-        <p className="text-xs text-[#86868b] dark:text-[#a1a1a6] mt-0.5 font-sans">
+        <p className="text-xs text-[#64748B] dark:text-[#7B8794] mt-0.5 font-sans">
           Execute read-only SQL queries directly against in-memory DuckDB tables.
         </p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-4 flex-1 overflow-hidden">
         {/* Left sidebar — Tables & Schema Inspector */}
-        <div className="w-full lg:w-64 shrink-0 rounded-2xl bg-[#fcfaf5]/85 dark:bg-[#1c1c1e]/75 border border-stone-200/80 dark:border-white/[0.08] backdrop-blur-2xl shadow-sm overflow-hidden flex flex-col">
-          <div className="px-4 py-3 border-b border-stone-200/60 dark:border-white/[0.06] flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#6e6e73] dark:text-[#a1a1a6]">
-              <Database size={14} className="text-[#0071e3]" />
+        <div className="w-full lg:w-64 shrink-0 rounded-2xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] shadow-sm overflow-hidden flex flex-col">
+          <div className="px-4 py-3 border-b border-[#E2E8F0] dark:border-[#1B232C] flex items-center justify-between">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#64748B] dark:text-[#7B8794]">
+              <Database size={14} className="text-[#D97706] dark:text-[#F7D154]" />
               Schema Explorer ({files.length})
             </div>
           </div>
@@ -226,10 +226,10 @@ export default function SqlEditorPanel() {
       {/* Right side — Editor + Results */}
       <div className="flex-1 flex flex-col gap-3 min-w-0">
         {/* SQL Editor */}
-        <div className="glass-panel rounded-xl overflow-hidden flex flex-col">
+        <div className="rounded-2xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] overflow-hidden flex flex-col shadow-sm">
           {/* Editor toolbar */}
-          <div className="flex items-center justify-between px-3 py-2 border-b border-gray-200/50 dark:border-gray-700/50 bg-gray-50/50 dark:bg-gray-800/30">
-            <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+          <div className="flex items-center justify-between px-3 py-2 border-b border-[#E2E8F0] dark:border-[#1B232C] bg-[#F8FAFC] dark:bg-[#0B0F14]">
+            <span className="text-xs font-semibold text-[#64748B] dark:text-[#7B8794] uppercase tracking-wider">
               SQL Editor
             </span>
             <div className="flex items-center gap-1.5">
@@ -252,7 +252,7 @@ export default function SqlEditorPanel() {
               <button
                 onClick={executeQuery}
                 disabled={loading || !sql.trim()}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-xs font-semibold hover:shadow-lg hover:shadow-emerald-500/30 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#ebd448] dark:text-[#0B0F14] text-xs font-bold transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-xs"
                 title="Run query (Ctrl+Enter)"
               >
                 {loading ? (

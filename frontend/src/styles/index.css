@@ -4,12 +4,51 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Theme Color Palette Variables */
+:root,
+html.dark {
+  --bg-color: #0B0F14;
+  --card-bg: #10171F;
+  --text-primary: #F2F4F7;
+  --text-secondary: #7B8794;
+  --accent-color: #F7D154;
+  --accent-text: #0B0F14;
+  --border-color: #1B232C;
+  --card-border: #1F2630;
+  --success-color: #3CCB7F;
+  --danger-color: #E5484D;
+  --pill-bg: #10171F;
+  --empty-progress: #17212B;
+  --modal-backdrop: rgba(11, 15, 20, 0.85);
+  --timeline-past: #3A2A2A;
+  --timeline-future: #1B232C;
+}
+
+html:not(.dark) {
+  --bg-color: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --accent-color: #D97706;
+  --accent-text: #FFFFFF;
+  --border-color: #E2E8F0;
+  --card-border: #E2E8F0;
+  --success-color: #10B981;
+  --danger-color: #EF4444;
+  --pill-bg: #F1F5F9;
+  --empty-progress: #E2E8F0;
+  --modal-backdrop: rgba(15, 23, 42, 0.4);
+  --timeline-past: #FEE2E2;
+  --timeline-future: #E2E8F0;
+}
+
 html,
 body,
 #root {
   height: 100%;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  @apply bg-[#f7f5f0] text-[#262422] dark:bg-[#161617] dark:text-[#f5f5f7];
+  background-color: var(--bg-color);
+  color: var(--text-primary);
 }
 
 .font-kaushan {
@@ -206,22 +245,26 @@ html {
   }
 }
 
-/* AG Grid Quartz Theme Cream Light Mode Customization */
+/* AG Grid Quartz Theme Customization */
 .ag-theme-quartz {
-  --ag-background-color: #fdfcf9;
-  --ag-header-background-color: #f5f1ea;
-  --ag-odd-row-background-color: #faf7f0;
-  --ag-border-color: rgba(0, 0, 0, 0.07);
-  --ag-foreground-color: #262422;
-  --ag-secondary-foreground-color: #78716c;
+  --ag-background-color: #FFFFFF;
+  --ag-header-background-color: #F8FAFC;
+  --ag-odd-row-background-color: #F1F5F9;
+  --ag-border-color: #E2E8F0;
+  --ag-foreground-color: #0F172A;
+  --ag-secondary-foreground-color: #64748B;
+  --ag-selected-row-background-color: rgba(217, 119, 6, 0.12);
+  --ag-row-hover-color: rgba(217, 119, 6, 0.05);
 }
 .ag-theme-quartz-dark {
-  --ag-background-color: #1c1c1e;
-  --ag-header-background-color: #242426;
-  --ag-odd-row-background-color: #18181a;
-  --ag-border-color: rgba(255, 255, 255, 0.08);
-  --ag-foreground-color: #f5f5f7;
-  --ag-secondary-foreground-color: #a1a1a6;
+  --ag-background-color: #10171F;
+  --ag-header-background-color: #0B0F14;
+  --ag-odd-row-background-color: #0E141B;
+  --ag-border-color: #1F2630;
+  --ag-foreground-color: #F2F4F7;
+  --ag-secondary-foreground-color: #7B8794;
+  --ag-selected-row-background-color: rgba(247, 209, 84, 0.15);
+  --ag-row-hover-color: rgba(247, 209, 84, 0.08);
 }
 
 @keyframes marquee {

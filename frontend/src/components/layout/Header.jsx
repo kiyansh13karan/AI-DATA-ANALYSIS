@@ -9,7 +9,7 @@ export default function Header() {
   const { dataset } = useDataset();
 
   return (
-    <header className="h-14 flex items-center justify-between px-3 sm:px-6 border-b border-stone-200/50 dark:border-white/[0.06] bg-[#fcfaf5]/45 dark:bg-[#161617]/45 backdrop-blur-2xl select-none relative z-50 transition-all duration-200">
+    <header className="h-14 flex items-center justify-between px-3 sm:px-6 border-b border-[#E2E8F0] dark:border-[#1B232C] bg-[#FFFFFF]/90 dark:bg-[#10171F]/90 backdrop-blur-2xl select-none relative z-50 transition-all duration-200">
       <div className="flex items-center gap-2 sm:gap-4 min-w-0">
         {/* macOS Traffic Dots with Apple Gloss */}
         <div className="hidden sm:flex items-center gap-2 mr-1 shrink-0">
@@ -40,14 +40,14 @@ export default function Header() {
             alt="AI Data Analysis Logo" 
             className="w-7 h-7 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_2px_10px_rgba(0,113,227,0.3)] shrink-0"
           />
-          <span className="header-title text-sm sm:text-base font-bold tracking-tight font-outfit bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#06b6d4] dark:from-[#38bdf8] dark:via-[#0ea5e9] dark:to-[#06b6d4] bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
+          <span className="header-title text-sm sm:text-base font-bold tracking-tight font-outfit bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#FBBF24] dark:from-[#F7D154] dark:via-[#FDE68A] dark:to-[#F7D154] bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
             <span className="hidden sm:inline">AI Data Analysis</span>
             <span className="sm:hidden">AI Analysis</span>
           </span>
         </Link>
         {dataset && (
           <span
-            className="header-dataset-pill hidden md:inline-block text-xs font-medium text-[#6e6e73] dark:text-[#a1a1a6] ml-2 bg-black/[0.04] dark:bg-white/[0.06] border border-black/[0.04] dark:border-white/[0.06] px-2.5 py-0.5 rounded-full backdrop-blur-sm truncate max-w-[220px]"
+            className="header-dataset-pill hidden md:inline-block text-xs font-medium text-[#64748B] dark:text-[#7B8794] ml-2 bg-[#F1F5F9] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] px-2.5 py-0.5 rounded-full backdrop-blur-sm truncate max-w-[220px]"
             title={dataset.files?.map(f => f.filename).join(", ") || dataset.filename}
           >
             {dataset.files?.length > 1

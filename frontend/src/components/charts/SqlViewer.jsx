@@ -18,13 +18,13 @@ export default function SqlViewer({ sql }) {
   };
 
   return (
-    <div className="rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
-      <div className="flex items-center justify-between px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-xs">
+    <div className="rounded-lg border border-[#E2E8F0] dark:border-[#1F2630] overflow-hidden">
+      <div className="flex items-center justify-between px-3 py-1.5 bg-[#F8FAFC] dark:bg-[#10171F] text-[#0F172A] dark:text-[#F2F4F7] text-xs">
         <span className="font-medium">Generated SQL</span>
         <button onClick={copy} className="inline-flex items-center gap-1 hover:underline cursor-pointer">
           {copied ? (
             <>
-              <Check className="w-3.5 h-3.5 text-emerald-500" />
+              <Check className="w-3.5 h-3.5 text-[#10B981] dark:text-[#3CCB7F]" />
               <span>Copied</span>
             </>
           ) : (
@@ -35,7 +35,7 @@ export default function SqlViewer({ sql }) {
           )}
         </button>
       </div>
-      <pre className="p-3 text-xs overflow-x-auto bg-gray-950 text-gray-100">
+      <pre className="p-3 text-xs overflow-x-auto bg-[#0B0F14] text-[#F2F4F7]">
         <code>{sql}</code>
       </pre>
     </div>

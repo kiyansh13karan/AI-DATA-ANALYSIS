@@ -411,10 +411,10 @@ export default function ExplorePanel() {
           <select
             value={selectedFileIndex}
             onChange={(e) => setSelectedFileIndex(Number(e.target.value))}
-            className="flex-1 rounded-xl border border-stone-300/60 dark:border-white/[0.15] bg-[#ffffff] dark:bg-[#1c1c1e] px-3.5 py-2 text-sm font-medium text-[#262422] dark:text-[#f5f5f7] outline-none focus:ring-2 focus:ring-[#0071e3]/40 focus:border-[#0071e3] transition-all cursor-pointer shadow-xs"
+            className="flex-1 rounded-xl border border-[#E2E8F0] dark:border-[#1F2630] bg-[#FFFFFF] dark:bg-[#10171F] px-3.5 py-2 text-sm font-medium text-[#0F172A] dark:text-[#F2F4F7] outline-none focus:ring-2 focus:ring-[#D97706]/40 dark:focus:ring-[#F7D154]/40 transition-all cursor-pointer shadow-xs"
           >
             {files.map((f, idx) => (
-              <option key={f.table_name} value={idx} className="bg-white dark:bg-[#1c1c1e] text-[#262422] dark:text-[#f5f5f7]">
+              <option key={f.table_name} value={idx} className="bg-white dark:bg-[#10171F] text-[#0F172A] dark:text-[#F2F4F7]">
                 {f.filename} — {f.table_name} ({f.schema?.row_count?.toLocaleString()} rows, {f.schema?.column_count} cols)
               </option>
             ))}
@@ -423,10 +423,10 @@ export default function ExplorePanel() {
       )}
 
       {/* Chart Configuration Box */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-[#fcfaf5]/85 dark:bg-[#1c1c1e]/75 border border-stone-200/80 dark:border-white/[0.08] backdrop-blur-2xl shadow-sm space-y-5">
+      <div className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] dark:bg-[#10171F] border border-[#E2E8F0] dark:border-[#1F2630] shadow-sm space-y-5">
         {/* Chart Type Selector */}
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-[#6e6e73] dark:text-[#a1a1a6] mb-2 block">
+          <label className="text-xs font-semibold uppercase tracking-wider text-[#64748B] dark:text-[#7B8794] mb-2 block">
             Visualization Type
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2">
@@ -440,8 +440,8 @@ export default function ExplorePanel() {
                   title={ct.desc}
                   className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer border text-center ${
                     active
-                      ? "bg-[#0071e3] text-white border-[#0071e3] shadow-[0_2px_8px_rgba(0,113,227,0.3)]"
-                      : "bg-[#f8f5ee] dark:bg-white/[0.04] text-[#262422] dark:text-[#f5f5f7] border-stone-200/80 dark:border-white/[0.08] hover:border-[#0071e3]/50"
+                      ? "bg-[#D97706] text-white border-[#D97706] dark:bg-[#F7D154] dark:text-[#0B0F14] dark:border-[#F7D154] font-bold shadow-[0_2px_8px_rgba(247,209,84,0.3)]"
+                      : "bg-[#F1F5F9] dark:bg-[#17212B] text-[#0F172A] dark:text-[#F2F4F7] border-[#E2E8F0] dark:border-[#1F2630] hover:border-[#D97706] dark:hover:border-[#F7D154]"
                   }`}
                 >
                   {ct.label}
@@ -449,8 +449,8 @@ export default function ExplorePanel() {
               );
             })}
           </div>
-          <p className="text-[11px] text-[#86868b] dark:text-[#a1a1a6] mt-2 flex items-center gap-1.5">
-            <Info size={12} className="text-[#0071e3] shrink-0" />
+          <p className="text-[11px] text-[#64748B] dark:text-[#7B8794] mt-2 flex items-center gap-1.5">
+            <Info size={12} className="text-[#D97706] dark:text-[#F7D154] shrink-0" />
             {chartRules.hint}
           </p>
         </div>
@@ -557,14 +557,14 @@ export default function ExplorePanel() {
         )}
 
         {/* Action Button Bar */}
-        <div className="flex items-center justify-between pt-3 border-t border-black/[0.04] dark:border-white/[0.06]">
-          <div className="text-xs text-[#86868b] dark:text-[#a1a1a6]">
+        <div className="flex items-center justify-between pt-3 border-t border-[#E2E8F0] dark:border-[#1B232C]">
+          <div className="text-xs text-[#64748B] dark:text-[#7B8794]">
             {schema?.column_count ? `${schema.column_count} columns available` : ""}
           </div>
           <button
             onClick={() => runQuery()}
             disabled={loading || !isConfigurationValid}
-            className="px-6 py-2.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-sm font-semibold shadow-[0_4px_14px_rgba(0,113,227,0.35)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-all cursor-pointer"
+            className="px-6 py-2.5 rounded-full bg-[#D97706] hover:bg-[#b45309] text-white dark:bg-[#F7D154] dark:hover:bg-[#ebd448] dark:text-[#0B0F14] text-sm font-bold shadow-[0_4px_14px_rgba(247,209,84,0.35)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-all cursor-pointer"
           >
             {loading ? (
               <>

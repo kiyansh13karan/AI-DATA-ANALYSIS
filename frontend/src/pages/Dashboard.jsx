@@ -39,7 +39,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="h-screen flex flex-col relative bg-[#f7f5f0] dark:bg-[#000000] text-[#262422] dark:text-[#f5f5f7] antialiased selection:bg-[#0071e3] selection:text-white">
+    <div className="h-screen flex flex-col relative bg-[#F8FAFC] dark:bg-[#0B0F14] text-[#0F172A] dark:text-[#F2F4F7] antialiased selection:bg-[#F7D154] selection:text-[#0B0F14]">
       <Header />
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar with show/hide icon rail and hover tooltip */}
